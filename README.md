@@ -1,18 +1,5 @@
-{
-  "name": "dypdykk",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
-  },
-  "dependencies": {
-    "next": "14.2.5",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "lucide-react": "0.383.0"
-  }
-}
+# dypdykk
+
+A Next.js application.
 
 Last updated: 8/8/2026
