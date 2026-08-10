@@ -313,6 +313,755 @@ const SAMPLE_TESTS = [
       { prompt: "Skriv en argumenterende tekst (150–200 ord) om følgende påstand: 'Det bør innføres en firedagers arbeidsuke i Norge.' Presenter din mening og støtt den med minst to argumenter. Bruk gjerne uttrykk som 'på den ene siden', 'til tross for' eller 'derfor'.", minWords: 150 },
     ] },
   },
+  {
+    id: "a1a2-vaer", pair: "A1–A2", lower: "A1", upper: "A2", color: "#7FA0BE", maxPlays: 2,
+    reading: [
+      { passage: "I dag er det kaldt i Norge. Det snør, og temperaturen er minus fem grader. Barna gleder seg til å leke i snøen etter skolen.",
+        questions: [
+          { q: "Hvordan er været i dag?", options: ["Varmt", "Kaldt", "Regnfullt", "Vindfullt"], answer: 1 },
+          { q: "Hva gjør barna etter skolen?", options: ["Sover", "Leser", "Leker i snøen", "Spiser"], answer: 2 },
+        ] },
+      { passage: "Per skal gå tur i fjellet i vinter. Han tar på seg varm jakke, lue og votter. Skoene hans er tykke og varme. Han vil ikke fryse.",
+        questions: [
+          { q: "Hva skal Per gjøre?", options: ["Sove", "Gå tur i fjellet", "Jobbe", "Lage mat"], answer: 1 },
+          { q: "Hva tar Per på seg?", options: ["Bare jakke", "Varm jakke, lue og votter", "Shorts og t-skjorte", "Badedrakt"], answer: 1 },
+        ] },
+    ],
+    listening: {
+      dialogue: "A: Hei! Har du sett hvordan været er ute?\nB: Ja, det er veldig kaldt i dag. Det snør mye.\nA: Skal vi gå tur likevel?\nB: Ja, men vi må kle oss varmt. Ta på deg lue og votter.\nA: God idé. Jeg tar med skjerf også.\nB: Fint. Da møtes vi klokken ti utenfor.",
+      questions: [
+        { q: "Hvordan er været ute?", options: ["Varmt", "Kaldt og snø", "Regn", "Sol"], answer: 1 },
+        { q: "Hva må de gjøre før turen?", options: ["Spise frokost", "Kle seg varmt", "Ringe en venn", "Vaske huset"], answer: 1 },
+        { q: "Når møtes de?", options: ["Klokken åtte", "Klokken ni", "Klokken ti", "Klokken elleve"], answer: 2 },
+      ],
+    },
+    writing: { tasks: [
+      { prompt: "Skriv en kort tekst (30–50 ord) om hvordan været er der du bor om vinteren, og hva du pleier å ha på deg når det er kaldt ute.", minWords: 30 },
+    ] },
+  },
+  {
+    id: "a1a2-handle", pair: "A1–A2", lower: "A1", upper: "A2", color: "#7FA0BE", maxPlays: 2,
+    reading: [
+      { passage: "Marit handler mat hver lørdag. Hun går til butikken like ved huset sitt. Hun kjøper alltid brød, melk og frukt. Noen ganger kjøper hun også fisk til middag.",
+        questions: [
+          { q: "Når handler Marit mat?", options: ["Hver mandag", "Hver lørdag", "Hver søndag", "Hver dag"], answer: 1 },
+          { q: "Hva kjøper hun alltid?", options: ["Kjøtt og ris", "Brød, melk og frukt", "Kaker", "Klær"], answer: 1 },
+        ] },
+      { passage: "I dag har butikken tilbud på grønnsaker. Tomater og agurker er billige. Lars kjøper mye grønnsaker fordi han skal lage salat til middag i kveld.",
+        questions: [
+          { q: "Hva har tilbud i butikken?", options: ["Frukt", "Grønnsaker", "Kjøtt", "Brød"], answer: 1 },
+          { q: "Hvorfor kjøper Lars mye grønnsaker?", options: ["Han skal lage suppe", "Han skal lage salat", "Han skal reise", "Han skal sove"], answer: 1 },
+        ] },
+    ],
+    listening: {
+      dialogue: "A: Skal du til butikken i dag?\nB: Ja, jeg må handle mat til hele uken.\nA: Kan du kjøpe litt melk til meg også?\nB: Ja, det går fint. Trenger du noe mer?\nA: Kanskje litt brød og ost.\nB: Greit, jeg skriver det på handlelisten.\nA: Tusen takk! Jeg gir deg penger senere.",
+      questions: [
+        { q: "Hvorfor skal B til butikken?", options: ["For å møte en venn", "For å handle mat til uken", "For å jobbe", "For å hente en pakke"], answer: 1 },
+        { q: "Hva vil A ha?", options: ["Bare melk", "Melk, brød og ost", "Frukt og fisk", "Kake"], answer: 1 },
+        { q: "Hva gjør B med det A ber om?", options: ["Glemmer det", "Skriver det på handlelisten", "Sier nei", "Ringer butikken"], answer: 1 },
+      ],
+    },
+    writing: { tasks: [
+      { prompt: "Skriv en kort tekst (30–50 ord) om hvordan du handler mat: hvor du handler, hvor ofte, og hva du liker å kjøpe.", minWords: 30 },
+    ] },
+  },
+  {
+    id: "a1a2-lege", pair: "A1–A2", lower: "A1", upper: "A2", color: "#7FA0BE", maxPlays: 2,
+    reading: [
+      { passage: "Ola er syk. Han har vondt i halsen og feber. I dag skal han til legen klokken to. Han håper legen kan gi ham medisin.",
+        questions: [
+          { q: "Hva feiler Ola?", options: ["Vondt i magen", "Vondt i halsen og feber", "Vondt i beinet", "Han er bare trøtt"], answer: 1 },
+          { q: "Når skal han til legen?", options: ["Klokken ett", "Klokken to", "Klokken tre", "Klokken fire"], answer: 1 },
+        ] },
+      { passage: "Legesenteret ligger midt i byen. Det er åpent fra åtte til fire på hverdager. Man må ringe og bestille time før man kommer.",
+        questions: [
+          { q: "Når er legesenteret åpent?", options: ["Fra åtte til fire på hverdager", "Hele døgnet", "Bare i helgen", "Fra ni til fem"], answer: 0 },
+          { q: "Hva må man gjøre før man kommer?", options: ["Betale først", "Bestille time", "Skrive brev", "Vente utenfor"], answer: 1 },
+        ] },
+    ],
+    listening: {
+      dialogue: "A: God dag. Jeg har time klokken to hos legen.\nB: Hva heter du?\nA: Jeg heter Kari Hansen.\nB: Ja, jeg ser deg her. Vent litt, legen kommer snart.\nA: Takk. Vet du hvor lenge jeg må vente?\nB: Bare noen minutter. Sett deg der borte.\nA: Greit, tusen takk.",
+      questions: [
+        { q: "Når har Kari time?", options: ["Klokken ett", "Klokken to", "Klokken tre", "Klokken fire"], answer: 1 },
+        { q: "Hva heter pasienten?", options: ["Anna Hansen", "Kari Hansen", "Kari Olsen", "Marit Hansen"], answer: 1 },
+        { q: "Hvor lenge må Kari vente?", options: ["En time", "Noen minutter", "Hele dagen", "Ingen tid"], answer: 1 },
+      ],
+    },
+    writing: { tasks: [
+      { prompt: "Skriv en kort tekst (30–50 ord) om sist gang du var syk eller hos legen. Hva feilte det deg, og hva gjorde du?", minWords: 30 },
+    ] },
+  },
+  {
+    id: "a1a2-buss", pair: "A1–A2", lower: "A1", upper: "A2", color: "#7FA0BE", maxPlays: 2,
+    reading: [
+      { passage: "Ingrid tar bussen til jobb hver dag. Bussen går klokken sju om morgenen fra holdeplassen nær huset hennes. Turen tar tjue minutter.",
+        questions: [
+          { q: "Hvordan reiser Ingrid til jobb?", options: ["Med bil", "Med bussen", "Med tog", "Til fots"], answer: 1 },
+          { q: "Hvor lang tid tar turen?", options: ["Ti minutter", "Tjue minutter", "Tretti minutter", "En time"], answer: 1 },
+        ] },
+      { passage: "En turist spør en mann om veien til togstasjonen. Mannen sier at hun må gå rett fram og så ta til venstre ved kirken. Stasjonen ligger like ved.",
+        questions: [
+          { q: "Hva spør turisten om?", options: ["Veien til butikken", "Veien til togstasjonen", "Klokken", "Været"], answer: 1 },
+          { q: "Hvor skal turisten ta til venstre?", options: ["Ved skolen", "Ved kirken", "Ved broen", "Ved parken"], answer: 1 },
+        ] },
+    ],
+    listening: {
+      dialogue: "A: Unnskyld, vet du hvor bussen til sentrum går fra?\nB: Ja, holdeplassen er rett rundt hjørnet.\nA: Tusen takk. Vet du når neste buss går?\nB: Jeg tror den går om ti minutter.\nA: Flott. Koster billetten mye?\nB: Nei, den koster bare tretti kroner.\nA: Da tar jeg bussen. Ha en fin dag!",
+      questions: [
+        { q: "Hva leter A etter?", options: ["Toget", "Bussen til sentrum", "Butikken", "Skolen"], answer: 1 },
+        { q: "Når går neste buss?", options: ["Om fem minutter", "Om ti minutter", "Om tjue minutter", "Nå med en gang"], answer: 1 },
+        { q: "Hva koster billetten?", options: ["Tjue kroner", "Tretti kroner", "Femti kroner", "Hundre kroner"], answer: 1 },
+      ],
+    },
+    writing: { tasks: [
+      { prompt: "Skriv en kort tekst (30–50 ord) om hvordan du reiser til jobb eller skole. Bruker du buss, tog, bil eller sykkel?", minWords: 30 },
+    ] },
+  },
+  {
+    id: "a1a2-hobby", pair: "A1–A2", lower: "A1", upper: "A2", color: "#7FA0BE", maxPlays: 2,
+    reading: [
+      { passage: "Erik liker å gå på ski om vinteren. Hver helg drar han til fjellet med familien. De går på ski hele dagen og drikker varm kakao etterpå.",
+        questions: [
+          { q: "Hva liker Erik å gjøre om vinteren?", options: ["Svømme", "Gå på ski", "Sykle", "Fiske"], answer: 1 },
+          { q: "Hva drikker de etterpå?", options: ["Kaffe", "Varm kakao", "Juice", "Vann"], answer: 1 },
+        ] },
+      { passage: "Kari og faren hennes drar ofte og fisker i sjøen om sommeren. De sitter stille i båten og venter. I går fikk de tre fisker til middag.",
+        questions: [
+          { q: "Hvor fisker Kari og faren?", options: ["I elven", "I sjøen", "I et basseng", "I en dam"], answer: 1 },
+          { q: "Hvor mange fisker fikk de i går?", options: ["To", "Tre", "Fire", "Fem"], answer: 1 },
+        ] },
+    ],
+    listening: {
+      dialogue: "A: Hva skal du gjøre i helgen?\nB: Jeg skal gå på ski i fjellet med noen venner.\nA: Så gøy! Har du gått på ski før?\nB: Ja, jeg har gått på ski siden jeg var liten.\nA: Er det kaldt der oppe?\nB: Ja, det er kaldt, så vi må kle oss godt.\nA: Lykke til, håper dere har det fint!",
+      questions: [
+        { q: "Hva skal B gjøre i helgen?", options: ["Fiske", "Gå på ski", "Svømme", "Lese"], answer: 1 },
+        { q: "Hvem skal B være med?", options: ["Familien", "Noen venner", "Alene", "Kollegaer"], answer: 1 },
+        { q: "Hvorfor må de kle seg godt?", options: ["Det regner", "Det er kaldt", "Det er sent", "Det er langt"], answer: 1 },
+      ],
+    },
+    writing: { tasks: [
+      { prompt: "Skriv en kort tekst (30–50 ord) om en hobby du liker. Hva gjør du, hvor ofte, og hvorfor liker du det?", minWords: 30 },
+    ] },
+  },
+  {
+    id: "a1a2-nabo", pair: "A1–A2", lower: "A1", upper: "A2", color: "#7FA0BE", maxPlays: 2,
+    reading: [
+      { passage: "Kristin flyttet inn i leiligheten i forrige uke. I dag møter hun naboen sin i trappen. De prater litt om været og om huset.",
+        questions: [
+          { q: "Når flyttet Kristin inn?", options: ["I går", "I forrige uke", "I fjor", "I morgen"], answer: 1 },
+          { q: "Hvor møter hun naboen?", options: ["I hagen", "I trappen", "På jobb", "På butikken"], answer: 1 },
+        ] },
+      { passage: "Naboen heter Bjørn. Han er pensjonist og har bodd i huset i tjue år. Han har en hund som heter Rex. Rex liker å hilse på alle som går forbi.",
+        questions: [
+          { q: "Hvor lenge har Bjørn bodd der?", options: ["Ti år", "Tjue år", "Tretti år", "Fem år"], answer: 1 },
+          { q: "Hva heter hunden til Bjørn?", options: ["Fido", "Rex", "Bella", "Max"], answer: 1 },
+        ] },
+    ],
+    listening: {
+      dialogue: "A: Hei! Er du den nye naboen?\nB: Ja, jeg heter Sara. Jeg flyttet inn i forrige uke.\nA: Velkommen! Jeg heter Tom, jeg bor i andre etasje.\nB: Hyggelig å møte deg, Tom. Det er fint her.\nA: Ja, det er et rolig nabolag. Trenger du hjelp med noe?\nB: Kanskje senere. Nå må jeg pakke ut esker.\nA: Bare si ifra hvis du trenger noe!",
+      questions: [
+        { q: "Hva heter den nye naboen?", options: ["Tom", "Sara", "Kristin", "Bjørn"], answer: 1 },
+        { q: "Hvor bor Tom?", options: ["Første etasje", "Andre etasje", "Tredje etasje", "Fjerde etasje"], answer: 1 },
+        { q: "Hva skal Sara gjøre nå?", options: ["Lage middag", "Pakke ut esker", "Gå tur", "Sove"], answer: 1 },
+      ],
+    },
+    writing: { tasks: [
+      { prompt: "Skriv en kort tekst (30–50 ord) om naboene dine. Kjenner du dem godt? Hva pleier dere å snakke om?", minWords: 30 },
+    ] },
+  },
+  {
+    id: "a1a2-skole", pair: "A1–A2", lower: "A1", upper: "A2", color: "#7FA0BE", maxPlays: 2,
+    reading: [
+      { passage: "Emma er sju år og går på skolen hver dag. Hun står opp klokken sju og spiser frokost med familien. Skolen begynner klokken åtte og slutter klokken to.",
+        questions: [
+          { q: "Hvor gammel er Emma?", options: ["Seks år", "Sju år", "Åtte år", "Ni år"], answer: 1 },
+          { q: "Når begynner skolen?", options: ["Klokken sju", "Klokken åtte", "Klokken ni", "Klokken ti"], answer: 1 },
+        ] },
+      { passage: "I friminuttet leker barna ute i skolegården. Emma liker best å hoppe tau med venninnene sine. Etter skolen går hun hjem og gjør lekser.",
+        questions: [
+          { q: "Hva liker Emma å gjøre i friminuttet?", options: ["Lese bøker", "Hoppe tau", "Tegne", "Synge"], answer: 1 },
+          { q: "Hva gjør Emma etter skolen?", options: ["Sover", "Gjør lekser", "Ser på TV", "Leker ute"], answer: 1 },
+        ] },
+    ],
+    listening: {
+      dialogue: "A: Hei Emma, hvordan var det på skolen i dag?\nB: Det var gøy! Vi lærte om dyr i naturfag.\nA: Så spennende. Hva skal du gjøre nå?\nB: Jeg må gjøre lekser først, så kan jeg leke.\nA: Trenger du hjelp med leksene?\nB: Ja, jeg forstår ikke matteoppgavene.\nA: Kom, så hjelper jeg deg etter middag.",
+      questions: [
+        { q: "Hva lærte Emma om i naturfag?", options: ["Planter", "Dyr", "Vær", "Tall"], answer: 1 },
+        { q: "Hva må Emma gjøre først?", options: ["Leke", "Lekser", "Sove", "Spise"], answer: 1 },
+        { q: "Hvilket fag trenger hun hjelp med?", options: ["Norsk", "Matte", "Engelsk", "Naturfag"], answer: 1 },
+      ],
+    },
+    writing: { tasks: [
+      { prompt: "Skriv en kort tekst (30–50 ord) om en vanlig skoledag eller arbeidsdag. Når begynner den, og hva gjør du?", minWords: 30 },
+    ] },
+  },
+  {
+    id: "a1a2-bursdag", pair: "A1–A2", lower: "A1", upper: "A2", color: "#7FA0BE", maxPlays: 2,
+    reading: [
+      { passage: "Sondre skal fylle ti år i neste uke. Mamma og pappa planlegger en fest for ham. De skal invitere ti venner og kjøpe en stor kake.",
+        questions: [
+          { q: "Hvor gammel blir Sondre?", options: ["Ni år", "Ti år", "Elleve år", "Tolv år"], answer: 1 },
+          { q: "Hvor mange venner skal de invitere?", options: ["Fem", "Ti", "Femten", "Tjue"], answer: 1 },
+        ] },
+      { passage: "Festen skal være hjemme hos Sondre på lørdag klokken tolv. Alle gjestene skal ha med gave. Etter kaken skal barna spille spill i hagen.",
+        questions: [
+          { q: "Når skal festen være?", options: ["Fredag", "Lørdag", "Søndag", "Mandag"], answer: 1 },
+          { q: "Hva skal barna gjøre etter kaken?", options: ["Se film", "Spille spill i hagen", "Sove", "Synge"], answer: 1 },
+        ] },
+    ],
+    listening: {
+      dialogue: "A: Har du bestemt hva du vil gjøre på bursdagen din?\nB: Ja, jeg vil ha fest med vennene mine.\nA: Så gøy! Hvor mange skal du invitere?\nB: Kanskje ti venner. Vi skal spille spill og spise kake.\nA: Skal dere være ute eller inne?\nB: Ute, hvis været er fint. Ellers inne.\nA: Jeg gleder meg til å komme!",
+      questions: [
+        { q: "Hva vil B gjøre på bursdagen?", options: ["Reise bort", "Ha fest med venner", "Jobbe", "Sove hele dagen"], answer: 1 },
+        { q: "Hvor mange venner skal inviteres?", options: ["Fem", "Ti", "Femten", "Tjue"], answer: 1 },
+        { q: "Hvor skal festen være hvis været er fint?", options: ["Inne", "Ute", "På skolen", "På jobb"], answer: 1 },
+      ],
+    },
+    writing: { tasks: [
+      { prompt: "Skriv en kort tekst (30–50 ord) om hvordan du pleier å feire bursdagen din. Hvem inviterer du, og hva gjør dere?", minWords: 30 },
+    ] },
+  },
+  {
+    id: "a1a2-bibliotek", pair: "A1–A2", lower: "A1", upper: "A2", color: "#7FA0BE", maxPlays: 2,
+    reading: [
+      { passage: "Thomas går til biblioteket hver onsdag. Han låner alltid to eller tre bøker. Denne uken vil han låne en bok om dyr.",
+        questions: [
+          { q: "Når går Thomas til biblioteket?", options: ["Hver mandag", "Hver onsdag", "Hver fredag", "Hver søndag"], answer: 1 },
+          { q: "Hva slags bok vil han låne denne uken?", options: ["Om mat", "Om dyr", "Om sport", "Om biler"], answer: 1 },
+        ] },
+      { passage: "Biblioteket er stort og har mange bøker for barn og voksne. Man kan låne bøker gratis i fire uker. Hvis man kommer for sent, må man betale litt.",
+        questions: [
+          { q: "Hvor lenge kan man låne bøker?", options: ["To uker", "Fire uker", "Seks uker", "Åtte uker"], answer: 1 },
+          { q: "Hva skjer hvis man kommer for sent?", options: ["Man mister kortet", "Man må betale litt", "Ingenting skjer", "Man får en ny bok gratis"], answer: 1 },
+        ] },
+    ],
+    listening: {
+      dialogue: "A: Hei, jeg vil gjerne låne noen bøker.\nB: Har du lånekort fra før?\nA: Nei, dette er første gang jeg er her.\nB: Da må du fylle ut et skjema. Har du med legitimasjon?\nA: Ja, her er passet mitt.\nB: Perfekt. Nå kan du låne opptil fem bøker.\nA: Tusen takk for hjelpen!",
+      questions: [
+        { q: "Har personen lånekort fra før?", options: ["Ja", "Nei", "Vet ikke", "Kanskje"], answer: 1 },
+        { q: "Hva må personen fylle ut?", options: ["En bok", "Et skjema", "En avis", "Et brev"], answer: 1 },
+        { q: "Hvor mange bøker kan man låne?", options: ["Tre", "Fem", "Sju", "Ti"], answer: 1 },
+      ],
+    },
+    writing: { tasks: [
+      { prompt: "Skriv en kort tekst (30–50 ord) om et bibliotek du kjenner til, eller om bøker du liker å lese.", minWords: 30 },
+    ] },
+  },
+  {
+    id: "a2b1-voksenopplaring", pair: "A2–B1", lower: "A2", upper: "B1", color: "#4F7FA8", maxPlays: 2,
+    reading: [
+      { passage: "Amina går på voksenopplæring tre dager i uken. Hun lærer norsk sammen med tjue andre voksne fra ulike land. Læreren sier at det er lurt å snakke norsk også utenfor klasserommet, for eksempel med naboer og kollegaer. Amina prøver å øve hver dag, selv om det noen ganger er vanskelig å finne tid ved siden av jobb og familie.",
+        questions: [
+          { q: "Hvor mange dager i uken går Amina på voksenopplæring?", options: ["To", "Tre", "Fire", "Fem"], answer: 1 },
+          { q: "Hva sier læreren er lurt å gjøre?", options: ["Bare lese bøker", "Snakke norsk utenfor klasserommet", "Se på TV hele dagen", "Slutte å jobbe"], answer: 1 },
+        ] },
+      { passage: "Mange voksenopplæringssentre tilbyr kurs på ulike nivåer, fra nybegynner til viderekommen. Deltakerne kan ofte velge mellom dag- og kveldskurs, slik at det passer med jobb. Etter hvert nivå tar man en prøve for å se om man er klar for neste trinn.",
+        questions: [
+          { q: "Hva kan deltakerne velge mellom?", options: ["Bare kveldskurs", "Dag- og kveldskurs", "Bare helgekurs", "Ingen kurs"], answer: 1 },
+          { q: "Hva skjer etter hvert nivå?", options: ["Man slutter automatisk", "Man tar en prøve", "Man bytter skole", "Ingenting"], answer: 1 },
+        ] },
+    ],
+    listening: {
+      dialogue: "A: Hvordan går det med norskkurset ditt?\nB: Det går bra, men det er ganske krevende. Vi har mye å lese.\nA: Hvilket nivå er du på nå?\nB: Jeg er på A2, men jeg håper å komme til B1 til våren.\nA: Hva synes du er vanskeligst?\nB: Grammatikken, spesielt preposisjonene. De følger ikke alltid en logisk regel.\nA: Ja, jeg husker det var vanskelig for meg også. Det blir bedre med øvelse.\nB: Det håper jeg virkelig!",
+      questions: [
+        { q: "Hvilket nivå er B på nå?", options: ["A1", "A2", "B1", "B2"], answer: 1 },
+        { q: "Hva synes B er vanskeligst?", options: ["Uttale", "Grammatikken, spesielt preposisjoner", "Lytting", "Skriving"], answer: 1 },
+        { q: "Hva tror A vil hjelpe?", options: ["Å slutte", "Øvelse over tid", "Å bytte kurs", "Å lese mindre"], answer: 1 },
+      ],
+    },
+    writing: { tasks: [
+      { prompt: "Skriv en tekst (60–80 ord) om dine egne erfaringer med å lære norsk, eller et annet språk. Hva har vært lettest, og hva har vært vanskeligst?", minWords: 60 },
+    ] },
+  },
+  {
+    id: "a2b1-leiebolig", pair: "A2–B1", lower: "A2", upper: "B1", color: "#4F7FA8", maxPlays: 2,
+    reading: [
+      { passage: "Det kan være vanskelig å finne leiebolig i store norske byer, spesielt i Oslo og Bergen. Mange leiligheter blir leid ut samme dag som de blir annonsert, og utleiere kan motta flere titalls henvendelser på kort tid. Det lønner seg derfor å ha alle nødvendige papirer klare før man begynner å se på visninger.",
+        questions: [
+          { q: "Hvor kan det være spesielt vanskelig å finne bolig?", options: ["Små bygder", "Oslo og Bergen", "Utlandet", "På landet"], answer: 1 },
+          { q: "Hva lønner det seg å gjøre på forhånd?", options: ["Ha papirene klare", "Vente lenge", "Ringe utleier hver dag", "Ikke gjøre noe"], answer: 0 },
+        ] },
+      { passage: "En leiekontrakt bør alltid være skriftlig og inneholde informasjon om husleie, depositum, oppsigelsestid og hvem som er ansvarlig for vedlikehold. Depositumet settes vanligvis på en egen sperret bankkonto, slik at pengene er beskyttet for begge parter dersom det oppstår en uenighet.",
+        questions: [
+          { q: "Hva bør en leiekontrakt alltid være?", options: ["Muntlig", "Skriftlig", "Uformell", "Hemmelig"], answer: 1 },
+          { q: "Hvor settes depositumet vanligvis?", options: ["Kontant hos utleier", "En sperret bankkonto", "I en konvolutt", "Det trengs ikke"], answer: 1 },
+        ] },
+    ],
+    listening: {
+      dialogue: "A: Har du funnet en leilighet ennå?\nB: Nei, det er så vanskelig! Jeg har vært på fem visninger allerede.\nA: Hva ser du etter?\nB: Noe sentralt, gjerne to rom, og under tolv tusen i måneden.\nA: Det høres ikke lett ut i denne byen. Har du sjekket depositumsordningen de tilbyr?\nB: Ja, det virker greit hos de fleste. Problemet er bare konkurransen.\nA: Lykke til! Si ifra hvis du trenger hjelp med kontrakten.\nB: Takk, det setter jeg pris på.",
+      questions: [
+        { q: "Hvor mange visninger har B vært på?", options: ["To", "Tre", "Fem", "Ti"], answer: 2 },
+        { q: "Hva ser B etter?", options: ["Ett rom, billig", "To rom, sentralt, under tolv tusen", "Hus på landet", "Delt leilighet"], answer: 1 },
+        { q: "Hva tilbyr A hjelp med?", options: ["Flyttingen", "Kontrakten", "Møblene", "Nøklene"], answer: 1 },
+      ],
+    },
+    writing: { tasks: [
+      { prompt: "Skriv en tekst (60–80 ord) om hvordan det er å lete etter bolig der du bor. Hva er utfordringene, og hva ville gjort det enklere?", minWords: 60 },
+      { prompt: "Skriv en kort e-post (minst 40 ord) til en utleier der du spør om en leilighet fortsatt er ledig, og foreslår en tid for visning.", minWords: 40 },
+    ] },
+  },
+  {
+    id: "a2b1-frivillig-arbeid", pair: "A2–B1", lower: "A2", upper: "B1", color: "#4F7FA8", maxPlays: 2,
+    reading: [
+      { passage: "Frivillig arbeid er svært vanlig i Norge. Mange organisasjoner, som Røde Kors og ulike idrettslag, er avhengige av frivillige for å kunne drive aktivitetene sine. Å delta som frivillig kan også være en fin måte å bli kjent med nye mennesker og lære mer om norsk kultur og samfunnsliv.",
+        questions: [
+          { q: "Hvem er avhengige av frivillige?", options: ["Bare staten", "Organisasjoner som Røde Kors og idrettslag", "Ingen", "Bare private bedrifter"], answer: 1 },
+          { q: "Hva kan frivillig arbeid være en fin måte å gjøre?", options: ["Tjene mye penger", "Bli kjent med nye mennesker", "Unngå andre mennesker", "Slappe helt av"], answer: 1 },
+        ] },
+      { passage: "Noen frivillige oppgaver krever spesiell opplæring, for eksempel førstehjelp eller arbeid med barn og unge. Da må man ofte gjennomføre et kurs eller vise politiattest før man kan begynne. De fleste organisasjoner setter stor pris på nye frivillige og hjelper gjerne til med å finne en oppgave som passer.",
+        questions: [
+          { q: "Hva kan enkelte frivillige oppgaver kreve?", options: ["Ingenting spesielt", "Spesiell opplæring", "Høy lønn", "Universitetsutdanning"], answer: 1 },
+          { q: "Hva må man noen ganger vise før man begynner?", options: ["Førerkort", "Politiattest", "Pass", "Vitnemål"], answer: 1 },
+        ] },
+    ],
+    listening: {
+      dialogue: "A: Jeg vurderer å bli frivillig et sted. Har du noen tips?\nB: Ja, jeg har vært frivillig i fotballklubben i to år. Det er veldig givende.\nA: Hva gjør du der?\nB: Jeg hjelper til med barnetreninger på lørdager, og noen ganger på kamper.\nA: Måtte du ta noe kurs først?\nB: Ja, et kort kurs om trygghet rundt barn. Det tok bare noen timer.\nA: Det høres overkommelig ut. Tror du de trenger flere frivillige?\nB: Definitivt, de er alltid glade for nye folk!",
+      questions: [
+        { q: "Hvor har B vært frivillig?", options: ["Et sykehus", "En fotballklubb", "Et bibliotek", "En skole"], answer: 1 },
+        { q: "Hva måtte B gjøre før hun begynte?", options: ["Ingenting", "Ta et kort kurs", "Betale et gebyr", "Vente et år"], answer: 1 },
+        { q: "Hvordan beskriver B erfaringen?", options: ["Kjedelig", "Givende", "Vanskelig", "Skummel"], answer: 1 },
+      ],
+    },
+    writing: { tasks: [
+      { prompt: "Skriv en tekst (60–80 ord) om frivillig arbeid du har gjort, eller kunne tenke deg å gjøre. Hvorfor er dette viktig for deg?", minWords: 60 },
+    ] },
+  },
+  {
+    id: "a2b1-17-mai", pair: "A2–B1", lower: "A2", upper: "B1", color: "#4F7FA8", maxPlays: 2,
+    reading: [
+      { passage: "17. mai er Norges nasjonaldag og feires over hele landet med barnetog, folketog og mye russefeiring. Folk kler seg ofte i bunad eller pent tøy, og mange byer arrangerer store folketog der ulike organisasjoner og skoler deltar. Dagen markerer grunnloven som ble signert i 1814.",
+        questions: [
+          { q: "Hva markerer 17. mai?", options: ["En kongelig fødselsdag", "Grunnloven fra 1814", "En religiøs høytid", "Sommerens begynnelse"], answer: 1 },
+          { q: "Hva kler folk seg ofte i?", options: ["Arbeidsklær", "Bunad eller pent tøy", "Badetøy", "Skiklær"], answer: 1 },
+        ] },
+      { passage: "Om morgenen 17. mai er det vanlig at familier spiser en god frokost sammen før de går ut for å se på toget. Barn får ofte is og pølser i løpet av dagen, og mange steder er det leker og aktiviteter arrangert spesielt for de yngste.",
+        questions: [
+          { q: "Hva gjør mange familier om morgenen?", options: ["Sover lenge", "Spiser en god frokost sammen", "Reiser bort", "Jobber som vanlig"], answer: 1 },
+          { q: "Hva får barn ofte i løpet av dagen?", options: ["Bare vann", "Is og pølser", "Kaffe", "Ingenting spesielt"], answer: 1 },
+        ] },
+    ],
+    listening: {
+      dialogue: "A: Skal du gjøre noe spesielt på 17. mai i år?\nB: Ja, jeg skal se barnetoget med familien, som vanlig.\nA: Har dere noen tradisjoner?\nB: Vi spiser alltid frokost med champagne og jordbær før vi går ut.\nA: Det høres koselig ut! Har du bunad?\nB: Nei, jeg har ikke det ennå, men jeg pleier å kle meg pent.\nA: Jeg gleder meg uansett, det er en av mine favorittdager.\nB: Enig, stemningen er alltid helt spesiell.",
+      questions: [
+        { q: "Hva skal B gjøre på 17. mai?", options: ["Jobbe", "Se barnetoget med familien", "Reise til utlandet", "Sove hele dagen"], answer: 1 },
+        { q: "Hva spiser familien til frokost?", options: ["Bare brød", "Champagne og jordbær", "Fisk", "Ingenting"], answer: 1 },
+        { q: "Har B bunad?", options: ["Ja", "Nei", "Vet ikke", "Skal kjøpe i år"], answer: 1 },
+      ],
+    },
+    writing: { tasks: [
+      { prompt: "Skriv en tekst (60–80 ord) om en nasjonaldag eller høytid som er viktig der du kommer fra. Hvordan feires den?", minWords: 60 },
+    ] },
+  },
+  {
+    id: "a2b1-jobbintervju", pair: "A2–B1", lower: "A2", upper: "B1", color: "#4F7FA8", maxPlays: 2,
+    reading: [
+      { passage: "Å forberede seg godt til et jobbintervju kan øke sjansene for å få jobben betydelig. Det lønner seg å lese om bedriften på forhånd, tenke gjennom egne styrker og svakheter, og forberede eksempler fra tidligere erfaring som viser relevante ferdigheter.",
+        questions: [
+          { q: "Hva kan øke sjansene for å få jobben?", options: ["Å komme uforberedt", "God forberedelse", "Å komme for sent", "Å ikke stille spørsmål"], answer: 1 },
+          { q: "Hva lønner det seg å gjøre på forhånd?", options: ["Ignorere bedriften", "Lese om bedriften", "Glemme CV-en", "Unngå å tenke på svakheter"], answer: 1 },
+        ] },
+      { passage: "Mange arbeidsgivere setter pris på kandidater som stiller egne spørsmål mot slutten av intervjuet. Det viser interesse og engasjement. Det er også lurt å sende en kort takk-e-post etter intervjuet, der man takker for muligheten og gjentar interessen for stillingen.",
+        questions: [
+          { q: "Hva setter mange arbeidsgivere pris på?", options: ["Kandidater som ikke sier noe", "Kandidater som stiller egne spørsmål", "Kandidater som kommer sent", "Kandidater som avbryter"], answer: 1 },
+          { q: "Hva er lurt å gjøre etter intervjuet?", options: ["Glemme det helt", "Sende en takk-e-post", "Ringe hver dag", "Ingenting"], answer: 1 },
+        ] },
+    ],
+    listening: {
+      dialogue: "A: Hvordan gikk jobbintervjuet ditt i går?\nB: Jeg tror det gikk ganske bra, faktisk. Jeg var nervøs i starten.\nA: Hva spurte de om?\nB: Mest om tidligere erfaring, og hvorfor jeg ville jobbe akkurat der.\nA: Stilte du noen spørsmål selv?\nB: Ja, jeg spurte om opplæringen de tilbyr nye ansatte.\nA: Bra tenkt! Når får du svar?\nB: De sa de ville gi beskjed innen en uke.",
+      questions: [
+        { q: "Hvordan følte B seg i starten?", options: ["Rolig", "Nervøs", "Sint", "Kjedet"], answer: 1 },
+        { q: "Hva spurte B om selv?", options: ["Lønnen", "Opplæringen for nye ansatte", "Ferien", "Ingenting"], answer: 1 },
+        { q: "Når får B svar?", options: ["Samme dag", "Innen en uke", "Om en måned", "Aldri"], answer: 1 },
+      ],
+    },
+    writing: { tasks: [
+      { prompt: "Skriv en tekst (60–80 ord) om hvordan du forbereder deg til et jobbintervju, eller om en erfaring du har hatt med intervjuer.", minWords: 60 },
+      { prompt: "Skriv en kort takk-e-post (minst 40 ord) til en arbeidsgiver etter et jobbintervju.", minWords: 40 },
+    ] },
+  },
+  {
+    id: "a2b1-fastlege", pair: "A2–B1", lower: "A2", upper: "B1", color: "#4F7FA8", maxPlays: 2,
+    reading: [
+      { passage: "Alle som bor i Norge har rett til å ha en fastlege. Fastlegen er ofte det første stedet man henvender seg når man er syk eller trenger medisinsk hjelp. Man kan bytte fastlege opptil to ganger i året hvis man ikke er fornøyd, eller hvis man flytter til et nytt sted.",
+        questions: [
+          { q: "Hvem har rett til å ha en fastlege?", options: ["Bare norske statsborgere", "Alle som bor i Norge", "Bare barn", "Ingen"], answer: 1 },
+          { q: "Hvor mange ganger i året kan man bytte fastlege?", options: ["Én gang", "To ganger", "Fire ganger", "Aldri"], answer: 1 },
+        ] },
+      { passage: "For å bestille time hos fastlegen kan man ofte bruke en app eller nettside, i tillegg til å ringe legekontoret. Ved akutte tilstander bør man kontakte legevakten i stedet, siden fastlegen ikke alltid er tilgjengelig samme dag.",
+        questions: [
+          { q: "Hvordan kan man ofte bestille time?", options: ["Bare ved å møte opp", "Via app eller nettside", "Bare med brev", "Det går ikke"], answer: 1 },
+          { q: "Hvem bør man kontakte ved akutte tilstander?", options: ["Fastlegen alltid", "Legevakten", "En nabo", "Ingen"], answer: 1 },
+        ] },
+    ],
+    listening: {
+      dialogue: "A: Jeg må bestille time hos fastlegen min. Vet du hvordan jeg gjør det?\nB: Ja, du kan bruke helsenorge.no, det er enklest.\nA: Å, jeg visste ikke det. Går det raskt å få time?\nB: Det kommer an på hvor travelt det er, men ofte innen noen dager.\nA: Hva hvis det haster mer?\nB: Da bør du ringe legevakten i stedet for å vente på fastlegen.\nA: Greit, takk for tipset!\nB: Bare hyggelig, håper du blir bedre snart.",
+      questions: [
+        { q: "Hvor kan man bestille time ifølge B?", options: ["Bare telefon", "helsenorge.no", "SMS", "E-post"], answer: 1 },
+        { q: "Hva bør man gjøre hvis det haster?", options: ["Vente på fastlegen", "Ringe legevakten", "Ikke gjøre noe", "Dra til apoteket"], answer: 1 },
+        { q: "Hvor lang tid tar det ofte å få time?", options: ["Samme time", "Innen noen dager", "En måned", "Et år"], answer: 1 },
+      ],
+    },
+    writing: { tasks: [
+      { prompt: "Skriv en tekst (60–80 ord) om helsevesenet der du bor, eller om en erfaring du har hatt med lege eller sykehus.", minWords: 60 },
+    ] },
+  },
+  {
+    id: "a2b1-kildesortering", pair: "A2–B1", lower: "A2", upper: "B1", color: "#4F7FA8", maxPlays: 2,
+    reading: [
+      { passage: "Kildesortering er en viktig del av hverdagen for de fleste husholdninger i Norge. Vanligvis sorterer man avfall i kategorier som matavfall, papir, plast og restavfall. Ulike kommuner kan ha litt forskjellige regler, så det er lurt å sjekke informasjon fra sin egen kommune.",
+        questions: [
+          { q: "Hva er kildesortering en viktig del av?", options: ["Ferien", "Hverdagen for husholdninger", "Skolen", "Jobben"], answer: 1 },
+          { q: "Hva bør man sjekke siden reglene kan variere?", options: ["Ingenting", "Informasjon fra egen kommune", "Naboens meninger", "Avisen"], answer: 1 },
+        ] },
+      { passage: "Matavfall kastes ofte i grønne poser som senere blir til biogass og biogjødsel. Plastemballasje samles i egne poser for gjenvinning, mens glass og metall leveres til returpunkter. God kildesortering bidrar til mindre forurensning og bedre utnyttelse av ressurser.",
+        questions: [
+          { q: "Hva blir matavfall ofte til?", options: ["Ny mat", "Biogass og biogjødsel", "Bensin", "Ingenting"], answer: 1 },
+          { q: "Hvor leveres glass og metall?", options: ["Restavfall", "Returpunkter", "Papirbeholder", "Komposten"], answer: 1 },
+        ] },
+    ],
+    listening: {
+      dialogue: "A: Jeg er litt forvirret over kildesorteringen her. Kan du hjelpe meg?\nB: Klart det! Matavfall skal i den grønne posen, plast i den blå.\nA: Og papir?\nB: Papir og papp kaster du i papirbeholderen ute i gården.\nA: Hva med glass og metall?\nB: Det må du ta med til en returpunkt-container, det hentes ikke hjemmefra.\nA: Ok, det er mer å huske på enn jeg trodde!\nB: Ja, men det blir en vane etter hvert.",
+      questions: [
+        { q: "Hvilken farge er posen for matavfall?", options: ["Blå", "Grønn", "Rød", "Gul"], answer: 1 },
+        { q: "Hvor kastes glass og metall?", options: ["Hjemme i en pose", "En returpunkt-container", "Restavfallet", "Papirbeholderen"], answer: 1 },
+        { q: "Hva tror B blir kildesortering etter hvert?", options: ["Umulig", "En vane", "Unødvendig", "Forbudt"], answer: 1 },
+      ],
+    },
+    writing: { tasks: [
+      { prompt: "Skriv en tekst (60–80 ord) om hvordan kildesortering eller resirkulering fungerer der du bor, og hva du synes om det.", minWords: 60 },
+    ] },
+  },
+  {
+    id: "a2b1-tur-i-naturen", pair: "A2–B1", lower: "A2", upper: "B1", color: "#4F7FA8", maxPlays: 2,
+    reading: [
+      { passage: "Nordmenn er kjent for sin glede av friluftsliv, og allemannsretten gir alle rett til å ferdes fritt i naturen, uansett hvem som eier grunnen. Man kan gå tur, plukke bær og sette opp telt for én natt, så lenge man viser hensyn til dyr, natur og grunneiere.",
+        questions: [
+          { q: "Hva gir allemannsretten alle rett til?", options: ["Å eie skog", "Å ferdes fritt i naturen", "Å jakte fritt", "Å bygge hus overalt"], answer: 1 },
+          { q: "Hva må man vise hensyn til?", options: ["Ingenting", "Dyr, natur og grunneiere", "Bare seg selv", "Bare andre turgåere"], answer: 1 },
+        ] },
+      { passage: "Før man drar på en lengre tur i fjellet, er det viktig å sjekke værmeldingen og fortelle noen hvor man skal. Godt fottøy, ekstra klær og nok mat og drikke er også avgjørende for en trygg og god opplevelse.",
+        questions: [
+          { q: "Hva bør man sjekke før en lengre fjelltur?", options: ["Aksjekursen", "Værmeldingen", "TV-programmet", "Bussruten"], answer: 1 },
+          { q: "Hva er avgjørende for en trygg tur?", options: ["Dyre klær", "Godt fottøy og nok mat og drikke", "En bil", "Ingenting spesielt"], answer: 1 },
+        ] },
+    ],
+    listening: {
+      dialogue: "A: Har du planer for helgen?\nB: Ja, jeg skal på en lengre fjelltur med noen venner.\nA: Så fint! Har dere sjekket værmeldingen?\nB: Ja, det ser stabilt ut, heldigvis. Vi har pakket ekstra klær uansett.\nA: Lurt. Hvor lenge skal dere være ute?\nB: Vi planlegger å overnatte i telt én natt.\nA: Husk å fortelle noen hvor dere skal, i tilfelle noe skjer.\nB: God idé, det skal jeg gjøre før vi drar.",
+      questions: [
+        { q: "Hva skal B gjøre i helgen?", options: ["Jobbe", "En lengre fjelltur", "Reise til utlandet", "Sitte hjemme"], answer: 1 },
+        { q: "Hvordan ser værmeldingen ut?", options: ["Dårlig", "Stabil", "Ukjent", "Veldig kald"], answer: 1 },
+        { q: "Hva minner A dem på å gjøre?", options: ["Ta med paraply", "Fortelle noen hvor de skal", "Avlyse turen", "Ringe legen"], answer: 1 },
+      ],
+    },
+    writing: { tasks: [
+      { prompt: "Skriv en tekst (60–80 ord) om en tur du har vært på i naturen, eller om hvorfor friluftsliv er viktig for deg.", minWords: 60 },
+    ] },
+  },
+  {
+    id: "a2b1-jobb-og-familie", pair: "A2–B1", lower: "A2", upper: "B1", color: "#4F7FA8", maxPlays: 2,
+    reading: [
+      { passage: "Mange foreldre i Norge opplever at det kan være krevende å kombinere full jobb med å ha små barn. Barnehage og skolefritidsordning gjør det lettere, men lange arbeidsdager og henting og bringing kan likevel gjøre hverdagen travel og hektisk.",
+        questions: [
+          { q: "Hva kan være krevende for mange foreldre?", options: ["Å ha ferie", "Å kombinere jobb og små barn", "Å lære engelsk", "Å reise"], answer: 1 },
+          { q: "Hva gjør hverdagen lettere ifølge teksten?", options: ["Ingenting", "Barnehage og skolefritidsordning", "Mer jobb", "Færre venner"], answer: 1 },
+        ] },
+      { passage: "I Norge har både mor og far rett til foreldrepermisjon etter at et barn er født, og mange par velger å dele permisjonstiden mellom seg. Dette gir begge foreldrene mulighet til å tilbringe tid med barnet i den første tiden.",
+        questions: [
+          { q: "Hvem har rett til foreldrepermisjon?", options: ["Bare mor", "Både mor og far", "Bare far", "Ingen"], answer: 1 },
+          { q: "Hva velger mange par å gjøre med permisjonen?", options: ["Ikke ta den", "Dele den mellom seg", "Gi den bort", "Ta den samtidig alltid"], answer: 1 },
+        ] },
+    ],
+    listening: {
+      dialogue: "A: Hvordan går det med å kombinere jobb og familieliv?\nB: Det er travelt, men vi har funnet en rytme som fungerer.\nA: Hvem henter barna i barnehagen?\nB: Vi bytter på, avhengig av hvem som slutter tidligst den dagen.\nA: Det høres organisert ut. Fikk dere delt foreldrepermisjonen?\nB: Ja, vi delte den nesten likt mellom oss.\nA: Det er fint at dere begge fikk tid med babyen.\nB: Absolutt, det var viktig for oss begge.",
+      questions: [
+        { q: "Hvordan beskriver B hverdagen?", options: ["Rolig", "Travel, men fungerer", "Kjedelig", "Umulig"], answer: 1 },
+        { q: "Hvem henter barna i barnehagen?", options: ["Bare mor", "De bytter på", "Bare far", "En barnevakt"], answer: 1 },
+        { q: "Hvordan delte de foreldrepermisjonen?", options: ["Ikke i det hele tatt", "Nesten likt", "Bare mor tok alt", "Bare far tok alt"], answer: 1 },
+      ],
+    },
+    writing: { tasks: [
+      { prompt: "Skriv en tekst (60–80 ord) om hvordan man kan balansere jobb og familieliv, basert på egne erfaringer eller meninger.", minWords: 60 },
+    ] },
+  },
+  {
+    id: "b1b2-integrering", pair: "B1–B2", lower: "B1", upper: "B2", color: "#16324A", maxPlays: 1,
+    reading: [
+      { level: "B1", passage: "Integrering av innvandrere er et tema som ofte diskuteres i norsk politikk. Noen mener at kommunene bør få mer ressurser til språkopplæring og introduksjonsprogram, mens andre peker på at ansvar også må ligge hos den enkelte for å lære seg språket og delta i samfunnet.",
+        questions: [
+          { q: "Hva mener noen kommunene bør få mer av?", options: ["Skatter", "Ressurser til språkopplæring", "Politibetjenter", "Turister"], answer: 1 },
+          { q: "Hva peker andre på?", options: ["At staten skal gjøre alt", "At ansvar også ligger hos den enkelte", "At integrering er unødvendig", "At det ikke koster noe"], answer: 1 },
+        ] },
+      { level: "B2", passage: "Til tross for at introduksjonsprogrammet har eksistert i over to tiår, er resultatene fortsatt ujevnt fordelt mellom kommunene. Enkelte forskere peker på at arbeidsrettet opplæring, kombinert med tett oppfølging, gir bedre resultater enn ren klasseromsundervisning alene. Samtidig som debatten fortsetter, er det bred enighet om at rask overgang til arbeidslivet er en nøkkelfaktor for vellykket integrering.",
+        questions: [
+          { q: "Hva sier teksten om resultatene av introduksjonsprogrammet?", options: ["De er identiske overalt", "De er ujevnt fordelt mellom kommunene", "De er alltid dårlige", "De er ikke målt"], answer: 1 },
+          { q: "Hva peker enkelte forskere på som mer effektivt?", options: ["Bare klasseromsundervisning", "Arbeidsrettet opplæring med tett oppfølging", "Ingen opplæring", "Lengre ferier"], answer: 1 },
+        ] },
+      { level: "B2", passage: "Debatten om integrering handler også om hvordan man måler suksess. Er det tilstrekkelig at innvandrere kommer i jobb, eller bør man også vurdere sosial deltakelse og trivsel? Kritikere av dagens system mener at et for snevert fokus på sysselsetting overser viktige sider ved integrering, som følelsen av tilhørighet.",
+        questions: [
+          { q: "Hva handler debatten også om?", options: ["Hvordan man måler suksess", "Hvilken musikk som er best", "Hvor mange biler folk eier", "Hvilken by som er finest"], answer: 0 },
+          { q: "Hva mener kritikerne overses?", options: ["Sysselsetting", "Følelsen av tilhørighet", "Skatteinntekter", "Boligpriser"], answer: 1 },
+        ] },
+    ],
+    listening: {
+      dialogue: "A: I dag skal vi diskutere integreringspolitikk. Hva tenker du om dagens system?\nB: Jeg tenker det er et godt utgangspunkt, men det er rom for forbedring, spesielt i overgangen til arbeidslivet.\nA: Hva mener du konkret?\nB: Jeg mener at flere burde kombinere språkopplæring med praksis i en bedrift fra starten av.\nA: Men er ikke ren språkopplæring nødvendig først?\nB: Jo, til en viss grad, men erfaring viser at man lærer raskere når man bruker språket i en reell arbeidssituasjon.\nA: Det er et interessant poeng. Hva med de som ikke finner praksisplass?\nB: Da bør kommunen ha et sikkerhetsnett, slik at ingen faller utenfor.",
+      questions: [
+        { q: "Hva mener B bør kombineres fra starten?", options: ["Ferie og arbeid", "Språkopplæring og praksis", "Sport og musikk", "Ingenting"], answer: 1 },
+        { q: "Hvorfor mener B at praksis hjelper?", options: ["Det er gratis", "Man lærer raskere ved reell bruk av språket", "Det er kortere", "Det krever ingen innsats"], answer: 1 },
+        { q: "Hva bør kommunen ha ifølge B?", options: ["Strengere regler", "Et sikkerhetsnett for de uten praksisplass", "Færre kurs", "Høyere avgifter"], answer: 1 },
+      ],
+    },
+    writing: { tasks: [
+      { prompt: "Skriv en argumenterende tekst (150–200 ord) om følgende påstand: 'Kommunene bør få mer ressurser til introduksjonsprogrammet for innvandrere.' Presenter din mening og støtt den med minst to argumenter. Du kan bruke ord som til tross for, følgelig, samtidig som og derimot.", minWords: 150 },
+    ] },
+  },
+  {
+    id: "b1b2-boligmarked", pair: "B1–B2", lower: "B1", upper: "B2", color: "#16324A", maxPlays: 1,
+    reading: [
+      { level: "B1", passage: "Boligprisene i norske storbyer har steget kraftig de siste tiårene. For mange unge er det derfor vanskelig å komme seg inn på boligmarkedet uten hjelp fra familien. Noen mener at myndighetene bør bygge flere rimelige boliger, mens andre mener markedet bør styre seg selv.",
+        questions: [
+          { q: "Hva har skjedd med boligprisene?", options: ["De har sunket", "De har steget kraftig", "De har vært stabile", "De er forbudt"], answer: 1 },
+          { q: "Hva mener noen myndighetene bør gjøre?", options: ["Bygge flere rimelige boliger", "Slutte å bygge", "Heve prisene", "Ingenting"], answer: 0 },
+        ] },
+      { level: "B2", passage: "Følgelig av den vedvarende prisveksten har debatten om boligpolitikk blitt stadig mer polarisert. Enkelte økonomer argumenterer for at strengere utlånsregler har gjort det vanskeligere for førstegangskjøpere, samtidig som andre hevder at reglene er nødvendige for å forhindre en finansiell boble. Uansett standpunkt er det bred enighet om at boligmangelen i storbyene må adresseres på lang sikt.",
+        questions: [
+          { q: "Hva mener enkelte økonomer om utlånsreglene?", options: ["De hjelper førstegangskjøpere", "De har gjort det vanskeligere for førstegangskjøpere", "De er irrelevante", "De senker prisene"], answer: 1 },
+          { q: "Hva er det bred enighet om?", options: ["At boligmangelen må adresseres på lang sikt", "At prisene bør stige mer", "At ingen bør eie bolig", "At markedet er perfekt"], answer: 0 },
+        ] },
+      { level: "B2", passage: "Et annet moment i debatten er hvordan boligpolitikken påvirker sosial ulikhet. Kritikere hevder at dagens system favoriserer dem som allerede har kapital, mens forsvarere av markedsstyring mener at statlig inngripen ofte fører til ineffektiv ressursbruk og lengre ventelister for boliger som faktisk bygges.",
+        questions: [
+          { q: "Hva hevder kritikere om dagens system?", options: ["At det er helt rettferdig", "At det favoriserer dem med kapital", "At det ikke påvirker noen", "At det er billig for alle"], answer: 1 },
+          { q: "Hva mener forsvarere av markedsstyring?", options: ["At staten alltid bør gripe inn", "At statlig inngripen ofte fører til ineffektivitet", "At boliger bør være gratis", "At markedet ikke fungerer"], answer: 1 },
+        ] },
+    ],
+    listening: {
+      dialogue: "A: Boligprisene fortsetter å stige. Hva tror du er løsningen?\nB: Jeg tror vi trenger mer bygging, spesielt av rimelige boliger for førstegangskjøpere.\nA: Men noen sier at problemet egentlig er utlånsreglene, ikke mangel på boliger.\nB: Det kan stemme delvis, men selv med enklere lån hjelper det lite hvis det ikke finnes nok boliger.\nA: Så du mener bygging er viktigere enn å endre reglene?\nB: Jeg mener begge deler må skje samtidig for å faktisk løse problemet.\nA: Det er et balansert syn. Tror du politikerne er enige i det?\nB: Dessverre er det for mye uenighet til at noe skjer raskt.",
+      questions: [
+        { q: "Hva tror B er en del av løsningen?", options: ["Mindre bygging", "Mer bygging av rimelige boliger", "Høyere skatter", "Ingen endring"], answer: 1 },
+        { q: "Hva mener B om utlånsreglene alene?", options: ["De løser alt", "De hjelper lite uten nok boliger", "De er irrelevante", "De bør fjernes helt"], answer: 1 },
+        { q: "Hvorfor tror B at lite skjer raskt?", options: ["For mye enighet", "For mye uenighet blant politikere", "Mangel på penger", "Det haster ikke"], answer: 1 },
+      ],
+    },
+    writing: { tasks: [
+      { prompt: "Skriv en argumenterende tekst (150–200 ord) om følgende påstand: 'Staten bør bygge flere rimelige boliger for å løse boligkrisen.' Presenter din mening og støtt den med minst to argumenter. Du kan bruke ord som til tross for, følgelig, samtidig som og derimot.", minWords: 150 },
+    ] },
+  },
+  {
+    id: "b1b2-sosiale-medier", pair: "B1–B2", lower: "B1", upper: "B2", color: "#16324A", maxPlays: 1,
+    reading: [
+      { level: "B1", passage: "Sosiale medier har blitt en stor del av hverdagen til mange unge mennesker. Foreldre og forskere er ofte uenige om hvor stor innvirkning dette har på ungdommers mentale helse. Noen mener sosiale medier fører til mer stress og sammenligning, mens andre peker på fordelene ved sosial kontakt og informasjonsdeling.",
+        questions: [
+          { q: "Hva er foreldre og forskere ofte uenige om?", options: ["Hvilken app som er best", "Innvirkningen på ungdommers mentale helse", "Prisen på mobiltelefoner", "Skolefag"], answer: 1 },
+          { q: "Hva peker noen på som en fordel?", options: ["Mer stress", "Sosial kontakt og informasjonsdeling", "Dårligere karakterer", "Mindre søvn"], answer: 1 },
+        ] },
+      { level: "B2", passage: "Til tross for økende bekymring blant foreldre, viser flere studier at sammenhengen mellom skjermbruk og psykisk helse er mer kompleks enn tidligere antatt. Følgelig argumenterer enkelte forskere for at innholdet man konsumerer, og ikke tidsbruken alene, er den avgjørende faktoren. Samtidig som denne debatten pågår, innfører flere skoler forbud mot mobiltelefoner i undervisningstiden.",
+        questions: [
+          { q: "Hva viser flere studier ifølge teksten?", options: ["At sammenhengen er enkel", "At sammenhengen er mer kompleks enn antatt", "At det ikke finnes noen sammenheng", "At skjermbruk er helt ufarlig"], answer: 1 },
+          { q: "Hva argumenterer enkelte forskere for er avgjørende?", options: ["Bare tidsbruken", "Innholdet man konsumerer", "Merket på telefonen", "Skjermstørrelsen"], answer: 1 },
+        ] },
+      { level: "B2", passage: "Et sentralt spørsmål er hvem som bør ha ansvaret for å regulere ungdommers bruk av sosiale medier: foreldrene, skolen, eller plattformene selv gjennom strengere aldersgrenser og algoritmer. Kritikere av dagens regulering mener at teknologiselskapene har for lite insentiv til å prioritere brukernes velvære over engasjement og annonseinntekter.",
+        questions: [
+          { q: "Hva er et sentralt spørsmål ifølge teksten?", options: ["Hvem som skal betale for internett", "Hvem som bør regulere ungdommers bruk", "Hvilken skole som er best", "Hvor mye telefoner koster"], answer: 1 },
+          { q: "Hva mener kritikere om teknologiselskapene?", options: ["De prioriterer velvære over profitt", "De har for lite insentiv til å prioritere velvære", "De gjør en perfekt jobb", "De bryr seg ikke om annonser"], answer: 1 },
+        ] },
+    ],
+    listening: {
+      dialogue: "A: I dag skal vi diskutere sosiale medier og ungdom. Hva tenker du om det?\nB: Jeg tenker at det er positivt i mange sammenhenger, men det er også en klar risiko for overforbruk.\nA: Hvilken utfordring nevner du?\nB: Sammenligning med andres liv kan gi lavere selvfølelse hos mange unge.\nA: Hva foreslår du for slike bransjer, altså plattformene?\nB: Jeg mener strengere aldersgrenser og mer åpenhet om algoritmene ville hjulpet.\nA: Men er ikke foreldrenes ansvar viktigere enn reguleringer?\nB: Begge deler er viktig, men foreldre kan ikke overvåke alt alene lenger.\nA: Det er et godt poeng, teknologien utvikler seg raskere enn reglene.",
+      questions: [
+        { q: "Hva er B sin holdning til sosiale medier og ungdom?", options: ["Helt negativ", "Positiv med klar risiko for overforbruk", "Likegyldig", "Usikker"], answer: 1 },
+        { q: "Hvilken utfordring nevner B?", options: ["Lavere lønn", "Sammenligning som gir lavere selvfølelse", "Mer stress på jobb", "Dårligere kvalitet"], answer: 1 },
+        { q: "Hva foreslår B for plattformene?", options: ["Å avskaffe ordningen helt", "Strengere aldersgrenser og mer åpenhet", "Kortere lunsjpause", "Ingenting"], answer: 1 },
+      ],
+    },
+    writing: { tasks: [
+      { prompt: "Skriv en argumenterende tekst (150–200 ord) om følgende påstand: 'Sosiale medier gjør mer skade enn nytte for ungdom.' Presenter din mening og støtt den med minst to argumenter. Du kan bruke ord som til tross for, følgelig, samtidig som og derimot.", minWords: 150 },
+    ] },
+  },
+  {
+    id: "b1b2-oljeokonomi", pair: "B1–B2", lower: "B1", upper: "B2", color: "#16324A", maxPlays: 1,
+    reading: [
+      { level: "B1", passage: "Norge har i mange tiår bygget velstand på olje- og gassvirksomhet. Samtidig ønsker mange at landet skal satse mer på fornybar energi og redusere avhengigheten av fossile brensler. Det er en pågående debatt om hvor raskt denne overgangen bør skje.",
+        questions: [
+          { q: "Hva har Norge bygget velstand på i mange tiår?", options: ["Fiskeri alene", "Olje- og gassvirksomhet", "Turisme", "Skogbruk"], answer: 1 },
+          { q: "Hva ønsker mange at Norge skal satse mer på?", options: ["Kull", "Fornybar energi", "Mer oljeboring", "Ingenting nytt"], answer: 1 },
+        ] },
+      { level: "B2", passage: "Til tross for strenge klimamål har norske utslipp av klimagasser gått ned saktere enn forventet de siste årene. Regjeringen peker på at overgangen til fornybar energi krever store investeringer og tid, samtidig som miljøorganisasjoner mener tempoet er altfor lavt gitt alvoret i klimakrisen.",
+        questions: [
+          { q: "Hva sier teksten om norske klimautslipp?", options: ["De har økt kraftig", "De har gått ned saktere enn forventet", "De har blitt halvert", "De er uendret"], answer: 1 },
+          { q: "Hva mener miljøorganisasjoner?", options: ["At tempoet er for lavt", "At målene er unødvendige", "At Norge gjør nok", "At olje er løsningen"], answer: 0 },
+        ] },
+      { level: "B2", passage: "Debatten kompliseres av at oljeindustrien fortsatt sysselsetter mange tusen mennesker og bidrar betydelig til statens inntekter gjennom Oljefondet. Følgelig argumenterer noen politikere for en gradvis omstilling, mens andre mener en brå stans i ny oljeleting er nødvendig for at Norge skal ta sitt klimaansvar på alvor.",
+        questions: [
+          { q: "Hva bidrar oljeindustrien betydelig til?", options: ["Statens inntekter gjennom Oljefondet", "Turistnæringen", "Skoledrift", "Ingenting"], answer: 0 },
+          { q: "Hva mener noen politikere er nødvendig?", options: ["Mer oljeleting", "En brå stans i ny oljeleting", "Ingen endring", "Lavere skatter"], answer: 1 },
+        ] },
+    ],
+    listening: {
+      dialogue: "A: I dag skal vi diskutere Norges oljeavhengighet. Hva tenker du om det?\nB: Jeg er positiv til en gradvis omstilling, men en brå stans tror jeg vil skade økonomien for mye.\nA: Hvilken utfordring nevner du?\nB: Mange arbeidsplasser er direkte knyttet til oljesektoren i dag.\nA: Hva foreslår du i stedet?\nB: Jeg foreslår sterkere investeringer i fornybar energi parallelt med dagens virksomhet.\nA: Men er ikke det for sakte gitt klimakrisen?\nB: Kanskje, men en for rask omstilling kan skape sosial uro og arbeidsledighet.\nA: Det er absolutt en vanskelig balansegang mellom klima og økonomi.",
+      questions: [
+        { q: "Hva er B sin holdning til firedagers arbeidsuke?", options: ["Negativ", "Positiv", "Likegyldig", "Usikker"], answer: 1 },
+        { q: "Hvilken utfordring nevner B?", options: ["Lavere lønn", "Bransjer med mye kundekontakt", "Mer stress", "Dårligere kvalitet"], answer: 1 },
+        { q: "Hva foreslår B for slike bransjer?", options: ["Å avskaffe ordningen helt", "Skiftordninger", "Kortere lunsjpause", "Ingenting"], answer: 1 },
+      ],
+    },
+    writing: { tasks: [
+      { prompt: "Skriv en argumenterende tekst (150–200 ord) om følgende påstand: 'Norge bør stanse all ny oljeleting umiddelbart.' Presenter din mening og støtt den med minst to argumenter. Du kan bruke ord som til tross for, følgelig, samtidig som og derimot.", minWords: 150 },
+    ] },
+  },
+  {
+    id: "b1b2-hjemmekontor", pair: "B1–B2", lower: "B1", upper: "B2", color: "#16324A", maxPlays: 1,
+    reading: [
+      { level: "B1", passage: "Etter pandemien har mange norske arbeidsplasser fortsatt å tilby hjemmekontor som en fast ordning. Noen ansatte foretrekker fleksibiliteten dette gir, mens andre savner det sosiale fellesskapet på kontoret og mener produktiviteten synker uten daglig kontakt med kolleger.",
+        questions: [
+          { q: "Hva tilbyr mange arbeidsplasser fortsatt?", options: ["Kortere ferier", "Hjemmekontor som fast ordning", "Høyere lønn", "Flere møter"], answer: 1 },
+          { q: "Hva savner noen ansatte?", options: ["Lengre reisetid", "Det sosiale fellesskapet på kontoret", "Flere e-poster", "Ingenting"], answer: 1 },
+        ] },
+      { level: "B2", passage: "Til tross for at studier viser blandede resultater om produktivitet ved hjemmekontor, velger stadig flere bedrifter å innføre hybride løsninger. Følgelig har mange kontorer redusert arealet sitt, samtidig som ledere uttrykker bekymring for hvordan man bygger bedriftskultur og mentorordninger når ansatte sjelden møtes fysisk.",
+        questions: [
+          { q: "Hva viser studier om produktivitet ved hjemmekontor?", options: ["Entydig positive resultater", "Blandede resultater", "Entydig negative resultater", "Ingen har undersøkt det"], answer: 1 },
+          { q: "Hva bekymrer ledere seg for?", options: ["For høye strømregninger", "Hvordan man bygger bedriftskultur uten fysiske møter", "For mange ansatte", "Ingenting spesielt"], answer: 1 },
+        ] },
+      { level: "B2", passage: "Et annet aspekt ved debatten er hvordan hjemmekontor påvirker likestilling i arbeidslivet. Enkelte forskere hevder at fleksibiliteten har gjort det lettere for foreldre, spesielt mødre, å kombinere karriere og familieliv, mens andre advarer om at usynlighet på kontoret kan gå utover forfremmelser og lønnsutvikling.",
+        questions: [
+          { q: "Hva hevder enkelte forskere om fleksibiliteten?", options: ["At den skader alle", "At den gjør det lettere å kombinere karriere og familieliv", "At den er irrelevant", "At den bare gjelder menn"], answer: 1 },
+          { q: "Hva advarer andre om?", options: ["At usynlighet kan gå utover forfremmelser", "At det ikke finnes noen ulemper", "At hjemmekontor er forbudt", "At det koster for mye"], answer: 0 },
+        ] },
+    ],
+    listening: {
+      dialogue: "A: Hva synes du om hjemmekontor sammenlignet med å jobbe på kontoret?\nB: Jeg foretrekker en kombinasjon, ærlig talt. Begge deler har sine fordeler.\nA: Hva liker du best med hjemmekontor?\nB: Fleksibiliteten, og at jeg slipper lang reisetid hver dag.\nA: Men savner du ikke kollegaene dine?\nB: Jo, absolutt, derfor er hybridløsningen best for meg personlig.\nA: Tror du produktiviteten din er høyere hjemme eller på kontoret?\nB: Det varierer med oppgaven, men konsentrasjonsarbeid går bedre hjemme for min del.\nA: Det er interessant, jeg trodde de fleste ville si det motsatte.",
+      questions: [
+        { q: "Hva foretrekker B?", options: ["Bare hjemmekontor", "En kombinasjon, hybridløsning", "Bare kontor", "Ingen jobb i det hele tatt"], answer: 1 },
+        { q: "Hva liker B best med hjemmekontor?", options: ["Ingenting", "Fleksibilitet og mindre reisetid", "Mer støy", "Flere møter"], answer: 1 },
+        { q: "Hva sier B om konsentrasjonsarbeid?", options: ["Det går bedre på kontoret", "Det går bedre hjemme for henne", "Det går likt begge steder", "Hun gjør aldri konsentrasjonsarbeid"], answer: 1 },
+      ],
+    },
+    writing: { tasks: [
+      { prompt: "Skriv en argumenterende tekst (150–200 ord) om følgende påstand: 'Hjemmekontor bør være en fast rettighet for alle som kan utføre jobben sin digitalt.' Presenter din mening og støtt den med minst to argumenter. Du kan bruke ord som til tross for, følgelig, samtidig som og derimot.", minWords: 150 },
+    ] },
+  },
+  {
+    id: "b1b2-basisinntekt", pair: "B1–B2", lower: "B1", upper: "B2", color: "#16324A", maxPlays: 1,
+    reading: [
+      { level: "B1", passage: "Universell basisinntekt er en idé der alle innbyggere mottar et fast beløp fra staten, uavhengig av inntekt eller arbeidsstatus. Tilhengere mener dette kan redusere fattigdom og gi mer frihet, mens motstandere frykter at det kan svekke motivasjonen til å jobbe.",
+        questions: [
+          { q: "Hva er universell basisinntekt?", options: ["Et lån fra banken", "Et fast beløp fra staten til alle", "En skatt", "En pensjonsordning kun for eldre"], answer: 1 },
+          { q: "Hva frykter motstandere?", options: ["At det blir for dyrt for staten alene", "At det kan svekke motivasjonen til å jobbe", "At det gir for mye frihet", "Ingenting"], answer: 1 },
+        ] },
+      { level: "B2", passage: "Til tross for at flere pilotprosjekter med basisinntekt har vist positive effekter på deltakernes mentale helse, er de økonomiske konsekvensene ved en fullskala innføring fortsatt omdiskutert. Følgelig argumenterer kritikere for at finansieringen ville kreve betydelige skatteøkninger, samtidig som tilhengere hevder at reduserte kostnader til andre velferdsordninger delvis kan kompensere for dette.",
+        questions: [
+          { q: "Hva har pilotprosjekter vist positive effekter på?", options: ["Boligpriser", "Deltakernes mentale helse", "Aksjemarkedet", "Trafikken"], answer: 1 },
+          { q: "Hva argumenterer kritikere for?", options: ["At finansiering krever betydelige skatteøkninger", "At det ikke koster noe", "At det er enkelt å innføre", "At ingen vil motta pengene"], answer: 0 },
+        ] },
+      { level: "B2", passage: "Et sentralt spørsmål i debatten er hvorvidt basisinntekt bør erstatte eksisterende velferdsordninger eller komme i tillegg til dem. Enkelte økonomer advarer om at en fullstendig erstatning kan svekke sikkerhetsnettet for de mest sårbare gruppene, mens andre mener et forenklet system vil redusere byråkrati og administrative kostnader betraktelig.",
+        questions: [
+          { q: "Hva er et sentralt spørsmål i debatten?", options: ["Om basisinntekt bør erstatte eller supplere velferdsordninger", "Hvor mye skatt turister betaler", "Hvilken bank som er best", "Hvor mange biler folk eier"], answer: 0 },
+          { q: "Hva advarer enkelte økonomer om?", options: ["At sikkerhetsnettet kan svekkes for sårbare grupper", "At det blir for mye byråkrati", "At ingen vil merke forskjellen", "At det er for billig"], answer: 0 },
+        ] },
+    ],
+    listening: {
+      dialogue: "A: I dag skal vi diskutere universell basisinntekt. Hva tenker du om det?\nB: Jeg er skeptisk, men åpen for pilotprosjekter for å se hvordan det faktisk fungerer.\nA: Hva bekymrer deg mest?\nB: Kostnaden, og om det virkelig ville erstatte behovet for andre velferdsordninger.\nA: Men noen studier viser jo positive effekter på mental helse.\nB: Ja, det er interessant, men vi trenger mer data før en fullskala innføring.\nA: Hva ville du foreslått i mellomtiden?\nB: Flere kontrollerte forsøk i ulike kommuner, med grundig evaluering etterpå.\nA: Det høres som en fornuftig og forsiktig tilnærming.",
+      questions: [
+        { q: "Hva er B sin holdning til basisinntekt?", options: ["Helt positiv", "Skeptisk, men åpen for forsøk", "Helt negativ", "Likegyldig"], answer: 1 },
+        { q: "Hva bekymrer B mest?", options: ["Kostnaden og om det erstatter velferdsordninger", "Fargen på pengesedlene", "Antall møter", "Ingenting"], answer: 0 },
+        { q: "Hva foreslår B i mellomtiden?", options: ["Å innføre det umiddelbart overalt", "Flere kontrollerte forsøk med evaluering", "Å avskaffe ideen helt", "Ingenting"], answer: 1 },
+      ],
+    },
+    writing: { tasks: [
+      { prompt: "Skriv en argumenterende tekst (150–200 ord) om følgende påstand: 'Norge bør innføre universell basisinntekt for alle innbyggere.' Presenter din mening og støtt den med minst to argumenter. Du kan bruke ord som til tross for, følgelig, samtidig som og derimot.", minWords: 150 },
+    ] },
+  },
+  {
+    id: "b1b2-likestilling", pair: "B1–B2", lower: "B1", upper: "B2", color: "#16324A", maxPlays: 1,
+    reading: [
+      { level: "B1", passage: "Norge regnes som et av de mest likestilte landene i verden, men det er fortsatt forskjeller mellom kvinner og menn, blant annet i lønn og i hvem som sitter i lederstillinger. Noen mener kjønnskvotering er nødvendig for å rette opp denne skjevheten raskere.",
+        questions: [
+          { q: "Hvordan regnes Norge?", options: ["Som lite likestilt", "Som et av de mest likestilte landene", "Som uinteressert i likestilling", "Som et unntak i Europa"], answer: 1 },
+          { q: "Hva mener noen er nødvendig?", options: ["Å fjerne alle regler", "Kjønnskvotering", "Å ignorere problemet", "Høyere skatter"], answer: 1 },
+        ] },
+      { level: "B2", passage: "Til tross for lovfestet likestilling har Norge fortsatt et kjønnsdelt arbeidsmarked, der kvinner er overrepresentert i omsorgsyrker og menn dominerer teknologi- og ingeniørfag. Følgelig argumenterer noen for at holdningsendring må starte allerede i barnehagen, samtidig som andre mener strukturelle tiltak som kvotering gir raskere resultater.",
+        questions: [
+          { q: "Hva kjennetegner det norske arbeidsmarkedet ifølge teksten?", options: ["Det er helt kjønnsnøytralt", "Det er fortsatt kjønnsdelt", "Kvinner dominerer alle yrker", "Menn jobber ikke i teknologi"], answer: 1 },
+          { q: "Hva mener noen bør starte i barnehagen?", options: ["Matteundervisning", "Holdningsendring om kjønn og yrkesvalg", "Sport", "Ingenting"], answer: 1 },
+        ] },
+      { level: "B2", passage: "Debatten om kjønnskvotering i styrer og lederstillinger illustrerer et dypere spørsmål om hvorvidt like muligheter er tilstrekkelig, eller om like resultater bør være målet. Motstandere av kvotering hevder at det kan undergrave meritokratiske prinsipper, mens tilhengere peker på at strukturelle barrierer gjør at like muligheter i praksis ikke fører til like resultater.",
+        questions: [
+          { q: "Hva illustrerer debatten om kvotering ifølge teksten?", options: ["Et spørsmål om muligheter versus resultater", "Et spørsmål om skatter", "Et spørsmål om boligpriser", "Et spørsmål om ferie"], answer: 0 },
+          { q: "Hva hevder motstandere av kvotering?", options: ["At det styrker meritokratiet", "At det kan undergrave meritokratiske prinsipper", "At det ikke har noen effekt", "At det bør utvides umiddelbart"], answer: 1 },
+        ] },
+    ],
+    listening: {
+      dialogue: "A: I dag skal vi diskutere kjønnskvotering i lederstillinger. Hva er ditt syn?\nB: Jeg støtter det som et midlertidig tiltak, men ikke som en permanent løsning.\nA: Hvorfor midlertidig?\nB: Fordi målet bør være at det ikke lenger trengs, når holdningene har endret seg nok.\nA: Men er ikke det urealistisk på kort sikt?\nB: Kanskje, men uten kvotering tror jeg endringen ville tatt mye lengre tid.\nA: Hva med argumentet om at kvotering går utover kompetanse?\nB: Jeg tror det er overdrevet, det finnes mange kvalifiserte kvinner som ikke får sjansen i dag.\nA: Det er et sterkt poeng, statistikken støtter faktisk det synet.",
+      questions: [
+        { q: "Hva er B sin holdning til kvotering?", options: ["Helt imot", "Støtter det midlertidig", "Vil ha det permanent uansett", "Likegyldig"], answer: 1 },
+        { q: "Hvorfor mener B at det bør være midlertidig?", options: ["Fordi det er ulovlig", "Fordi målet er at det ikke lenger trengs", "Fordi det er for dyrt", "Fordi ingen liker det"], answer: 1 },
+        { q: "Hva mener B om argumentet om kompetanse?", options: ["At det er helt sant", "At det er overdrevet", "At det er irrelevant tema", "At han ikke har en mening"], answer: 1 },
+      ],
+    },
+    writing: { tasks: [
+      { prompt: "Skriv en argumenterende tekst (150–200 ord) om følgende påstand: 'Kjønnskvotering i lederstillinger er et nødvendig virkemiddel for økt likestilling.' Presenter din mening og støtt den med minst to argumenter. Du kan bruke ord som til tross for, følgelig, samtidig som og derimot.", minWords: 150 },
+    ] },
+  },
+  {
+    id: "b1b2-skjermtid", pair: "B1–B2", lower: "B1", upper: "B2", color: "#16324A", maxPlays: 1,
+    reading: [
+      { level: "B1", passage: "Barn og unge tilbringer stadig mer tid foran skjermer, både til skolearbeid og underholdning. Mange foreldre er usikre på hvor mye skjermtid som er sunt, og skoler diskuterer om mobiltelefoner bør forbys i undervisningen.",
+        questions: [
+          { q: "Hva tilbringer barn og unge stadig mer tid med?", options: ["Bøker", "Skjermer", "Utendørslek alene", "Musikkinstrumenter"], answer: 1 },
+          { q: "Hva diskuterer skoler?", options: ["Om mobiltelefoner bør forbys i undervisningen", "Om skolen bør stenges", "Om alle fag bør fjernes", "Ingenting"], answer: 0 },
+        ] },
+      { level: "B2", passage: "Til tross for at mange land nå innfører strengere regler for skjermbruk i skolen, er den vitenskapelige konsensusen om langtidseffektene fortsatt under utvikling. Følgelig baserer mange beslutningstakere seg på føre-var-prinsippet, samtidig som teknologiselskaper argumenterer for at digitale verktøy også gir viktige pedagogiske fordeler som ikke bør undervurderes.",
+        questions: [
+          { q: "Hva sier teksten om den vitenskapelige konsensusen?", options: ["Den er fullstendig avklart", "Den er fortsatt under utvikling", "Den finnes ikke", "Den er irrelevant"], answer: 1 },
+          { q: "Hva argumenterer teknologiselskaper for?", options: ["At digitale verktøy gir viktige pedagogiske fordeler", "At skjermer bør forbys helt", "At skolen er unødvendig", "At barn ikke bør lære noe"], answer: 0 },
+        ] },
+      { level: "B2", passage: "Et ytterligere aspekt ved debatten er sosioøkonomiske forskjeller i tilgang til og kontroll over skjermbruk. Familier med færre ressurser har ofte mindre mulighet til å følge opp barnas skjermvaner tett, noe som kan forsterke eksisterende ulikheter dersom ikke skolen tar et aktivt ansvar for veiledning.",
+        questions: [
+          { q: "Hva kan forsterke eksisterende ulikheter ifølge teksten?", options: ["Like muligheter for alle", "Mindre ressurser til å følge opp skjermvaner", "For mye kontroll fra foreldre", "For lite skjermtid"], answer: 1 },
+          { q: "Hva bør skolen ta ansvar for ifølge teksten?", options: ["Å forby alle skjermer", "Aktiv veiledning om skjermbruk", "Å ignorere problemet", "Å øke skjermtiden"], answer: 1 },
+        ] },
+    ],
+    listening: {
+      dialogue: "A: I dag skal vi diskutere skjermtid for barn. Hva mener du om strenge regler i skolen?\nB: Jeg støtter et forbud i timene, men ikke et fullstendig forbud på skolen generelt.\nA: Hvorfor det skillet?\nB: Fordi digitale verktøy også kan brukes pedagogisk, i riktig kontekst og med veiledning.\nA: Men er det ikke lettere å bare forby alt?\nB: Kanskje enklere, men jeg tror det ville gå glipp av reelle fordeler ved teknologien.\nA: Hva med barn som har mindre oppfølging hjemme?\nB: Nettopp derfor mener jeg skolen har et ekstra ansvar for å gi god veiledning der.\nA: Det er et viktig poeng, ulikheten kan lett forsterkes ellers.",
+      questions: [
+        { q: "Hva støtter B?", options: ["Fullstendig forbud på hele skolen", "Forbud kun i timene, ikke generelt", "Ingen regler i det hele tatt", "Mer skjermtid overalt"], answer: 1 },
+        { q: "Hvorfor mener B at digitale verktøy kan være bra?", options: ["De er gratis", "De kan brukes pedagogisk med veiledning", "De er raskere enn bøker alltid", "De krever ingen regler"], answer: 1 },
+        { q: "Hva mener B om skolens ansvar?", options: ["Skolen har intet ansvar", "Skolen har et ekstra ansvar for veiledning", "Bare foreldre har ansvar", "Ansvar er unødvendig"], answer: 1 },
+      ],
+    },
+    writing: { tasks: [
+      { prompt: "Skriv en argumenterende tekst (150–200 ord) om følgende påstand: 'Mobiltelefoner bør forbys i grunnskolen i skoletiden.' Presenter din mening og støtt den med minst to argumenter. Du kan bruke ord som til tross for, følgelig, samtidig som og derimot.", minWords: 150 },
+    ] },
+  },
+  {
+    id: "b1b2-helsevesen", pair: "B1–B2", lower: "B1", upper: "B2", color: "#16324A", maxPlays: 1,
+    reading: [
+      { level: "B1", passage: "Det norske helsevesenet er i hovedsak offentlig finansiert, men det finnes også private helsetilbud som mange bruker for å unngå lange ventetider. Noen mener private alternativer avlaster det offentlige systemet, mens andre frykter at det skaper et todelt helsevesen.",
+        questions: [
+          { q: "Hvordan er det norske helsevesenet i hovedsak finansiert?", options: ["Privat", "Offentlig", "Av utlandet", "Ikke finansiert"], answer: 1 },
+          { q: "Hva frykter noen at private tilbud skaper?", options: ["Et todelt helsevesen", "Lavere kvalitet overalt", "Ingen endring", "Kortere ventetider for alle"], answer: 0 },
+        ] },
+      { level: "B2", passage: "Til tross for at ventetidene i det offentlige helsevesenet varierer betydelig mellom regioner, viser statistikken en generell økning de siste årene. Følgelig velger stadig flere å tegne privat helseforsikring gjennom arbeidsgiver, samtidig som kritikere hevder at dette svekker det offentlige systemets legitimitet på lang sikt.",
+        questions: [
+          { q: "Hva viser statistikken om ventetider?", options: ["En generell nedgang", "En generell økning", "Ingen endring", "Ventetider finnes ikke"], answer: 1 },
+          { q: "Hva hevder kritikere om privat forsikring?", options: ["At den styrker det offentlige systemet", "At den svekker det offentlige systemets legitimitet", "At den er irrelevant", "At den er gratis for alle"], answer: 1 },
+        ] },
+      { level: "B2", passage: "Et sentralt spørsmål er om ressursene bør styres sterkere mot forebygging fremfor behandling. Forskere peker på at investering i forebyggende helsearbeid kan redusere presset på sykehusene betydelig over tid, men politisk er det ofte vanskeligere å prioritere langsiktige tiltak fremfor umiddelbare kutt i ventelister.",
+        questions: [
+          { q: "Hva peker forskere på kan redusere presset på sykehusene?", options: ["Flere senger alene", "Investering i forebyggende helsearbeid", "Kortere åpningstider", "Ingenting"], answer: 1 },
+          { q: "Hvorfor er langsiktige tiltak ofte vanskelige politisk?", options: ["De er for billige", "De er vanskeligere å prioritere fremfor umiddelbare kutt i ventelister", "Ingen bryr seg om helse", "De virker for raskt"], answer: 1 },
+        ] },
+    ],
+    listening: {
+      dialogue: "A: I dag skal vi diskutere offentlig versus privat helsevesen. Hva er ditt syn?\nB: Jeg mener det offentlige systemet bør være hovedpilaren, men private tilbud kan supplere det.\nA: Hvorfor supplere og ikke erstatte?\nB: Fordi et rent privat system ville skape ulikhet basert på hvem som har råd.\nA: Men avlaster ikke private tilbud det offentlige systemet i praksis?\nB: Delvis, men jeg tror ressursene heller burde gå til å styrke det offentlige direkte.\nA: Hva med forebygging fremfor behandling?\nB: Det er nøkkelen, egentlig. Vi bruker for mye penger på å reparere i stedet for å forebygge.\nA: Det er et sterkt poeng, men vanskelig å prioritere politisk på kort sikt.",
+      questions: [
+        { q: "Hva mener B bør være hovedpilaren?", options: ["Det private systemet", "Det offentlige systemet", "Ingen av delene", "Utenlandske sykehus"], answer: 1 },
+        { q: "Hva tror B ressursene heller bør gå til?", options: ["Å styrke det offentlige direkte", "Kun private klinikker", "Ingenting spesielt", "Reklame"], answer: 0 },
+        { q: "Hva mener B er nøkkelen?", options: ["Mer behandling", "Forebygging fremfor behandling", "Flere private sykehus", "Ingenting"], answer: 1 },
+      ],
+    },
+    writing: { tasks: [
+      { prompt: "Skriv en argumenterende tekst (150–200 ord) om følgende påstand: 'Private helsetilbud bør begrenses for å styrke det offentlige helsevesenet.' Presenter din mening og støtt den med minst to argumenter. Du kan bruke ord som til tross for, følgelig, samtidig som og derimot.", minWords: 150 },
+    ] },
+  },
 ];
 
 const EVALUATIONS = {
