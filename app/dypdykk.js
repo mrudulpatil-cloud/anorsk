@@ -2266,9 +2266,10 @@ function QuizSection({ level, progress, onFinish }) {
   );
 }
 
-function SectionQuestions({ questions, onSubmit, submitLabel }) {
+function SectionQuestions({ questions, onSubmit, submitLabel, paginate = false }) {
   const [answers, setAnswers] = useState(Array(questions.length).fill(null));
   const [submitted, setSubmitted] = useState(false);
+  const [idx, setIdx] = useState(0);
   const allAnswered = answers.every((a) => a !== null);
   function pick(qi, oi) {
     if (submitted) return;
@@ -2279,6 +2280,37 @@ function SectionQuestions({ questions, onSubmit, submitLabel }) {
     setSubmitted(true);
     onSubmit(score, answers);
   }
+
+  if (paginate) {
+    const q = questions[idx];
+    const isLast = idx === questions.length - 1;
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: 22 }}>
+        <div style={{ display: "flex", gap: 6 }}>
+          {questions.map((_, i) => <div key={i} style={{ height: 4, flex: 1, borderRadius: 2, background: i < idx ? C.navy : i === idx ? C.border : "#EFEDE4" }} />)}
+        </div>
+        <div>
+          <div style={{ fontSize: 12, color: C.muted, marginBottom: 8 }}>Spørsmål {idx + 1} av {questions.length}</div>
+          <div style={{ fontSize: 14.5, fontWeight: 600, marginBottom: 10 }}>{q.q}</div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            {q.options.map((oi_opt, oi) => <OptionButton key={oi} opt={oi_opt} i={oi} selected={answers[idx]} answer={q.answer} onClick={() => pick(idx, oi)} />)}
+          </div>
+        </div>
+        {answers[idx] !== null && (
+          isLast ? (
+            <button onClick={submit} style={{ alignSelf: "flex-start", background: C.navy, color: "#fff", border: "none", borderRadius: 8, padding: "10px 20px", fontSize: 14, fontWeight: 600, cursor: "pointer" }}>
+              {submitLabel}
+            </button>
+          ) : (
+            <button onClick={() => setIdx((i) => i + 1)} style={{ alignSelf: "flex-start", background: C.navy, color: "#fff", border: "none", borderRadius: 8, padding: "10px 20px", fontSize: 14, fontWeight: 600, cursor: "pointer" }}>
+              Neste spørsmål
+            </button>
+          )
+        )}
+      </div>
+    );
+  }
+
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 22 }}>
       {questions.map((q, qi) => (
@@ -2635,6 +2667,7 @@ function ProficiencyEvaluation({ evalData, onExit, onXP, onComplete, voiceInfo }
         <SectionQuestions
           questions={evalData.grammar}
           submitLabel="Neste: Lesing"
+          paginate
           onSubmit={(score, answers) => { setGrammarAnswers(answers); onXP(score * 8); setStage("reading"); }}
         />
       )}
@@ -2649,6 +2682,7 @@ function ProficiencyEvaluation({ evalData, onExit, onXP, onComplete, voiceInfo }
           <SectionQuestions
             questions={readingQs}
             submitLabel="Neste: Lytting"
+            paginate
             onSubmit={(score, answers) => { setReadingAnswers(answers); onXP(score * 8); setStage("listening"); }}
           />
         </div>
