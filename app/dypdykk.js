@@ -31,6 +31,7 @@ const LIGHT_PALETTE = {
   card: "#FFFFFF",
   border: "#E3DFD3",
   ink: "#1C2430",
+  body: "#3A3F47",
   muted: "#75766E",
   navy: "#1E3A5F",
   navyDeep: "#16324A",
@@ -47,6 +48,7 @@ const DARK_PALETTE = {
   card: "#1B212B",
   border: "#2B3340",
   ink: "#EDEFF3",
+  body: "#D7DCE3",
   muted: "#96A0AF",
   navy: "#6E9BD6",
   navyDeep: "#8CB2E0",
@@ -1789,7 +1791,7 @@ function VoiceSetupBanner({ voiceInfo }) {
       <div style={{ fontSize: 12.5, color: C.muted, marginTop: 4, marginBottom: 10, lineHeight: 1.5 }}>
         Uttale-knappene fungerer, men bruker en annen stemme enn norsk til du installerer én. Dette tar ett par minutter:
       </div>
-      <ol style={{ margin: 0, paddingLeft: 18, fontSize: 12.5, color: "#3A3F47", lineHeight: 1.9 }}>
+      <ol style={{ margin: 0, paddingLeft: 18, fontSize: 12.5, color: C.body, lineHeight: 1.9 }}>
         {s.lines.map((l, i) => <li key={i}>{l}</li>)}
       </ol>
       <div style={{ display: "flex", gap: 8, marginTop: 12, flexWrap: "wrap" }}>
@@ -2141,7 +2143,7 @@ function GrammarCard({ item }) {
         <span style={{ fontSize: 15, fontWeight: 600, color: C.ink }}>{item.title}</span>
         <ChevronDown size={18} color={C.muted} style={{ transform: open ? "rotate(180deg)" : "none", transition: "transform 150ms ease", flexShrink: 0 }} />
       </button>
-      {open && <div style={{ padding: "0 16px 16px", fontSize: 14, lineHeight: 1.6, color: "#3A3F47" }}>{item.body}</div>}
+      {open && <div style={{ padding: "0 16px 16px", fontSize: 14, lineHeight: 1.6, color: C.body }}>{item.body}</div>}
     </div>
   );
 }
@@ -2380,7 +2382,7 @@ function WritingTask({ task, index }) {
   return (
     <div style={{ marginBottom: 24 }}>
       <div style={{ fontSize: 14.5, fontWeight: 600, marginBottom: 4 }}>Oppgave {index + 1}</div>
-      <div style={{ fontSize: 13.5, color: "#3A3F47", lineHeight: 1.6, marginBottom: 10 }}>{task.prompt}</div>
+      <div style={{ fontSize: 13.5, color: C.body, lineHeight: 1.6, marginBottom: 10 }}>{task.prompt}</div>
       <textarea
         value={text}
         onChange={(e) => setText(e.target.value)}
@@ -2462,10 +2464,10 @@ function SampleTest({ test, onExit, onXP, onComplete, voiceInfo }) {
 
       {stage === "intro" && (
         <div>
-          <p style={{ fontSize: 14, lineHeight: 1.7, color: "#3A3F47" }}>
+          <p style={{ fontSize: 14, lineHeight: 1.7, color: C.body }}>
             This mirrors how Norskprøven is actually structured: you register for a level pair, and reading, listening, and writing are scored independently rather than combined into one grade. Three sections, in order — reading, listening, writing.
           </p>
-          <ul style={{ fontSize: 13.5, color: "#3A3F47", lineHeight: 1.9, paddingLeft: 18 }}>
+          <ul style={{ fontSize: 13.5, color: C.body, lineHeight: 1.9, paddingLeft: 18 }}>
             <li>
               <FileText size={13} style={{ verticalAlign: -1, marginRight: 4 }} />Reading: {readingMax} questions across two short texts — the real test gives you 75 minutes and B2-level reading is what universities require for admission.{" "}
               <a href="https://prove.hkdir.no/en/norwegian-language-test-a1-b2/practice-for-test-norwegian-language-a1-b2/practice-for-the-reading-test" target="_blank" rel="noopener noreferrer" style={{ color: C.navy }}>Official examples ↗</a>
@@ -2503,7 +2505,7 @@ function SampleTest({ test, onExit, onXP, onComplete, voiceInfo }) {
         <div>
           {test.reading.map((p, pi) => (
             <div key={pi} style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 10, padding: "16px 18px", marginBottom: 16 }}>
-              <div style={{ fontSize: 14, lineHeight: 1.7, color: "#3A3F47", marginBottom: 14, fontStyle: "italic" }}>{p.passage}</div>
+              <div style={{ fontSize: 14, lineHeight: 1.7, color: C.body, marginBottom: 14, fontStyle: "italic" }}>{p.passage}</div>
             </div>
           ))}
           <SectionQuestions
@@ -2621,7 +2623,7 @@ function ProficiencyEvaluation({ evalData, onExit, onXP, onComplete, voiceInfo }
 
       {stage === "intro" && (
         <div>
-          <p style={{ fontSize: 14, lineHeight: 1.7, color: "#3A3F47" }}>{evalData.blurb}</p>
+          <p style={{ fontSize: 14, lineHeight: 1.7, color: C.body }}>{evalData.blurb}</p>
           <p style={{ fontSize: 13, color: C.muted, lineHeight: 1.6 }}>
             {evalData.grammar.length} ord- og grammatikkoppgaver, {evalData.reading.reduce((s, p) => s + p.questions.length, 0)} leseoppgaver, en lytteoppgave, og én kort skriveoppgave. No score is a fixed number — you'll get a verdict on where you actually stand.
           </p>
@@ -2641,7 +2643,7 @@ function ProficiencyEvaluation({ evalData, onExit, onXP, onComplete, voiceInfo }
         <div>
           {evalData.reading.map((p, pi) => (
             <div key={pi} style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 10, padding: "16px 18px", marginBottom: 16 }}>
-              <div style={{ fontSize: 14, lineHeight: 1.7, color: "#3A3F47", fontStyle: "italic" }}>{p.passage}</div>
+              <div style={{ fontSize: 14, lineHeight: 1.7, color: C.body, fontStyle: "italic" }}>{p.passage}</div>
             </div>
           ))}
           <SectionQuestions
@@ -2684,7 +2686,7 @@ function ProficiencyEvaluation({ evalData, onExit, onXP, onComplete, voiceInfo }
           <div>
             <div style={{ background: C.card, border: `2px solid ${v.tone}`, borderRadius: 12, padding: "18px 20px", marginBottom: 18 }}>
               <div style={{ fontFamily: "ui-serif, Georgia, serif", fontSize: 20, fontWeight: 700, color: v.tone, marginBottom: 6 }}>{v.title}</div>
-              <div style={{ fontSize: 13.5, color: "#3A3F47", lineHeight: 1.6 }}>{v.body}</div>
+              <div style={{ fontSize: 13.5, color: C.body, lineHeight: 1.6 }}>{v.body}</div>
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))", gap: 10, marginBottom: 16 }}>
               <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 10, padding: "12px 14px" }}>
@@ -3799,7 +3801,7 @@ export default function App() {
 
             <div style={{
               background: C.card, border: `1px solid ${C.gold}`, borderRadius: 10,
-              padding: "13px 16px", marginBottom: 10, fontSize: 12.5, color: "#3A3F47", lineHeight: 1.6,
+              padding: "13px 16px", marginBottom: 10, fontSize: 12.5, color: C.body, lineHeight: 1.6,
             }}>
               <strong style={{ color: C.ink }}>Official source:</strong>{" "}
               <a href="https://prove.hkdir.no/en/norwegian-language-test-a1-b2/practice-for-test-norwegian-language-a1-b2" target="_blank" rel="noopener noreferrer" style={{ color: C.navy, fontWeight: 600 }}>
@@ -3857,7 +3859,7 @@ export default function App() {
                                 <div style={{ fontSize: 13.5, fontWeight: 600 }}>Prøve {i + 1}</div>
                                 <div style={{ fontSize: 12, color: C.muted }}>Lesing, lytting og skriving — samme oppsett som Norskprøven</div>
                               </div>
-                              {res && <div style={{ fontSize: 11.5, color: C.green, fontWeight: 700, textAlign: "right" }}>L {res.reading}/4<br />Ly {res.listening}/3</div>}
+                              {res && <div style={{ fontSize: 11.5, color: C.green, fontWeight: 700, textAlign: "right" }}>L {res.reading}/{t.reading.reduce((s, p) => s + p.questions.length, 0)}<br />Ly {res.listening}/{t.listening.questions.length}</div>}
                             </button>
                           );
                         })}
