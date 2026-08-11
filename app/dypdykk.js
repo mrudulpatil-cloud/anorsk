@@ -3623,6 +3623,7 @@ export default function App() {
   const [testId, setTestId] = useState(null);
   const [evalId, setEvalId] = useState(null);
   const [tab, setTab] = useState("vocab");
+  const [openPairs, setOpenPairs] = useState({});
   const [progress, setProgress] = useState({ xp: 0, badges: [], quizBest: {}, sampleBest: {}, streak: 0, lastVisit: null, leitner: {}, quizMisses: {}, onboarded: false, targetPair: null, examDate: null, srsReviewCount: 0 });
   const [showSetup, setShowSetup] = useState(false);
   const [ready, setReady] = useState(false);
@@ -3742,6 +3743,7 @@ export default function App() {
 
   function openLevel(id) { setLevelId(id); setTab("vocab"); setScreen("level"); }
   function openTest(id) { setTestId(id); setScreen("test"); }
+  function togglePair(pair) { setOpenPairs((p) => ({ ...p, [pair]: !p[pair] })); }
   function openEval(id) { setEvalId(id); setScreen("eval"); }
 
   function saveSetup({ targetPair, examDate }) {
@@ -3832,19 +3834,36 @@ export default function App() {
 
             <div style={{ fontSize: 12, letterSpacing: 1, color: C.muted, textTransform: "uppercase", margin: "0 0 10px 2px" }}>Prøvesett</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-              {SAMPLE_TESTS.map((t) => {
-                const res = progress.sampleBest[t.id];
+              {[...new Set(SAMPLE_TESTS.map((t) => t.pair))].map((pair) => {
+                const testsInPair = SAMPLE_TESTS.filter((t) => t.pair === pair);
+                const isOpen = !!openPairs[pair];
                 return (
-                  <button key={t.id} onClick={() => openTest(t.id)} style={{ textAlign: "left", background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "14px 16px", cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <div>
-                      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 3 }}>
-                        <span style={{ width: 8, height: 8, borderRadius: "50%", background: t.color, display: "inline-block" }} />
-                        <span style={{ fontFamily: "ui-serif, Georgia, serif", fontSize: 16, fontWeight: 700 }}>{t.pair}</span>
+                  <div key={pair}>
+                    <button onClick={() => togglePair(pair)} style={{ width: "100%", textAlign: "left", background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "14px 16px", cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                      <span style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                        <span style={{ width: 8, height: 8, borderRadius: "50%", background: testsInPair[0].color, display: "inline-block" }} />
+                        <span style={{ fontFamily: "ui-serif, Georgia, serif", fontSize: 16, fontWeight: 700 }}>{pair}</span>
+                        <span style={{ fontSize: 12, color: C.muted }}>({testsInPair.length})</span>
+                      </span>
+                      <ChevronDown size={16} color={C.muted} style={{ transform: isOpen ? "rotate(180deg)" : "none", transition: "transform 0.15s" }} />
+                    </button>
+                    {isOpen && (
+                      <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 8, marginLeft: 4 }}>
+                        {testsInPair.map((t, i) => {
+                          const res = progress.sampleBest[t.id];
+                          return (
+                            <button key={t.id} onClick={() => openTest(t.id)} style={{ textAlign: "left", background: C.card, border: `1px solid ${C.border}`, borderRadius: 10, padding: "12px 14px", cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                              <div>
+                                <div style={{ fontSize: 13.5, fontWeight: 600 }}>Prøve {i + 1}</div>
+                                <div style={{ fontSize: 12, color: C.muted }}>Lesing, lytting og skriving — samme oppsett som Norskprøven</div>
+                              </div>
+                              {res && <div style={{ fontSize: 11.5, color: C.green, fontWeight: 700, textAlign: "right" }}>L {res.reading}/4<br />Ly {res.listening}/3</div>}
+                            </button>
+                          );
+                        })}
                       </div>
-                      <div style={{ fontSize: 12, color: C.muted }}>Lesing, lytting og skriving — samme oppsett som Norskprøven</div>
-                    </div>
-                    {res && <div style={{ fontSize: 11.5, color: C.green, fontWeight: 700, textAlign: "right" }}>L {res.reading}/4<br />Ly {res.listening}/3</div>}
-                  </button>
+                    )}
+                  </div>
                 );
               })}
             </div>
