@@ -93,7 +93,7 @@ const BADGES = [
   { id: "a2_mastered", label: "A2 mestret", desc: "6/8 eller mer på A2-prøven" },
   { id: "b1_mastered", label: "B1 mestret", desc: "6/8 eller mer på B1-prøven" },
   { id: "b2_mastered", label: "B2 mestret", desc: "6/8 eller mer på B2-prøven" },
-  { id: "sample_test", label: "Dypdykker", desc: "Fullført et komplett prøvesett" },
+  { id: "sample_test", label: "NorskDiver", desc: "Fullført et komplett prøvesett" },
   { id: "evaluated", label: "Nivåvurdert", desc: "Fullført en nivåvurdering" },
   { id: "streak3", label: "Tre dager på rad", desc: "Øvd tre dager på rad" },
   { id: "srs_first", label: "Første repetisjon", desc: "Fullført din første repetisjonsøkt" },
@@ -1896,7 +1896,7 @@ function OnboardingModal({ onComplete, initialPair = null, initialDate = "" }) {
   return (
     <div style={{ position: "fixed", inset: 0, background: "rgba(20,20,20,0.55)", display: "flex", alignItems: "center", justifyContent: "center", padding: 20, zIndex: 50 }}>
       <div style={{ background: C.bg, borderRadius: 14, padding: "26px 24px", maxWidth: 420, width: "100%", boxShadow: "0 20px 60px rgba(0,0,0,0.3)" }}>
-        <div style={{ fontFamily: "ui-serif, Georgia, serif", fontSize: 22, fontWeight: 700, marginBottom: 6 }}>Velkommen til Dypdykk</div>
+        <div style={{ fontFamily: "ui-serif, Georgia, serif", fontSize: 22, fontWeight: 700, marginBottom: 6 }}>Velkommen til NorskDive</div>
         <div style={{ fontSize: 13, color: C.muted, lineHeight: 1.6, marginBottom: 20 }}>
           Two quick questions so the app can focus on what actually matters for your test.
         </div>
@@ -3818,7 +3818,7 @@ export default function App() {
             </div>
             <div style={{ textAlign: "center", marginBottom: 8 }}>
               <div style={{ fontSize: 12, letterSpacing: 2, color: C.muted, textTransform: "uppercase", marginBottom: 6 }}>Norsk for Norskprøven</div>
-              <h1 style={{ fontFamily: "ui-serif, Georgia, serif", fontSize: 34, fontWeight: 700, margin: 0, color: C.navyDeep }}>Dypdykk</h1>
+              <h1 style={{ fontFamily: "ui-serif, Georgia, serif", fontSize: 34, fontWeight: 700, margin: 0, color: C.navyDeep }}>NorskDive</h1>
               <p style={{ fontSize: 14, color: C.muted, maxWidth: 380, margin: "10px auto 0", lineHeight: 1.6 }}>
                 Norskprøven grades reading, listening, writing, and speaking separately, each landing anywhere from A1 to B2.
               </p>
@@ -3857,7 +3857,7 @@ export default function App() {
               background: "transparent", border: `1px solid ${C.border}`, borderRadius: 10,
               padding: "13px 16px", marginBottom: 20, fontSize: 11.5, color: C.muted, lineHeight: 1.6,
             }}>
-              Dypdykk is built to help learners prepare for Norskprøven, Norway's official language proficiency test. Dypdykk is an independent product and is not affiliated with, endorsed by, sponsored by, or otherwise connected to HK-dir (Direktoratet for høyere utdanning og kompetanse), the government body that administers Norskprøven. "Norskprøven" refers to the official exam; all content in this app is original and created for practice purposes only. For official information, registration, and sample materials, visit{" "}
+              NorskDive is built to help learners prepare for Norskprøven, Norway's official language proficiency test. NorskDive is an independent product and is not affiliated with, endorsed by, sponsored by, or otherwise connected to HK-dir (Direktoratet for høyere utdanning og kompetanse), the government body that administers Norskprøven. "Norskprøven" refers to the official exam; all content in this app is original and created for practice purposes only. For official information, registration, and sample materials, visit{" "}
               <a href="https://prove.hkdir.no" target="_blank" rel="noopener noreferrer" style={{ color: C.navy }}>prove.hkdir.no</a>.
             </div>
 
