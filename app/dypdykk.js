@@ -3853,6 +3853,14 @@ export default function App() {
               a free official beginner course (A1–A2) with dialogues and audio exercises.
             </div>
 
+            <div style={{
+              background: "transparent", border: `1px solid ${C.border}`, borderRadius: 10,
+              padding: "13px 16px", marginBottom: 20, fontSize: 11.5, color: C.muted, lineHeight: 1.6,
+            }}>
+              Dypdykk is built to help learners prepare for Norskprøven, Norway's official language proficiency test. Dypdykk is an independent product and is not affiliated with, endorsed by, sponsored by, or otherwise connected to HK-dir (Direktoratet for høyere utdanning og kompetanse), the government body that administers Norskprøven. "Norskprøven" refers to the official exam; all content in this app is original and created for practice purposes only. For official information, registration, and sample materials, visit{" "}
+              <a href="https://prove.hkdir.no" target="_blank" rel="noopener noreferrer" style={{ color: C.navy }}>prove.hkdir.no</a>.
+            </div>
+
             <div style={{ fontSize: 12, letterSpacing: 1, color: C.muted, textTransform: "uppercase", margin: "0 0 10px 2px" }}>Nivåer</div>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: 12, marginBottom: 28 }}>
               {LEVELS.map((lv) => (
