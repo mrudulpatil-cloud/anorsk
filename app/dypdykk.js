@@ -1945,7 +1945,7 @@ function BadgeShelf({ progress }) {
           <div key={b.id} title={b.desc} style={{
             flex: "0 0 auto", width: 84, textAlign: "center", padding: "10px 6px",
             borderRadius: 10, border: `1px solid ${earned ? C.gold : C.border}`,
-            background: earned ? C.goldBg : "#F4F2EA", opacity: earned ? 1 : 0.55,
+            background: earned ? C.goldBg : C.bg, opacity: earned ? 1 : 0.55,
           }}>
             {earned ? <Award size={18} color={C.gold} /> : <Lock size={16} color={C.muted} />}
             <div style={{ fontSize: 10.5, fontWeight: 600, marginTop: 6, color: earned ? "#5C4718" : C.muted, lineHeight: 1.3 }}>{b.label}</div>
@@ -3805,9 +3805,38 @@ export default function App() {
         <OnboardingModal onComplete={saveSetup} initialPair={progress.targetPair} initialDate={progress.examDate || ""} />
       )}
       <div style={{ maxWidth: 640, margin: "0 auto" }}>
-        {screen === "home" && (
+        {screen === "home" && (() => {
+          const pairIds = progress.targetPair ? progress.targetPair.split("-") : null;
+          const pairLabel = progress.targetPair ? progress.targetPair.replace("-", "–") : null;
+          const isInPair = (id) => !pairIds || pairIds.includes(id);
+          const passed = (lv) => (progress.quizBest[lv.id] ?? -1) >= Math.ceil(lv.quiz.length * 0.75);
+          const focusLevels = LEVELS.filter((lv) => isInPair(lv.id));
+          const nextLevel = focusLevels.find((lv) => !passed(lv)) || focusLevels[focusLevels.length - 1] || LEVELS[0];
+          const pairTests = SAMPLE_TESTS.filter((t) => !pairLabel || t.pair === pairLabel);
+          const nextTestIdx = Math.max(0, pairTests.findIndex((t) => !progress.sampleBest[t.id]));
+          const nextTest = pairTests[nextTestIdx];
+          const doneTests = pairTests.filter((t) => progress.sampleBest[t.id]).length;
+          const days = daysUntil(progress.examDate);
+          const rank = rankFor(progress.xp);
+          const pct = rank.next ? Math.min(100, Math.round(((progress.xp - rank.min) / (rank.next.min - rank.min)) * 100)) : 100;
+          const earnedCount = BADGES.filter((b) => progress.badges.includes(b.id)).length;
+          const sectionLabel = (text, extra = null) => (
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", margin: "28px 2px 10px" }}>
+              <span style={{ fontSize: 12, letterSpacing: 1, color: C.muted, textTransform: "uppercase", fontWeight: 600 }}>{text}</span>
+              {extra}
+            </div>
+          );
+          const card = { background: C.card, border: `1px solid ${C.border}`, borderRadius: 12 };
+          const orderedPairs = [...new Set(SAMPLE_TESTS.map((t) => t.pair))].sort((a, b) => (b === pairLabel) - (a === pairLabel));
+
+          return (
           <>
-            <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: -6 }}>
+            {/* 1. Header: brand + theme toggle on one row */}
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 18 }}>
+              <div>
+                <h1 style={{ fontFamily: "ui-serif, Georgia, serif", fontSize: 26, fontWeight: 700, margin: 0, color: C.navyDeep, lineHeight: 1.1 }}>NorskDive</h1>
+                <div style={{ fontSize: 11, letterSpacing: 1.5, color: C.muted, textTransform: "uppercase", marginTop: 3 }}>Norsk for Norskprøven</div>
+              </div>
               <button
                 onClick={toggleTheme}
                 title={theme === "light" ? "Bytt til mørk modus" : "Bytt til lys modus"}
@@ -3816,92 +3845,108 @@ export default function App() {
                 {theme === "light" ? <Moon size={13} /> : <Sun size={13} />} {theme === "light" ? "Mørk" : "Lys"}
               </button>
             </div>
-            <div style={{ textAlign: "center", marginBottom: 8 }}>
-              <div style={{ fontSize: 12, letterSpacing: 2, color: C.muted, textTransform: "uppercase", marginBottom: 6 }}>Norsk for Norskprøven</div>
-              <h1 style={{ fontFamily: "ui-serif, Georgia, serif", fontSize: 34, fontWeight: 700, margin: 0, color: C.navyDeep }}>NorskDive</h1>
-              <p style={{ fontSize: 14, color: C.muted, maxWidth: 380, margin: "10px auto 0", lineHeight: 1.6 }}>
-                Norskprøven grades reading, listening, writing, and speaking separately, each landing anywhere from A1 to B2.
-              </p>
-            </div>
 
-            <ExamCountdown progress={progress} onEdit={() => setShowSetup(true)} />
-            <StatBar progress={progress} />
-            <VoiceSetupBanner voiceInfo={voiceInfo} />
-            <BadgeShelf progress={progress} />
-
-            <div style={{ margin: "8px 0 28px" }}>
-              <FjordGauge levels={LEVELS} quizBest={progress.quizBest} activeId={levelId} onSelect={openLevel} />
-            </div>
-
-            <div style={{
-              background: C.card, border: `1px solid ${C.gold}`, borderRadius: 10,
-              padding: "13px 16px", marginBottom: 10, fontSize: 12.5, color: C.body, lineHeight: 1.6,
-            }}>
-              <strong style={{ color: C.ink }}>Official source:</strong>{" "}
-              <a href="https://prove.hkdir.no/en/norwegian-language-test-a1-b2/practice-for-test-norwegian-language-a1-b2" target="_blank" rel="noopener noreferrer" style={{ color: C.navy, fontWeight: 600 }}>
-                HK-dir's own practice page
-              </a>{" "}
-              has real sample tasks for each part of the exam, straight from the body that runs Norskprøven. Their sample tasks are Norwegian-only and only work on a computer, not mobile — this app is a mobile-friendly, bilingual complement, not a substitute.
-            </div>
-
-            <div style={{
-              background: C.card, border: `1px solid ${C.border}`, borderRadius: 10,
-              padding: "13px 16px", marginBottom: 20, fontSize: 12.5, color: C.muted, lineHeight: 1.6,
-            }}>
-              For more listening audio specifically, pair this app with{" "}
-              <a href="https://www.ntnu.edu/learnnow" target="_blank" rel="noopener noreferrer" style={{ color: C.navy, fontWeight: 600 }}>NTNU LearnNoW</a>,
-              a free official beginner course (A1–A2) with dialogues and audio exercises.
-            </div>
-
-            <div style={{
-              background: "transparent", border: `1px solid ${C.border}`, borderRadius: 10,
-              padding: "13px 16px", marginBottom: 20, fontSize: 11.5, color: C.muted, lineHeight: 1.6,
-            }}>
-              NorskDive is built to help learners prepare for Norskprøven, Norway's official language proficiency test. NorskDive is an independent product and is not affiliated with, endorsed by, sponsored by, or otherwise connected to HK-dir (Direktoratet for høyere utdanning og kompetanse), the government body that administers Norskprøven. "Norskprøven" refers to the official exam; all content in this app is original and created for practice purposes only. For official information, registration, and sample materials, visit{" "}
-              <a href="https://prove.hkdir.no" target="_blank" rel="noopener noreferrer" style={{ color: C.navy }}>prove.hkdir.no</a>.
-            </div>
-
-            <div style={{ fontSize: 12, letterSpacing: 1, color: C.muted, textTransform: "uppercase", margin: "0 0 10px 2px" }}>Nivåer</div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: 12, marginBottom: 28 }}>
-              {LEVELS.map((lv) => (
-                <button key={lv.id} onClick={() => openLevel(lv.id)} style={{ textAlign: "left", background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "16px 16px", cursor: "pointer" }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
-                    <span style={{ width: 8, height: 8, borderRadius: "50%", background: lv.color, display: "inline-block" }} />
-                    <span style={{ fontSize: 11, letterSpacing: 1, color: C.muted, textTransform: "uppercase" }}>{lv.cefr}</span>
+            {/* 2. Status: exam goal, countdown, rank and streak in one card */}
+            <div style={{ ...card, padding: "14px 16px", marginBottom: 14 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 10 }}>
+                <div>
+                  <div style={{ fontSize: 11, letterSpacing: 1, color: C.muted, textTransform: "uppercase" }}>Ditt mål</div>
+                  <div style={{ fontSize: 16, fontWeight: 700, color: C.ink, marginTop: 2 }}>
+                    {pairLabel ? `Norskprøven ${pairLabel}` : "Norskprøven"}
                   </div>
-                  <div style={{ fontFamily: "ui-serif, Georgia, serif", fontSize: 17, fontWeight: 700, marginBottom: 4 }}>{lv.name}</div>
-                  <div style={{ fontSize: 12.5, color: C.muted, lineHeight: 1.5 }}>{lv.blurb}</div>
-                  {progress.quizBest[lv.id] !== undefined && <div style={{ marginTop: 8, fontSize: 11.5, color: C.green, fontWeight: 600 }}>Best quiz: {progress.quizBest[lv.id]}/8</div>}
-                </button>
-              ))}
+                  <div style={{ fontSize: 12.5, color: days !== null && days >= 0 && days <= 14 ? C.red : C.muted, marginTop: 2, fontWeight: days !== null && days <= 14 ? 600 : 400 }}>
+                    {days === null ? "Ingen eksamensdato satt" : days < 0 ? "Eksamensdatoen har passert" : days === 0 ? "Eksamen er i dag!" : `${days} ${days === 1 ? "dag" : "dager"} igjen`}
+                  </div>
+                </div>
+                <button onClick={() => setShowSetup(true)} style={{ background: "none", border: `1px solid ${C.border}`, borderRadius: 8, padding: "5px 10px", fontSize: 12, color: C.muted, cursor: "pointer", flexShrink: 0 }}>Endre</button>
+              </div>
+              <div style={{ height: 1, background: C.border, margin: "12px 0" }} />
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 7 }}>
+                <span style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13, color: C.ink }}>
+                  <Zap size={14} color={C.gold} /> <strong>{rank.name}</strong> <span style={{ color: C.muted }}>· {progress.xp} XP</span>
+                </span>
+                <span style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 12.5, color: C.muted, fontWeight: 600 }}>
+                  <Flame size={14} color={progress.streak > 0 ? C.red : C.muted} /> {progress.streak} {progress.streak === 1 ? "dag" : "dager"} på rad
+                </span>
+              </div>
+              <div style={{ height: 6, borderRadius: 3, background: C.border, overflow: "hidden" }}>
+                <div style={{ height: "100%", width: `${pct}%`, background: C.gold, borderRadius: 3 }} />
+              </div>
+              {rank.next && <div style={{ fontSize: 11, color: C.muted, marginTop: 5 }}>{rank.next.min - progress.xp} XP til {rank.next.name}</div>}
             </div>
 
-            <div style={{ fontSize: 12, letterSpacing: 1, color: C.muted, textTransform: "uppercase", margin: "0 0 10px 2px" }}>Prøvesett</div>
+            {/* 3. Next step: the one obvious thing to do */}
+            <div style={{ ...card, border: `1.5px solid ${C.navy}`, padding: "16px 16px 14px", marginBottom: 14 }}>
+              <div style={{ fontSize: 11, letterSpacing: 1, color: C.navy, textTransform: "uppercase", fontWeight: 700 }}>Neste steg</div>
+              <div style={{ fontFamily: "ui-serif, Georgia, serif", fontSize: 19, fontWeight: 700, color: C.ink, margin: "4px 0 2px" }}>
+                {nextLevel.id} · {nextLevel.name}
+              </div>
+              <div style={{ fontSize: 12.5, color: C.muted, lineHeight: 1.5, marginBottom: 12 }}>{nextLevel.blurb}</div>
+              <button onClick={() => openLevel(nextLevel.id)} style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "center", gap: 8, background: C.navy, color: C.bg, border: "none", borderRadius: 10, padding: "12px 16px", fontSize: 14.5, fontWeight: 700, cursor: "pointer" }}>
+                <Play size={15} /> {progress.quizBest[nextLevel.id] !== undefined ? "Fortsett å øve" : "Start å øve"}
+              </button>
+              {nextTest && (
+                <button onClick={() => openTest(nextTest.id)} style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "center", gap: 8, background: "transparent", color: C.navy, border: `1px solid ${C.border}`, borderRadius: 10, padding: "10px 16px", fontSize: 13.5, fontWeight: 600, cursor: "pointer", marginTop: 8 }}>
+                  <FileText size={14} /> Ta prøvesett {nextTest.pair} · Prøve {nextTestIdx + 1}
+                </button>
+              )}
+            </div>
+
+            <VoiceSetupBanner voiceInfo={voiceInfo} />
+
+            {/* 4. Levels */}
+            {sectionLabel("Nivåer", pairLabel && <span style={{ fontSize: 11.5, color: C.muted }}>Markert: ditt nivåpar</span>)}
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: 10 }}>
+              {LEVELS.map((lv) => {
+                const best = progress.quizBest[lv.id];
+                const focus = pairIds && isInPair(lv.id);
+                return (
+                  <button key={lv.id} onClick={() => openLevel(lv.id)} style={{ textAlign: "left", ...card, border: `1px solid ${focus ? lv.color : C.border}`, boxShadow: focus ? `inset 3px 0 0 ${lv.color}` : "none", padding: "14px 14px", cursor: "pointer", opacity: pairIds && !focus ? 0.75 : 1 }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
+                      <span style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, fontWeight: 700, color: C.muted }}><span style={{ width: 8, height: 8, borderRadius: "50%", background: lv.color, display: "inline-block", boxShadow: `0 0 0 1px ${C.border}` }} />{lv.id}</span>
+                      {best !== undefined && (
+                        <span style={{ fontSize: 11, fontWeight: 700, color: passed(lv) ? C.green : C.muted, display: "flex", alignItems: "center", gap: 3 }}>
+                          {passed(lv) && <Check size={12} />} {best}/{lv.quiz.length}
+                        </span>
+                      )}
+                    </div>
+                    <div style={{ fontFamily: "ui-serif, Georgia, serif", fontSize: 16, fontWeight: 700, marginBottom: 3, color: C.ink }}>{lv.name}</div>
+                    <div style={{ fontSize: 12, color: C.muted, lineHeight: 1.45 }}>{lv.blurb}</div>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* 5. Practice tests — your pair first and open */}
+            {sectionLabel("Prøvesett", pairLabel && <span style={{ fontSize: 11.5, color: C.muted }}>{doneTests}/{pairTests.length} fullført i {pairLabel}</span>)}
+            <div style={{ fontSize: 12.5, color: C.muted, lineHeight: 1.5, margin: "-4px 2px 10px" }}>Lesing, lytting og skriving — samme oppsett som Norskprøven.</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-              {[...new Set(SAMPLE_TESTS.map((t) => t.pair))].map((pair) => {
+              {orderedPairs.map((pair) => {
                 const testsInPair = SAMPLE_TESTS.filter((t) => t.pair === pair);
-                const isOpen = !!openPairs[pair];
+                const isOpen = openPairs[pair] ?? (pair === pairLabel);
+                const done = testsInPair.filter((t) => progress.sampleBest[t.id]).length;
                 return (
                   <div key={pair}>
-                    <button onClick={() => togglePair(pair)} style={{ width: "100%", textAlign: "left", background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "14px 16px", cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <button onClick={() => setOpenPairs((p) => ({ ...p, [pair]: !isOpen }))} style={{ width: "100%", textAlign: "left", ...card, padding: "13px 16px", cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                       <span style={{ display: "flex", alignItems: "center", gap: 8 }}>
                         <span style={{ width: 8, height: 8, borderRadius: "50%", background: testsInPair[0].color, display: "inline-block" }} />
-                        <span style={{ fontFamily: "ui-serif, Georgia, serif", fontSize: 16, fontWeight: 700 }}>{pair}</span>
-                        <span style={{ fontSize: 12, color: C.muted }}>({testsInPair.length})</span>
+                        <span style={{ fontFamily: "ui-serif, Georgia, serif", fontSize: 16, fontWeight: 700, color: C.ink }}>{pair}</span>
+                        <span style={{ fontSize: 12, color: C.muted }}>{done}/{testsInPair.length} fullført</span>
                       </span>
                       <ChevronDown size={16} color={C.muted} style={{ transform: isOpen ? "rotate(180deg)" : "none", transition: "transform 0.15s" }} />
                     </button>
                     {isOpen && (
-                      <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 8, marginLeft: 4 }}>
+                      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(96px, 1fr))", gap: 8, marginTop: 8 }}>
                         {testsInPair.map((t, i) => {
                           const res = progress.sampleBest[t.id];
                           return (
-                            <button key={t.id} onClick={() => openTest(t.id)} style={{ textAlign: "left", background: C.card, border: `1px solid ${C.border}`, borderRadius: 10, padding: "12px 14px", cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                              <div>
-                                <div style={{ fontSize: 13.5, fontWeight: 600 }}>Prøve {i + 1}</div>
-                                <div style={{ fontSize: 12, color: C.muted }}>Lesing, lytting og skriving — samme oppsett som Norskprøven</div>
+                            <button key={t.id} onClick={() => openTest(t.id)} style={{ textAlign: "left", ...card, borderRadius: 10, border: `1px solid ${res ? C.green : C.border}`, padding: "10px 12px", cursor: "pointer" }}>
+                              <div style={{ fontSize: 13, fontWeight: 700, color: C.ink, display: "flex", alignItems: "center", gap: 4 }}>
+                                {res && <Check size={13} color={C.green} />} Prøve {i + 1}
                               </div>
-                              {res && <div style={{ fontSize: 11.5, color: C.green, fontWeight: 700, textAlign: "right" }}>L {res.reading}/{t.reading.reduce((s, p) => s + p.questions.length, 0)}<br />Ly {res.listening}/{t.listening.questions.length}</div>}
+                              <div style={{ fontSize: 11, color: res ? C.green : C.muted, marginTop: 2, fontWeight: res ? 600 : 400 }}>
+                                {res ? `L ${res.reading} · Ly ${res.listening}` : "Ikke tatt"}
+                              </div>
                             </button>
                           );
                         })}
@@ -3912,17 +3957,42 @@ export default function App() {
               })}
             </div>
 
-            <div style={{ fontSize: 12, letterSpacing: 1, color: C.muted, textTransform: "uppercase", margin: "24px 0 10px 2px" }}>Vurdering</div>
+            {/* 6. Placement check */}
+            {sectionLabel("Nivåvurdering")}
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               {Object.entries(EVALUATIONS).map(([id, ev]) => (
-                <button key={id} onClick={() => openEval(id)} style={{ textAlign: "left", background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "14px 16px", cursor: "pointer" }}>
-                  <div style={{ fontFamily: "ui-serif, Georgia, serif", fontSize: 16, fontWeight: 700, marginBottom: 3 }}>{ev.label}</div>
+                <button key={id} onClick={() => openEval(id)} style={{ textAlign: "left", ...card, padding: "14px 16px", cursor: "pointer" }}>
+                  <div style={{ fontFamily: "ui-serif, Georgia, serif", fontSize: 16, fontWeight: 700, marginBottom: 3, color: C.ink }}>{ev.label}</div>
                   <div style={{ fontSize: 12, color: C.muted, lineHeight: 1.5 }}>{ev.blurb}</div>
                 </button>
               ))}
             </div>
+
+            {/* 7. Badges — reward, not the first thing you see */}
+            {sectionLabel("Merker", <span style={{ fontSize: 11.5, color: C.muted }}>{earnedCount}/{BADGES.length}</span>)}
+            <BadgeShelf progress={progress} />
+
+            {/* 8. Resources */}
+            {sectionLabel("Nyttige ressurser")}
+            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+              <a href="https://prove.hkdir.no/en/norwegian-language-test-a1-b2/practice-for-test-norwegian-language-a1-b2" target="_blank" rel="noopener noreferrer" style={{ ...card, padding: "12px 16px", textDecoration: "none", display: "block" }}>
+                <div style={{ fontSize: 13.5, fontWeight: 700, color: C.navy }}>HK-dir: offisielle øveoppgaver →</div>
+                <div style={{ fontSize: 12, color: C.muted, lineHeight: 1.5, marginTop: 2 }}>Real sample tasks from the body that runs Norskprøven. Norwegian-only and computer-only — NorskDive is a mobile-friendly complement, not a substitute.</div>
+              </a>
+              <a href="https://www.ntnu.edu/learnnow" target="_blank" rel="noopener noreferrer" style={{ ...card, padding: "12px 16px", textDecoration: "none", display: "block" }}>
+                <div style={{ fontSize: 13.5, fontWeight: 700, color: C.navy }}>NTNU LearnNoW →</div>
+                <div style={{ fontSize: 12, color: C.muted, lineHeight: 1.5, marginTop: 2 }}>Free official beginner course (A1–A2) with dialogues and extra listening audio.</div>
+              </a>
+            </div>
+
+            {/* 9. Legal footer */}
+            <div style={{ fontSize: 11, color: C.muted, lineHeight: 1.6, marginTop: 28, paddingTop: 16, borderTop: `1px solid ${C.border}` }}>
+              NorskDive is built to help learners prepare for Norskprøven, Norway's official language proficiency test. NorskDive is an independent product and is not affiliated with, endorsed by, sponsored by, or otherwise connected to HK-dir (Direktoratet for høyere utdanning og kompetanse), the government body that administers Norskprøven. "Norskprøven" refers to the official exam; all content in this app is original and created for practice purposes only. For official information, registration, and sample materials, visit{" "}
+              <a href="https://prove.hkdir.no" target="_blank" rel="noopener noreferrer" style={{ color: C.navy }}>prove.hkdir.no</a>.
+            </div>
           </>
-        )}
+          );
+        })()}
 
         {screen === "level" && level && (
           <>
