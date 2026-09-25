@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import {
   ArrowLeft, Check, X, RotateCcw, BookOpen, MessageCircle, Sparkles, GraduationCap,
-  Award, ChevronDown, Flame, Zap, Lock, Loader2, Headphones, FileText, PenLine, Play,
+  Award, ChevronDown, Flame, Zap, Lock, Headphones, FileText, PenLine, Play,
   Volume2, Mic, Square, Info, TreePine, ShoppingCart, TramFront, Waves, Cake, Activity,
   Ship, Store, Snowflake, Plus, Repeat, Puzzle, Sun, Moon,
 } from "lucide-react";
@@ -768,7 +768,7 @@ const VERB_BUCKETS = {
       ],
     },
     writing: { tasks: [
-      { prompt: "Skriv en kort tekst (30–50 ord) der du presenterer deg selv: navn, hvor du bor, hva du jobber med, og en ting du liker å gjøre på fritiden.", minWords: 30 },
+      { prompt: "Skriv en kort tekst (30–50 ord) der du presenterer deg selv: navn, hvor du bor, hva du jobber med, og en ting du liker å gjøre på fritiden.", minWords: 30, model: "Hei! Jeg heter Amir, og jeg er trettifire år gammel. Jeg kommer fra Iran, men nå bor jeg i Sandnes sammen med familien min. Jeg jobber som ingeniør i et firma i Stavanger. På fritiden liker jeg å gå tur i fjellet, spesielt når det er fint vær." },
     ] },
   },
   {
@@ -794,8 +794,8 @@ const VERB_BUCKETS = {
       ],
     },
     writing: { tasks: [
-      { prompt: "Skriv en e-post til en venn der du forteller om en reise du har vært på. Beskriv hvor du dro, hva du gjorde, og hvordan turen var.", minWords: 60 },
-      { prompt: "Skriv en kort tekst der du gir din mening om følgende påstand: 'Alle bør trene minst tre ganger i uken.' Bruk egne argumenter.", minWords: 60 },
+      { prompt: "Skriv en e-post til en venn der du forteller om en reise du har vært på. Beskriv hvor du dro, hva du gjorde, og hvordan turen var.", minWords: 60, model: "Hei Maria!\n\nTakk for sist! Nå må jeg fortelle deg om ferien min. I sommer reiste jeg til Bergen sammen med broren min. Vi tok toget fra Oslo, og turen var utrolig vakker. I Bergen gikk vi opp på Fløyen og spiste fersk fisk på Fisketorget. Det regnet nesten hver dag, men det gjorde ingenting. Vi hadde det veldig hyggelig, og jeg vil gjerne dra tilbake neste år.\n\nHilsen Ali" },
+      { prompt: "Skriv en kort tekst der du gir din mening om følgende påstand: 'Alle bør trene minst tre ganger i uken.' Bruk egne argumenter.", minWords: 60, model: "Jeg er delvis enig i påstanden. Trening er bra for både kroppen og hodet, og mange blir gladere når de beveger seg. Likevel tror jeg ikke at alle må trene tre ganger i uken. Noen har lite tid på grunn av jobb og små barn. For dem kan det være nok å gå til jobben eller ta trappen i stedet for heisen. Det viktigste er å være aktiv hver dag, ikke hvor mange ganger man trener." },
     ] },
   },
   {
@@ -821,7 +821,7 @@ const VERB_BUCKETS = {
       ],
     },
     writing: { tasks: [
-      { prompt: "Skriv en argumenterende tekst (150–200 ord) om følgende påstand: 'Det bør innføres en firedagers arbeidsuke i Norge.' Presenter din mening og støtt den med minst to argumenter. Bruk gjerne uttrykk som 'på den ene siden', 'til tross for' eller 'derfor'.", minWords: 150 },
+      { prompt: "Skriv en argumenterende tekst (150–200 ord) om følgende påstand: 'Det bør innføres en firedagers arbeidsuke i Norge.' Presenter din mening og støtt den med minst to argumenter. Bruk gjerne uttrykk som 'på den ene siden', 'til tross for' eller 'derfor'.", minWords: 150, model: "Det har lenge vært diskutert om Norge bør innføre en firedagers arbeidsuke. Etter min mening er dette en god idé, men den må gjennomføres gradvis.\n\nPå den ene siden kan en kortere arbeidsuke gi folk mer tid til familie, venner og fritid. Mange opplever i dag at hverdagen er stressende. Hvis de ansatte får en ekstra fridag, vil de sannsynligvis komme mer uthvilte tilbake på jobb. Forsøk i andre land har dessuten vist at produktiviteten ikke nødvendigvis synker.\n\nPå den andre siden passer ikke ordningen for alle bransjer. Sykehus, butikker og kollektivtrafikk må være åpne hver dag, og der vil en firedagers uke kreve flere ansatte. Til tross for disse utfordringene mener jeg at fordelene er større enn ulempene.\n\nDerfor bør Norge starte med prøveprosjekter i bedrifter som ønsker det. Slik kan vi lære hva som fungerer, før ordningen eventuelt blir innført for flere." },
     ] },
   },
   {
@@ -847,7 +847,7 @@ const VERB_BUCKETS = {
       ],
     },
     writing: { tasks: [
-      { prompt: "Skriv en kort tekst (30–50 ord) om hvordan været er der du bor om vinteren, og hva du pleier å ha på deg når det er kaldt ute.", minWords: 30 },
+      { prompt: "Skriv en kort tekst (30–50 ord) om hvordan været er der du bor om vinteren, og hva du pleier å ha på deg når det er kaldt ute.", minWords: 30, model: "Der jeg bor, er vinteren ganske lang og mørk. Det er ofte kaldt, og noen ganger snør det mye. Når det er kaldt ute, pleier jeg å ha på meg en varm jakke, lue, skjerf og votter. Jeg bruker også gode vintersko." },
     ] },
   },
   {
@@ -873,7 +873,7 @@ const VERB_BUCKETS = {
       ],
     },
     writing: { tasks: [
-      { prompt: "Skriv en kort tekst (30–50 ord) om hvordan du handler mat: hvor du handler, hvor ofte, og hva du liker å kjøpe.", minWords: 30 },
+      { prompt: "Skriv en kort tekst (30–50 ord) om hvordan du handler mat: hvor du handler, hvor ofte, og hva du liker å kjøpe.", minWords: 30, model: "Jeg handler mat to eller tre ganger i uken. Vanligvis går jeg til en stor butikk i nærheten av huset mitt, fordi den er billig. Jeg liker å kjøpe frukt, grønnsaker, brød og fisk. På lørdager kjøper jeg ofte noe godt til helgen." },
     ] },
   },
   {
@@ -899,7 +899,7 @@ const VERB_BUCKETS = {
       ],
     },
     writing: { tasks: [
-      { prompt: "Skriv en kort tekst (30–50 ord) om sist gang du var syk eller hos legen. Hva feilte det deg, og hva gjorde du?", minWords: 30 },
+      { prompt: "Skriv en kort tekst (30–50 ord) om sist gang du var syk eller hos legen. Hva feilte det deg, og hva gjorde du?", minWords: 30, model: "Sist gang jeg var syk, var i februar. Jeg hadde feber og vondt i halsen i tre dager. Først ble jeg hjemme og drakk mye te. Da det ikke ble bedre, ringte jeg legen. Legen sa at jeg måtte hvile, og etter en uke var jeg frisk igjen." },
     ] },
   },
   {
@@ -925,7 +925,7 @@ const VERB_BUCKETS = {
       ],
     },
     writing: { tasks: [
-      { prompt: "Skriv en kort tekst (30–50 ord) om hvordan du reiser til jobb eller skole. Bruker du buss, tog, bil eller sykkel?", minWords: 30 },
+      { prompt: "Skriv en kort tekst (30–50 ord) om hvordan du reiser til jobb eller skole. Bruker du buss, tog, bil eller sykkel?", minWords: 30, model: "Jeg reiser til jobben med buss hver dag. Bussen går klokka sju, og turen tar omtrent tjue minutter. Om sommeren sykler jeg noen ganger, fordi det er godt å være ute. Jeg har ikke bil, men det går fint." },
     ] },
   },
   {
@@ -951,7 +951,7 @@ const VERB_BUCKETS = {
       ],
     },
     writing: { tasks: [
-      { prompt: "Skriv en kort tekst (30–50 ord) om en hobby du liker. Hva gjør du, hvor ofte, og hvorfor liker du det?", minWords: 30 },
+      { prompt: "Skriv en kort tekst (30–50 ord) om en hobby du liker. Hva gjør du, hvor ofte, og hvorfor liker du det?", minWords: 30, model: "Hobbyen min er å lage mat. Jeg lager middag nesten hver dag, og i helgene prøver jeg ofte nye oppskrifter. Jeg liker det fordi det er avslappende, og fordi jeg kan dele maten med familie og venner." },
     ] },
   },
   {
@@ -977,7 +977,7 @@ const VERB_BUCKETS = {
       ],
     },
     writing: { tasks: [
-      { prompt: "Skriv en kort tekst (30–50 ord) om naboene dine. Kjenner du dem godt? Hva pleier dere å snakke om?", minWords: 30 },
+      { prompt: "Skriv en kort tekst (30–50 ord) om naboene dine. Kjenner du dem godt? Hva pleier dere å snakke om?", minWords: 30, model: "Jeg kjenner ikke naboene mine så godt ennå, fordi jeg flyttet hit i fjor. Vi hilser alltid når vi møtes i trappen. Noen ganger snakker vi om været eller om barna. Naboen i andre etasje er veldig hyggelig." },
     ] },
   },
   {
@@ -1003,7 +1003,7 @@ const VERB_BUCKETS = {
       ],
     },
     writing: { tasks: [
-      { prompt: "Skriv en kort tekst (30–50 ord) om en vanlig skoledag eller arbeidsdag. Når begynner den, og hva gjør du?", minWords: 30 },
+      { prompt: "Skriv en kort tekst (30–50 ord) om en vanlig skoledag eller arbeidsdag. Når begynner den, og hva gjør du?", minWords: 30, model: "En vanlig arbeidsdag begynner klokka halv sju. Jeg står opp, dusjer og spiser frokost. Klokka åtte begynner jeg på jobben. Jeg svarer på e-post og har møter med kollegaene mine. Vi spiser lunsj sammen klokka elleve, og jeg er ferdig klokka fire." },
     ] },
   },
   {
@@ -1029,7 +1029,7 @@ const VERB_BUCKETS = {
       ],
     },
     writing: { tasks: [
-      { prompt: "Skriv en kort tekst (30–50 ord) om hvordan du pleier å feire bursdagen din. Hvem inviterer du, og hva gjør dere?", minWords: 30 },
+      { prompt: "Skriv en kort tekst (30–50 ord) om hvordan du pleier å feire bursdagen din. Hvem inviterer du, og hva gjør dere?", minWords: 30, model: "Jeg pleier å feire bursdagen min hjemme. Jeg inviterer familien og noen gode venner. Vi spiser god mat, og etterpå får vi kake og kaffe. Noen ganger går vi ut og spiser på restaurant i stedet. Det er alltid en hyggelig dag." },
     ] },
   },
   {
@@ -1055,7 +1055,7 @@ const VERB_BUCKETS = {
       ],
     },
     writing: { tasks: [
-      { prompt: "Skriv en kort tekst (30–50 ord) om et bibliotek du kjenner til, eller om bøker du liker å lese.", minWords: 30 },
+      { prompt: "Skriv en kort tekst (30–50 ord) om et bibliotek du kjenner til, eller om bøker du liker å lese.", minWords: 30, model: "I byen min er det et stort og moderne bibliotek. Jeg går dit en gang i måneden for å låne bøker. Jeg liker å lese krimbøker, og nå prøver jeg å lese enkle bøker på norsk. Det er gratis å låne, og det er veldig praktisk." },
     ] },
   },
   {
@@ -1081,7 +1081,7 @@ const VERB_BUCKETS = {
       ],
     },
     writing: { tasks: [
-      { prompt: "Skriv en tekst (60–80 ord) om dine egne erfaringer med å lære norsk, eller et annet språk. Hva har vært lettest, og hva har vært vanskeligst?", minWords: 60 },
+      { prompt: "Skriv en tekst (60–80 ord) om dine egne erfaringer med å lære norsk, eller et annet språk. Hva har vært lettest, og hva har vært vanskeligst?", minWords: 60, model: "Jeg begynte å lære norsk for to år siden, da jeg flyttet til Norge. Det letteste har vært å lære nye ord, fordi mange av dem ligner på engelsk. Det vanskeligste har vært uttalen og alle dialektene. Når folk snakker fort, forstår jeg ikke alltid alt. Likevel prøver jeg å snakke norsk hver dag, både på jobben og i butikken. Jeg merker at det blir litt lettere for hver uke." },
     ] },
   },
   {
@@ -1107,8 +1107,8 @@ const VERB_BUCKETS = {
       ],
     },
     writing: { tasks: [
-      { prompt: "Skriv en tekst (60–80 ord) om hvordan det er å lete etter bolig der du bor. Hva er utfordringene, og hva ville gjort det enklere?", minWords: 60 },
-      { prompt: "Skriv en kort e-post (minst 40 ord) til en utleier der du spør om en leilighet fortsatt er ledig, og foreslår en tid for visning.", minWords: 40 },
+      { prompt: "Skriv en tekst (60–80 ord) om hvordan det er å lete etter bolig der du bor. Hva er utfordringene, og hva ville gjort det enklere?", minWords: 60, model: "Det er ikke lett å finne en bolig der jeg bor. Prisene er høye, og det er mange som søker på de samme leilighetene. Når jeg går på visning, står det ofte tjue andre personer der. I tillegg ønsker mange utleiere leietakere som har fast jobb. Jeg tror det ville vært enklere hvis kommunen bygde flere rimelige boliger, spesielt for unge og nyankomne." },
+      { prompt: "Skriv en kort e-post (minst 40 ord) til en utleier der du spør om en leilighet fortsatt er ledig, og foreslår en tid for visning.", minWords: 40, model: "Hei!\n\nJeg så annonsen deres og er interessert i leiligheten i Storgata 12. Er den fortsatt ledig? Jeg er trettiåtte år, jobber fullt og ønsker å flytte inn fra 1. november. Passer det med visning på torsdag klokka fem?\n\nMed vennlig hilsen\nPriya Sharma" },
     ] },
   },
   {
@@ -1134,7 +1134,7 @@ const VERB_BUCKETS = {
       ],
     },
     writing: { tasks: [
-      { prompt: "Skriv en tekst (60–80 ord) om frivillig arbeid du har gjort, eller kunne tenke deg å gjøre. Hvorfor er dette viktig for deg?", minWords: 60 },
+      { prompt: "Skriv en tekst (60–80 ord) om frivillig arbeid du har gjort, eller kunne tenke deg å gjøre. Hvorfor er dette viktig for deg?", minWords: 60, model: "Jeg har ikke gjort mye frivillig arbeid ennå, men jeg kunne tenke meg å hjelpe til i en idrettsklubb for barn. Da jeg var liten, hadde jeg en trener som betydde mye for meg. Frivillig arbeid er viktig fordi man blir kjent med nye mennesker og blir en del av lokalmiljøet. For meg vil det også være en fin måte å øve på norsk på." },
     ] },
   },
   {
@@ -1160,7 +1160,7 @@ const VERB_BUCKETS = {
       ],
     },
     writing: { tasks: [
-      { prompt: "Skriv en tekst (60–80 ord) om en nasjonaldag eller høytid som er viktig der du kommer fra. Hvordan feires den?", minWords: 60 },
+      { prompt: "Skriv en tekst (60–80 ord) om en nasjonaldag eller høytid som er viktig der du kommer fra. Hvordan feires den?", minWords: 60, model: "I landet mitt er den viktigste høytiden nyttår. Da samles hele familien, selv om noen må reise langt. Vi rydder og pynter huset flere dager i forveien. På nyttårsaften spiser vi et stort måltid sammen, og barna får nye klær. Klokka tolv går alle ut for å se på fyrverkeriet. For meg handler dagen om familie og nye muligheter." },
     ] },
   },
   {
@@ -1186,8 +1186,8 @@ const VERB_BUCKETS = {
       ],
     },
     writing: { tasks: [
-      { prompt: "Skriv en tekst (60–80 ord) om hvordan du forbereder deg til et jobbintervju, eller om en erfaring du har hatt med intervjuer.", minWords: 60 },
-      { prompt: "Skriv en kort takk-e-post (minst 40 ord) til en arbeidsgiver etter et jobbintervju.", minWords: 40 },
+      { prompt: "Skriv en tekst (60–80 ord) om hvordan du forbereder deg til et jobbintervju, eller om en erfaring du har hatt med intervjuer.", minWords: 60, model: "Før et jobbintervju leser jeg mye om bedriften. Jeg prøver å finne ut hva de jobber med, og hvilke verdier de har. Så forbereder jeg svar på vanlige spørsmål, for eksempel hvorfor jeg vil ha jobben. Jeg øver høyt hjemme, gjerne sammen med en venn. Dagen før legger jeg fram klærne mine og sjekker hvor lang tid reisen tar. Da føler jeg meg rolig." },
+      { prompt: "Skriv en kort takk-e-post (minst 40 ord) til en arbeidsgiver etter et jobbintervju.", minWords: 40, model: "Hei Kari,\n\nTusen takk for et hyggelig intervju i går. Det var interessant å høre mer om prosjektene deres og om hvordan teamet jobber sammen. Etter samtalen er jeg enda mer motivert for stillingen. Gi gjerne beskjed hvis dere trenger mer informasjon fra meg.\n\nMed vennlig hilsen\nJonas Berg" },
     ] },
   },
   {
@@ -1213,7 +1213,7 @@ const VERB_BUCKETS = {
       ],
     },
     writing: { tasks: [
-      { prompt: "Skriv en tekst (60–80 ord) om helsevesenet der du bor, eller om en erfaring du har hatt med lege eller sykehus.", minWords: 60 },
+      { prompt: "Skriv en tekst (60–80 ord) om helsevesenet der du bor, eller om en erfaring du har hatt med lege eller sykehus.", minWords: 60, model: "Jeg synes helsevesenet i Norge fungerer ganske godt. Alle har en fastlege, og det er enkelt å bestille time på nettet. Da sønnen min brakk armen i fjor, fikk vi rask hjelp på legevakten, og alle var veldig vennlige. Likevel kan det ta lang tid å få time hos spesialist. Jeg håper at ventetiden blir kortere i framtiden." },
     ] },
   },
   {
@@ -1239,7 +1239,7 @@ const VERB_BUCKETS = {
       ],
     },
     writing: { tasks: [
-      { prompt: "Skriv en tekst (60–80 ord) om hvordan kildesortering eller resirkulering fungerer der du bor, og hva du synes om det.", minWords: 60 },
+      { prompt: "Skriv en tekst (60–80 ord) om hvordan kildesortering eller resirkulering fungerer der du bor, og hva du synes om det.", minWords: 60, model: "Der jeg bor, sorterer vi søppelet i flere dunker. Vi har egne dunker for matavfall, papir, plast og restavfall. Glass og metall leverer vi i containere ved butikken. I begynnelsen syntes jeg det var litt vanskelig å huske alt, men nå er det blitt en vane. Jeg synes kildesortering er viktig, fordi vi må ta vare på miljøet for barna våre." },
     ] },
   },
   {
@@ -1265,7 +1265,7 @@ const VERB_BUCKETS = {
       ],
     },
     writing: { tasks: [
-      { prompt: "Skriv en tekst (60–80 ord) om en tur du har vært på i naturen, eller om hvorfor friluftsliv er viktig for deg.", minWords: 60 },
+      { prompt: "Skriv en tekst (60–80 ord) om en tur du har vært på i naturen, eller om hvorfor friluftsliv er viktig for deg.", minWords: 60, model: "I sommer gikk jeg til Preikestolen sammen med noen venner. Vi startet tidlig om morgenen for å unngå de mange turistene. Stien var bratt og steinete, men utsikten på toppen var helt fantastisk. Vi satt lenge og spiste matpakke mens vi så ned på fjorden. Friluftsliv er viktig for meg fordi jeg slapper av og glemmer stresset fra jobben." },
     ] },
   },
   {
@@ -1291,7 +1291,7 @@ const VERB_BUCKETS = {
       ],
     },
     writing: { tasks: [
-      { prompt: "Skriv en tekst (60–80 ord) om hvordan man kan balansere jobb og familieliv, basert på egne erfaringer eller meninger.", minWords: 60 },
+      { prompt: "Skriv en tekst (60–80 ord) om hvordan man kan balansere jobb og familieliv, basert på egne erfaringer eller meninger.", minWords: 60, model: "Det er ikke alltid lett å balansere jobb og familieliv. Etter min mening er fleksibel arbeidstid veldig viktig. Hvis jeg kan begynne tidlig, rekker jeg å hente barna i barnehagen. Det hjelper også å planlegge uka sammen med partneren min. I tillegg prøver jeg å ikke sjekke e-post om kvelden. Da får jeg mer tid og overskudd til familien." },
     ] },
   },
   {
@@ -1322,7 +1322,7 @@ const VERB_BUCKETS = {
       ],
     },
     writing: { tasks: [
-      { prompt: "Skriv en argumenterende tekst (150–200 ord) om følgende påstand: 'Kommunene bør få mer ressurser til introduksjonsprogrammet for innvandrere.' Presenter din mening og støtt den med minst to argumenter. Du kan bruke ord som til tross for, følgelig, samtidig som og derimot.", minWords: 150 },
+      { prompt: "Skriv en argumenterende tekst (150–200 ord) om følgende påstand: 'Kommunene bør få mer ressurser til introduksjonsprogrammet for innvandrere.' Presenter din mening og støtt den med minst to argumenter. Du kan bruke ord som til tross for, følgelig, samtidig som og derimot.", minWords: 150, model: "Introduksjonsprogrammet skal gi nyankomne flyktninger grunnleggende kunnskaper i norsk og forberede dem på arbeidslivet. Etter min mening bør kommunene få mer ressurser til dette programmet.\n\nFor det første er språket nøkkelen til både jobb og deltakelse i samfunnet. Mange deltakere har i dag for få timer undervisning, og klassene er ofte store. Med mer ressurser kunne kommunene ansatt flere lærere og tilbudt mer individuell oppfølging. Følgelig ville flere bestått Norskprøven på et høyere nivå.\n\nFor det andre lønner det seg for samfunnet. Når flere kommer raskt i arbeid, betaler de skatt og trenger mindre økonomisk støtte. Samtidig som staten sparer penger på sikt, får den enkelte en bedre hverdag.\n\nKritikere mener derimot at pengene heller bør brukes på skoler og eldreomsorg. Til tross for dette tror jeg at en investering i integrering vil gi gevinst for alle. Derfor støtter jeg påstanden." },
     ] },
   },
   {
@@ -1353,7 +1353,7 @@ const VERB_BUCKETS = {
       ],
     },
     writing: { tasks: [
-      { prompt: "Skriv en argumenterende tekst (150–200 ord) om følgende påstand: 'Staten bør bygge flere rimelige boliger for å løse boligkrisen.' Presenter din mening og støtt den med minst to argumenter. Du kan bruke ord som til tross for, følgelig, samtidig som og derimot.", minWords: 150 },
+      { prompt: "Skriv en argumenterende tekst (150–200 ord) om følgende påstand: 'Staten bør bygge flere rimelige boliger for å løse boligkrisen.' Presenter din mening og støtt den med minst to argumenter. Du kan bruke ord som til tross for, følgelig, samtidig som og derimot.", minWords: 150, model: "Boligprisene i de store norske byene har økt kraftig de siste årene. Jeg mener at staten bør bygge flere rimelige boliger for å løse boligkrisen.\n\nFor det første er det i dag svært vanskelig for unge og for folk med vanlige inntekter å kjøpe sin første bolig. Mange må låne mye penger eller få hjelp fra foreldrene. Følgelig blir forskjellene mellom folk større. Hvis staten bygger flere rimelige boliger, kan flere få en trygg plass å bo.\n\nFor det andre kan et større tilbud av boliger dempe prisveksten. Samtidig som flere boliger blir bygd, blir konkurransen om de eksisterende boligene mindre.\n\nNoen hevder derimot at staten ikke bør blande seg inn i boligmarkedet, og at private utbyggere gjør jobben bedre. Til tross for dette mener jeg at markedet alene ikke har klart å løse problemet. Derfor må staten ta et større ansvar, for eksempel gjennom leie-til-eie-ordninger." },
     ] },
   },
   {
@@ -1384,7 +1384,7 @@ const VERB_BUCKETS = {
       ],
     },
     writing: { tasks: [
-      { prompt: "Skriv en argumenterende tekst (150–200 ord) om følgende påstand: 'Sosiale medier gjør mer skade enn nytte for ungdom.' Presenter din mening og støtt den med minst to argumenter. Du kan bruke ord som til tross for, følgelig, samtidig som og derimot.", minWords: 150 },
+      { prompt: "Skriv en argumenterende tekst (150–200 ord) om følgende påstand: 'Sosiale medier gjør mer skade enn nytte for ungdom.' Presenter din mening og støtt den med minst to argumenter. Du kan bruke ord som til tross for, følgelig, samtidig som og derimot.", minWords: 150, model: "Sosiale medier er en stor del av hverdagen til de fleste ungdommer. Etter min mening gjør de mer skade enn nytte, selv om de også har noen fordeler.\n\nPå den ene siden kan ungdom holde kontakt med venner, lære nye ting og finne andre med samme interesser. Dette kan være spesielt viktig for dem som føler seg ensomme.\n\nPå den andre siden viser flere undersøkelser at mye bruk av sosiale medier kan føre til dårligere søvn og lavere selvtillit. Ungdom sammenligner seg hele tiden med perfekte bilder av andre. Følgelig føler mange at de ikke er gode nok. I tillegg kan mobbing på nett være vanskelig å stoppe, fordi den fortsetter også etter skoletid.\n\nTil tross for fordelene mener jeg derfor at skadene er størst. Samtidig som foreldre bør snakke mer med barna sine om nettbruk, bør plattformene få strengere regler for aldersgrenser." },
     ] },
   },
   {
@@ -1415,7 +1415,7 @@ const VERB_BUCKETS = {
       ],
     },
     writing: { tasks: [
-      { prompt: "Skriv en argumenterende tekst (150–200 ord) om følgende påstand: 'Norge bør stanse all ny oljeleting umiddelbart.' Presenter din mening og støtt den med minst to argumenter. Du kan bruke ord som til tross for, følgelig, samtidig som og derimot.", minWords: 150 },
+      { prompt: "Skriv en argumenterende tekst (150–200 ord) om følgende påstand: 'Norge bør stanse all ny oljeleting umiddelbart.' Presenter din mening og støtt den med minst to argumenter. Du kan bruke ord som til tross for, følgelig, samtidig som og derimot.", minWords: 150, model: "Olje og gass har gjort Norge til et av verdens rikeste land. Likevel diskuteres det om vi bør stanse all ny oljeleting umiddelbart. Jeg er uenig i påstanden, selv om jeg forstår argumentene.\n\nPå den ene siden er klimaendringene et av vår tids største problemer, og verden må kutte utslippene raskt. Kritikere mener at ny leting sender et feil signal og forsinker det grønne skiftet.\n\nPå den andre siden er titusenvis av arbeidsplasser knyttet til petroleumsnæringen. Hvis all leting stanses umiddelbart, kan mange miste jobben, spesielt på Vestlandet. Følgelig vil det bli vanskeligere å finansiere velferdsstaten. Dessuten trenger Europa fortsatt norsk gass i mange år framover.\n\nTil tross for at jeg ønsker en grønnere framtid, mener jeg derfor at overgangen må skje gradvis. Samtidig som vi produserer olje og gass, bør vi bruke kompetansen og inntektene til å bygge opp fornybar energi, for eksempel havvind." },
     ] },
   },
   {
@@ -1446,7 +1446,7 @@ const VERB_BUCKETS = {
       ],
     },
     writing: { tasks: [
-      { prompt: "Skriv en argumenterende tekst (150–200 ord) om følgende påstand: 'Hjemmekontor bør være en fast rettighet for alle som kan utføre jobben sin digitalt.' Presenter din mening og støtt den med minst to argumenter. Du kan bruke ord som til tross for, følgelig, samtidig som og derimot.", minWords: 150 },
+      { prompt: "Skriv en argumenterende tekst (150–200 ord) om følgende påstand: 'Hjemmekontor bør være en fast rettighet for alle som kan utføre jobben sin digitalt.' Presenter din mening og støtt den med minst to argumenter. Du kan bruke ord som til tross for, følgelig, samtidig som og derimot.", minWords: 150, model: "Etter pandemien har mange fått erfaring med å jobbe hjemmefra. Jeg mener likevel ikke at hjemmekontor bør være en fast rettighet for alle.\n\nPå den ene siden har hjemmekontor tydelige fordeler. Man sparer tid på reising, og mange kan konsentrere seg bedre uten forstyrrelser. Det blir også lettere å kombinere jobb og familieliv.\n\nPå den andre siden er arbeidsplassen et sosialt fellesskap. Nye ansatte lærer mye av å sitte sammen med erfarne kollegaer, og gode ideer oppstår ofte i uformelle samtaler ved kaffemaskinen. Hvis alle har rett til å jobbe hjemme, kan dette fellesskapet svekkes. Følgelig kan både samarbeid og trivsel bli dårligere.\n\nTil tross for fordelene mener jeg derfor at hjemmekontor bør avtales mellom arbeidsgiver og arbeidstaker. Derimot bør det gjerne bli vanlig med en fleksibel ordning, for eksempel to dager hjemme og tre dager på kontoret." },
     ] },
   },
   {
@@ -1477,7 +1477,7 @@ const VERB_BUCKETS = {
       ],
     },
     writing: { tasks: [
-      { prompt: "Skriv en argumenterende tekst (150–200 ord) om følgende påstand: 'Norge bør innføre universell basisinntekt for alle innbyggere.' Presenter din mening og støtt den med minst to argumenter. Du kan bruke ord som til tross for, følgelig, samtidig som og derimot.", minWords: 150 },
+      { prompt: "Skriv en argumenterende tekst (150–200 ord) om følgende påstand: 'Norge bør innføre universell basisinntekt for alle innbyggere.' Presenter din mening og støtt den med minst to argumenter. Du kan bruke ord som til tross for, følgelig, samtidig som og derimot.", minWords: 150, model: "Universell basisinntekt betyr at alle innbyggere får et fast beløp fra staten hver måned, uansett om de jobber eller ikke. Jeg er skeptisk til at Norge bør innføre en slik ordning.\n\nTilhengerne mener at basisinntekt gir trygghet og frihet. Folk kan ta videreutdanning, starte egen bedrift eller ta vare på familien uten å være redde for økonomien. I tillegg kan ordningen erstatte mye byråkrati.\n\nDerimot er ordningen svært dyr. Hvis alle skal få nok penger til å leve, må skattene økes kraftig. Følgelig kan det bli mindre attraktivt å jobbe, og da blir det færre som betaler inn til fellesskapet. Samtidig som Norge får flere eldre, trenger vi at flest mulig er i arbeid.\n\nTil tross for at målet om trygghet er godt, tror jeg derfor at det er bedre å forbedre dagens velferdsordninger. Pilotprosjekter kan likevel gi nyttig kunnskap." },
     ] },
   },
   {
@@ -1508,7 +1508,7 @@ const VERB_BUCKETS = {
       ],
     },
     writing: { tasks: [
-      { prompt: "Skriv en argumenterende tekst (150–200 ord) om følgende påstand: 'Kjønnskvotering i lederstillinger er et nødvendig virkemiddel for økt likestilling.' Presenter din mening og støtt den med minst to argumenter. Du kan bruke ord som til tross for, følgelig, samtidig som og derimot.", minWords: 150 },
+      { prompt: "Skriv en argumenterende tekst (150–200 ord) om følgende påstand: 'Kjønnskvotering i lederstillinger er et nødvendig virkemiddel for økt likestilling.' Presenter din mening og støtt den med minst to argumenter. Du kan bruke ord som til tross for, følgelig, samtidig som og derimot.", minWords: 150, model: "Kjønnskvotering betyr at en viss andel av lederstillingene skal gå til det underrepresenterte kjønnet. Jeg mener at dette kan være et nødvendig virkemiddel, men bare i en periode.\n\nFor det første viser statistikken at kvinner fortsatt er i mindretall i toppledelsen, selv om flere kvinner enn menn tar høyere utdanning. Det tyder på at det finnes barrierer som ikke forsvinner av seg selv. Følgelig kan kvotering bidra til å bryte gamle mønstre.\n\nFor det andre trenger unge kvinner rollemodeller. Samtidig som flere kvinner blir ledere, blir det mer naturlig for neste generasjon å søke slike stillinger.\n\nMotstanderne hevder derimot at alle skal ansettes bare på grunnlag av kompetanse, og at kvotering kan gi inntrykk av at kvinnene ikke fortjener jobben. Til tross for dette argumentet mener jeg at kvotering er nødvendig for å få en rettferdig start. Derfor bør ordningen brukes midlertidig og evalueres jevnlig." },
     ] },
   },
   {
@@ -1539,7 +1539,7 @@ const VERB_BUCKETS = {
       ],
     },
     writing: { tasks: [
-      { prompt: "Skriv en argumenterende tekst (150–200 ord) om følgende påstand: 'Mobiltelefoner bør forbys i grunnskolen i skoletiden.' Presenter din mening og støtt den med minst to argumenter. Du kan bruke ord som til tross for, følgelig, samtidig som og derimot.", minWords: 150 },
+      { prompt: "Skriv en argumenterende tekst (150–200 ord) om følgende påstand: 'Mobiltelefoner bør forbys i grunnskolen i skoletiden.' Presenter din mening og støtt den med minst to argumenter. Du kan bruke ord som til tross for, følgelig, samtidig som og derimot.", minWords: 150, model: "Mange skoler har allerede innført mobilforbud, og nå diskuteres det om dette bør gjelde alle grunnskoler. Jeg er enig i påstanden.\n\nFor det første kan mobilen være en stor forstyrrelse i undervisningen. Når elevene får varsler hele tiden, blir det vanskelig å konsentrere seg. Følgelig lærer de mindre.\n\nFor det andre kan et forbud gjøre friminuttene mer sosiale. I stedet for å se på skjermen leker og snakker barna med hverandre. Dessuten blir det mindre mobbing på sosiale medier i skoletiden.\n\nNoen foreldre mener derimot at barna må kunne nå dem hvis noe skjer. Til tross for dette kan skolen alltid kontakte foreldrene hvis det er nødvendig. Samtidig som mobilen blir borte i skoletiden, bør skolen lære elevene å bruke digitale verktøy på en trygg måte. Derfor mener jeg at et mobilforbud vil gi en bedre skolehverdag." },
     ] },
   },
   {
@@ -1570,7 +1570,7 @@ const VERB_BUCKETS = {
       ],
     },
     writing: { tasks: [
-      { prompt: "Skriv en argumenterende tekst (150–200 ord) om følgende påstand: 'Private helsetilbud bør begrenses for å styrke det offentlige helsevesenet.' Presenter din mening og støtt den med minst to argumenter. Du kan bruke ord som til tross for, følgelig, samtidig som og derimot.", minWords: 150 },
+      { prompt: "Skriv en argumenterende tekst (150–200 ord) om følgende påstand: 'Private helsetilbud bør begrenses for å styrke det offentlige helsevesenet.' Presenter din mening og støtt den med minst to argumenter. Du kan bruke ord som til tross for, følgelig, samtidig som og derimot.", minWords: 150, model: "I Norge har bruken av private helsetilbud økt de siste årene. Jeg er delvis uenig i at de bør begrenses.\n\nPå den ene siden kan private tilbud føre til et todelt helsevesen, der de som har god råd, får raskere hjelp enn andre. Samtidig som private klinikker tilbyr høyere lønn, kan de dessuten trekke leger og sykepleiere bort fra de offentlige sykehusene. Følgelig kan ventetiden i det offentlige bli enda lengre.\n\nPå den andre siden kan private tilbud avlaste det offentlige. Når noen pasienter behandles privat, blir køene i det offentlige kortere. I tillegg kan staten kjøpe tjenester fra private når ventetiden er for lang.\n\nTil tross for risikoen mener jeg derfor at private tilbud ikke bør begrenses kraftig. Derimot bør staten sørge for at det offentlige helsevesenet får nok ressurser, slik at alle får god behandling uansett økonomi." },
     ] },
   },
 ];
@@ -1616,7 +1616,7 @@ const EVALUATIONS = {
       ],
       maxPlays: 2,
     },
-    writing: { prompt: "Skriv en kort tekst (40–60 ord) om en vanlig helg for deg. Hva pleier du å gjøre?", minWords: 40 },
+    writing: { prompt: "Skriv en kort tekst (40–60 ord) om en vanlig helg for deg. Hva pleier du å gjøre?", minWords: 40, model: "En vanlig helg for meg er ganske rolig. På lørdag morgen sover jeg lenge og spiser en god frokost. Etterpå handler jeg mat og rydder i leiligheten. Om kvelden møter jeg ofte venner, eller vi ser en film hjemme. På søndag går jeg tur i skogen hvis været er fint." },
   },
 };
 
@@ -2370,51 +2370,350 @@ function ListeningSection({ data, onSubmit, voiceInfo, maxPlays = 2 }) {
   );
 }
 
-const WRITING_FEEDBACK_SYSTEM = `You are assessing pieces of Norwegian writing from learners preparing for Norskprøven (HK-dir's official Norwegian test, CEFR A1–B2). For each submission you'll receive the task prompt and the learner's response.
+const DIALOGUES = {
+  "A1": [
+    {
+      "title": "Bli kjent",
+      "turns": [
+        [
+          "Hei! Hva heter du?",
+          "Hei! Jeg heter Sara. Og du?"
+        ],
+        [
+          "Jeg heter Ola. Hvor kommer du fra?",
+          "Jeg kommer fra Polen, men nå bor jeg i Stavanger."
+        ],
+        [
+          "Så fint! Hva jobber du med?",
+          "Jeg er sykepleier. Jeg jobber på et sykehus."
+        ],
+        [
+          "Hva liker du å gjøre på fritiden?",
+          "Jeg liker å lese og gå tur."
+        ]
+      ]
+    },
+    {
+      "title": "På kafé",
+      "turns": [
+        [
+          "Hei! Hva vil du ha?",
+          "Hei! Jeg vil gjerne ha en kaffe, takk."
+        ],
+        [
+          "Stor eller liten?",
+          "En liten, takk."
+        ],
+        [
+          "Vil du ha noe å spise også?",
+          "Ja, jeg tar en kanelbolle."
+        ],
+        [
+          "Det blir åttifem kroner.",
+          "Kan jeg betale med kort?"
+        ]
+      ]
+    }
+  ],
+  "A2": [
+    {
+      "title": "Helgen",
+      "turns": [
+        [
+          "Hva gjorde du i helgen?",
+          "På lørdag var jeg på kino med en venn. På søndag slappet jeg av hjemme."
+        ],
+        [
+          "Hvilken film så dere?",
+          "Vi så en norsk komedie. Den var veldig morsom."
+        ],
+        [
+          "Pleier du å gå på kino?",
+          "Nei, ikke så ofte. Det er ganske dyrt, så jeg ser mest film hjemme."
+        ],
+        [
+          "Hva skal du gjøre neste helg?",
+          "Jeg skal besøke søsteren min i Bergen, hvis været er fint."
+        ]
+      ]
+    },
+    {
+      "title": "Hos legen",
+      "turns": [
+        [
+          "Hei, hva kan jeg hjelpe deg med i dag?",
+          "Hei. Jeg har hatt vondt i ryggen i en uke."
+        ],
+        [
+          "Hvordan skjedde det?",
+          "Jeg tror det skjedde da jeg bar tunge esker på jobben."
+        ],
+        [
+          "Har du tatt noen medisiner?",
+          "Ja, jeg har tatt smertestillende, men det hjelper ikke så mye."
+        ],
+        [
+          "Du bør hvile og gå rolige turer. Har du noen spørsmål?",
+          "Ja, kan jeg jobbe som vanlig, eller trenger jeg sykmelding?"
+        ]
+      ]
+    }
+  ],
+  "B1": [
+    {
+      "title": "Jobb",
+      "turns": [
+        [
+          "Hvorfor valgte du det yrket du har i dag?",
+          "Jeg har alltid likt å løse praktiske problemer, og derfor ble jeg ingeniør. Jeg liker også at jobben er variert."
+        ],
+        [
+          "Hva er det beste med jobben din?",
+          "Det beste er kollegaene mine. Vi samarbeider godt, og jeg lærer noe nytt hver dag."
+        ],
+        [
+          "Er det noe du ønsker å forandre?",
+          "Kanskje at vi hadde færre møter. Noen ganger bruker vi mer tid på å snakke enn på å jobbe."
+        ],
+        [
+          "Hvor ser du deg selv om fem år?",
+          "Jeg håper at jeg har en lederstilling, og at jeg snakker så godt norsk at jeg kan holde presentasjoner uten å være nervøs."
+        ]
+      ]
+    },
+    {
+      "title": "Miljø",
+      "turns": [
+        [
+          "Hva gjør du selv for miljøet?",
+          "Jeg sorterer søppel og prøver å sykle til jobben når været tillater det."
+        ],
+        [
+          "Tror du det hjelper når enkeltpersoner gjør slike ting?",
+          "Ja, litt. Men jeg tror at de store endringene må komme fra politikerne og industrien."
+        ],
+        [
+          "Synes du at flybilletter burde bli dyrere?",
+          "Det er vanskelig. På den ene siden forurenser fly mye, men på den andre siden må folk kunne besøke familien sin."
+        ],
+        [
+          "Hva er løsningen, da?",
+          "Jeg tror vi trenger bedre og billigere tog, slik at det blir lettere å velge det."
+        ]
+      ]
+    }
+  ],
+  "B2": [
+    {
+      "title": "Teknologi og arbeid",
+      "turns": [
+        [
+          "Mange frykter at kunstig intelligens vil ta arbeidsplasser. Hva tenker du?",
+          "Jeg tror noen oppgaver vil forsvinne, men at det samtidig oppstår nye yrker. Det har skjedd ved alle teknologiske skifter."
+        ],
+        [
+          "Men er det ikke urettferdig for dem som mister jobben?",
+          "Jo, og derfor er det avgjørende at samfunnet satser på etter- og videreutdanning, slik at ingen blir hengende etter."
+        ],
+        [
+          "Hvem bør betale for den utdanningen?",
+          "Etter min mening bør ansvaret deles mellom staten og arbeidsgiverne, ettersom begge tjener på en kompetent arbeidsstyrke."
+        ],
+        [
+          "Bruker du selv slike verktøy?",
+          "Ja, jeg bruker dem til å oversette og strukturere tekster, men jeg kontrollerer alltid resultatet selv."
+        ]
+      ]
+    },
+    {
+      "title": "Integrering",
+      "turns": [
+        [
+          "Hva mener du er det viktigste for å bli integrert i Norge?",
+          "Språket er utvilsomt det viktigste. Uten norsk er det vanskelig å få jobb og å bli kjent med nordmenn."
+        ],
+        [
+          "Mange sier at nordmenn er vanskelige å bli kjent med. Er du enig?",
+          "Delvis. Nordmenn kan virke reserverte i starten, men gjennom frivillig arbeid og fritidsaktiviteter har jeg fått gode venner."
+        ],
+        [
+          "Hva kunne kommunene gjort bedre?",
+          "De kunne for eksempel koblet nyankomne med lokale mentorer, slik at de får et nettverk fra første dag."
+        ],
+        [
+          "Har du selv opplevd noen utfordringer?",
+          "Ja, særlig i begynnelsen. Likevel har utfordringene lært meg mye, både om Norge og om meg selv."
+        ]
+      ]
+    }
+  ]
+};
 
-Give feedback in English, structured as plain text with exactly these labelled sections:
-- Estimated level: a single CEFR estimate (A1, A2, B1, or B2) based on vocabulary range, sentence complexity, and accuracy.
-- Strengths: 2-3 short, specific points — not generic praise.
-- To improve: 2-3 concrete corrections, quoting the learner's own words where useful so they can see exactly what to fix (word order, verb conjugation, gender agreement, preposition choice, etc. are common Norwegian trouble spots).
-- Model sentence: one improved sentence based on their writing, showing the fix in context.
+// ---------------------------------------------------------------------------
+// Free self-check tools. These replace the old AI feedback, which needed a
+// paid API key. Nothing here leaves the browser, and nothing claims to
+// correct grammar: the text check only looks at length, sentences and
+// linking words, and the checklists/model answers let learners judge
+// their own work.
+// ---------------------------------------------------------------------------
 
-Keep the whole response under 220 words. Be honest about the level and gaps, but encouraging in tone — these are self-directed exam candidates, not students in a classroom with a teacher to fall back on.`;
+const CONNECTORS = {
+  a: ["og", "men", "fordi", "så", "når", "først", "etterpå"],
+  b: ["fordi", "når", "at", "som", "hvis", "derfor", "likevel", "i tillegg", "etter min mening", "for eksempel"],
+  c: ["dessuten", "følgelig", "derimot", "til tross for", "samtidig som", "på den ene siden", "på den andre siden", "derfor", "likevel", "for det første"],
+};
+
+const WRITING_CHECKLISTS = {
+  a: [
+    "Jeg har svart på alle delene av oppgaven.",
+    "Verbet står på plass nummer to: «I dag spiser jeg …», ikke «I dag jeg spiser …».",
+    "Jeg har brukt riktig tid (nå = presens, i går = preteritum).",
+    "Hver setning begynner med stor bokstav og slutter med punktum.",
+    "Jeg har bundet setningene sammen med og, men eller fordi.",
+  ],
+  b: [
+    "Jeg har svart på alle delene av oppgaven.",
+    "Teksten har en begynnelse, en midtdel og en avslutning.",
+    "Verbet står på plass nummer to i hovedsetninger: «Etterpå gikk vi …».",
+    "I leddsetninger står «ikke» før verbet: «fordi jeg ikke har tid».",
+    "Jeg har brukt riktig tid, særlig preteritum og perfektum.",
+    "Er det en e-post? Den har hilsen i starten og i slutten.",
+    "Jeg har brukt forskjellige ord og ikke gjentatt de samme hele tiden.",
+  ],
+  c: [
+    "Meningen min kommer tydelig fram i innledningen.",
+    "Jeg har minst to argumenter, hvert i eget avsnitt.",
+    "Jeg har nevnt et motargument og svart på det.",
+    "Jeg har brukt bindeord som dessuten, følgelig, derimot og til tross for.",
+    "Avslutningen oppsummerer meningen min.",
+    "Setningsadverb (ikke, alltid, aldri) står riktig i leddsetninger.",
+    "Språket er formelt nok: ingen slang eller forkortelser.",
+  ],
+};
+
+const SPEAKING_CHECKLIST = [
+  "Jeg snakket i minst ett minutt uten lange pauser.",
+  "Jeg svarte på det oppgaven faktisk spør om.",
+  "Jeg ga grunner eller eksempler (fordi, for eksempel).",
+  "Jeg brukte bindeord som først, så, etterpå, men og derfor.",
+  "Da jeg lyttet til opptaket, var uttalen tydelig. (Sammenlign med høyttaler-knappen.)",
+  "Når jeg ikke fant et ord, forklarte jeg det på en annen måte i stedet for å stoppe.",
+];
+
+function writingTier(minWords) {
+  if (minWords >= 150) return "c";
+  if (minWords >= 40) return "b";
+  return "a";
+}
+
+function maxWordsFrom(prompt) {
+  const m = /\((\d+)\s*[–-]\s*(\d+)\s*ord\)/.exec(prompt || "");
+  return m ? Number(m[2]) : null;
+}
+
+function hasPhrase(text, phrase) {
+  const esc = phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return new RegExp(`(^|[^a-zæøåA-ZÆØÅ])${esc}($|[^a-zæøåA-ZÆØÅ])`, "i").test(text);
+}
+
+// Returns a list of { status: "ok" | "tip", text } lines.
+function checkText(text, { minWords = 0, maxWords = null, tier = "b" } = {}) {
+  const clean = text.trim();
+  const words = clean.split(/\s+/).filter(Boolean).length;
+  const sentences = clean.split(/(?<=[.!?])\s+/).map((s) => s.trim()).filter(Boolean);
+  const out = [];
+
+  if (minWords) {
+    if (words < minWords) out.push({ status: "tip", text: `${words} ord. Oppgaven ber om minst ${minWords}. Skriv litt mer.` });
+    else if (maxWords && words > maxWords + 15) out.push({ status: "tip", text: `${words} ord. Oppgaven ber om ${minWords}–${maxWords}. Prøv å korte ned litt.` });
+    else out.push({ status: "ok", text: `${words} ord. Lengden passer til oppgaven.` });
+  } else {
+    out.push({ status: "ok", text: `${words} ord, ${sentences.length} ${sentences.length === 1 ? "setning" : "setninger"}.` });
+  }
+
+  const lower = sentences.filter((s) => /^[a-zæøå]/.test(s)).length;
+  if (lower > 0) out.push({ status: "tip", text: `${lower} ${lower === 1 ? "setning begynner" : "setninger begynner"} med liten bokstav.` });
+  if (clean && !/[.!?]["»)]?$/.test(clean)) out.push({ status: "tip", text: "Teksten slutter uten punktum." });
+
+  const jeg = sentences.filter((s) => /^jeg\s/i.test(s)).length;
+  if (sentences.length >= 3 && jeg / sentences.length > 0.5) {
+    out.push({ status: "tip", text: `${jeg} av ${sentences.length} setninger begynner med «Jeg». Varier ved å starte med tid eller sted, og husk at verbet kommer på plass nummer to: «I helgen liker jeg …».` });
+  }
+
+  const avg = sentences.length ? words / sentences.length : 0;
+  if (tier !== "a" && sentences.length >= 3 && avg < 6) out.push({ status: "tip", text: "Setningene er veldig korte. Prøv å binde noen sammen med fordi, når eller som." });
+  if (avg > 28) out.push({ status: "tip", text: "Noen setninger er veldig lange. Del dem opp så de blir lettere å lese." });
+
+  const list = CONNECTORS[tier] || CONNECTORS.b;
+  const used = list.filter((c) => hasPhrase(clean, c));
+  const unused = list.filter((c) => !used.includes(c)).slice(0, 4);
+  if (used.length >= (tier === "a" ? 2 : 3)) out.push({ status: "ok", text: `Bindeord du har brukt: ${used.join(", ")}.` });
+  else out.push({ status: "tip", text: `${used.length ? `Du har brukt ${used.join(", ")}. ` : ""}Prøv også: ${unused.join(", ")}.` });
+
+  return out;
+}
+
+function CheckResults({ results }) {
+  return (
+    <div style={{ marginTop: 12, background: C.card, border: `1px solid ${C.border}`, borderRadius: 10, padding: "12px 14px" }}>
+      <div style={{ fontSize: 11, letterSpacing: 1, color: C.muted, textTransform: "uppercase", fontWeight: 600, marginBottom: 8 }}>Enkel tekstsjekk</div>
+      {results.map((r, i) => (
+        <div key={i} style={{ display: "flex", gap: 8, alignItems: "flex-start", fontSize: 13, lineHeight: 1.5, color: C.body, marginBottom: 6 }}>
+          <span style={{ flexShrink: 0, marginTop: 2 }}>{r.status === "ok" ? <Check size={14} color={C.green} /> : <Info size={14} color={C.gold} />}</span>
+          <span>{r.text}</span>
+        </div>
+      ))}
+      <div lang="en" style={{ fontSize: 11.5, color: C.muted, lineHeight: 1.5, marginTop: 6 }}>
+        This check looks at length, sentences and linking words only. It doesn't correct grammar or spelling — use the checklist and the model answer for that.
+      </div>
+    </div>
+  );
+}
+
+function SelfChecklist({ items, title = "Sjekk selv" }) {
+  const [done, setDone] = useState({});
+  const count = items.filter((_, i) => done[i]).length;
+  return (
+    <div style={{ marginTop: 12, background: C.card, border: `1px solid ${C.border}`, borderRadius: 10, padding: "12px 14px" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 8 }}>
+        <span style={{ fontSize: 11, letterSpacing: 1, color: C.muted, textTransform: "uppercase", fontWeight: 600 }}>{title}</span>
+        <span style={{ fontSize: 12, color: count === items.length ? C.green : C.muted, fontWeight: 600 }}>{count} / {items.length}</span>
+      </div>
+      {items.map((item, i) => (
+        <label key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start", fontSize: 13, lineHeight: 1.5, color: C.body, marginBottom: 7, cursor: "pointer" }}>
+          <input type="checkbox" checked={!!done[i]} onChange={() => setDone((d) => ({ ...d, [i]: !d[i] }))} style={{ marginTop: 3, accentColor: C.navy, flexShrink: 0 }} />
+          <span style={{ textDecoration: done[i] ? "line-through" : "none", opacity: done[i] ? 0.7 : 1 }}>{item}</span>
+        </label>
+      ))}
+    </div>
+  );
+}
+
+function ModelAnswer({ text }) {
+  const [open, setOpen] = useState(false);
+  if (!text) return null;
+  return (
+    <div style={{ marginTop: 12 }}>
+      <button onClick={() => setOpen((o) => !o)} style={{ background: "none", border: `1px solid ${C.border}`, borderRadius: 8, padding: "7px 12px", fontSize: 12.5, color: C.navy, fontWeight: 600, cursor: "pointer" }}>
+        {open ? "Skjul modellsvar" : "Vis modellsvar"}
+      </button>
+      {!open && <span style={{ fontSize: 11.5, color: C.muted, marginLeft: 8 }}>Prøv selv først.</span>}
+      {open && (
+        <div style={{ marginTop: 10, background: C.goldBg, border: `1px solid ${C.gold}`, borderRadius: 10, padding: "12px 14px" }}>
+          <div style={{ fontSize: 13.5, lineHeight: 1.7, whiteSpace: "pre-line", color: C.ink }}>{text}</div>
+          <div style={{ fontSize: 11.5, color: C.muted, marginTop: 8 }}>Dette er ett mulig svar. Ditt kan være annerledes og like godt.</div>
+        </div>
+      )}
+    </div>
+  );
+}
 
 function WritingTask({ task, index }) {
   const [text, setText] = useState("");
-  const [feedback, setFeedback] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [checked, setChecked] = useState(false);
   const words = text.trim().split(/\s+/).filter(Boolean).length;
-
-  async function getFeedback() {
-    setLoading(true); setError(null); setFeedback(null);
-    try {
-      const res = await fetch("https://api.anthropic.com/v1/messages", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          model: "claude-sonnet-4-6",
-          max_tokens: 1000,
-          system: [
-            { type: "text", text: WRITING_FEEDBACK_SYSTEM, cache_control: { type: "ephemeral" } },
-          ],
-          messages: [{
-            role: "user",
-            content: `Task: "${task.prompt}"\n\nLearner's response:\n\n"${text}"`,
-          }],
-        }),
-      });
-      const data = await res.json();
-      const txt = (data.content || []).filter((c) => c.type === "text").map((c) => c.text).join("\n");
-      if (!txt) throw new Error("empty");
-      setFeedback(txt);
-    } catch (e) {
-      setError("Couldn't get feedback right now. You can still self-check against the grammar notes for this level pair.");
-    } finally {
-      setLoading(false);
-    }
-  }
+  const tier = writingTier(task.minWords);
+  const results = checked && words > 0 ? checkText(text, { minWords: task.minWords, maxWords: maxWordsFrom(task.prompt), tier }) : null;
 
   return (
     <div style={{ marginBottom: 24 }}>
@@ -2425,20 +2724,111 @@ function WritingTask({ task, index }) {
         onChange={(e) => setText(e.target.value)}
         placeholder="Skriv svaret ditt her ..."
         rows={6}
-        style={{ width: "100%", boxSizing: "border-box", border: `1px solid ${C.border}`, borderRadius: 8, padding: "10px 12px", fontSize: 14, fontFamily: "inherit", resize: "vertical" }}
+        style={{ width: "100%", boxSizing: "border-box", border: `1px solid ${C.border}`, borderRadius: 8, padding: "10px 12px", fontSize: 14, fontFamily: "inherit", resize: "vertical", background: C.card, color: C.ink }}
       />
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 8 }}>
         <span style={{ fontSize: 12, color: words >= task.minWords ? C.green : C.muted }}>{words} / {task.minWords}+ ord</span>
-        <button onClick={getFeedback} disabled={loading || words === 0} style={{ display: "flex", alignItems: "center", gap: 6, background: words === 0 ? "#EFEDE4" : C.navy, color: words === 0 ? C.muted : "#fff", border: "none", borderRadius: 8, padding: "8px 16px", fontSize: 13, fontWeight: 600, cursor: words === 0 ? "default" : "pointer" }}>
-          {loading ? <><Loader2 size={14} className="spin" /> Vurderer ...</> : "Få tilbakemelding"}
+        <button onClick={() => setChecked(true)} disabled={words === 0} style={{ background: words === 0 ? C.border : C.navy, color: words === 0 ? C.muted : C.bg, border: "none", borderRadius: 8, padding: "8px 16px", fontSize: 13, fontWeight: 600, cursor: words === 0 ? "default" : "pointer" }}>
+          Sjekk teksten
         </button>
       </div>
-      {error && <div style={{ marginTop: 10, fontSize: 12.5, color: C.red }}>{error}</div>}
-      {feedback && (
-        <div style={{ marginTop: 12, background: C.greenBg, border: `1px solid ${C.green}`, borderRadius: 10, padding: "14px 16px", fontSize: 13.5, lineHeight: 1.6, whiteSpace: "pre-line", color: "#2E4A38" }}>
-          {feedback}
+      {results && <CheckResults results={results} />}
+      {checked && <SelfChecklist items={WRITING_CHECKLISTS[tier]} />}
+      <ModelAnswer text={task.model} />
+    </div>
+  );
+}
+
+function SpeakingSelfCheck() {
+  const [text, setText] = useState("");
+  const [checked, setChecked] = useState(false);
+  const results = checked && text.trim() ? checkText(text, { tier: "b" }) : null;
+  return (
+    <div style={{ marginTop: 14 }}>
+      <SelfChecklist items={SPEAKING_CHECKLIST} title="Etter opptaket: sjekk selv" />
+      <textarea
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        placeholder="Valgfritt: skriv omtrent det du sa, så sjekker vi setninger og bindeord ..."
+        rows={3}
+        style={{ marginTop: 12, width: "100%", boxSizing: "border-box", border: `1px solid ${C.border}`, borderRadius: 8, padding: "10px 12px", fontSize: 13.5, fontFamily: "inherit", resize: "vertical", background: C.card, color: C.ink }}
+      />
+      <button onClick={() => setChecked(true)} disabled={!text.trim()} style={{ marginTop: 8, background: text.trim() ? C.navy : C.border, color: text.trim() ? C.bg : C.muted, border: "none", borderRadius: 8, padding: "8px 16px", fontSize: 13, fontWeight: 600, cursor: text.trim() ? "pointer" : "default" }}>
+        Sjekk teksten
+      </button>
+      {results && <CheckResults results={results} />}
+    </div>
+  );
+}
+
+function ScriptedDialogue({ level, voiceInfo }) {
+  const dialogues = DIALOGUES[level.id] || DIALOGUES.A2;
+  const [dIdx, setDIdx] = useState(0);
+  const [step, setStep] = useState(0);
+  const [shown, setShown] = useState(false);
+  const d = dialogues[dIdx % dialogues.length];
+  const finished = step >= d.turns.length;
+
+  function next() { setStep((s) => s + 1); setShown(false); }
+  function restart(nextDialogue = false) {
+    if (nextDialogue) setDIdx((i) => (i + 1) % dialogues.length);
+    setStep(0); setShown(false);
+  }
+
+  const bubble = (who, text, key) => (
+    <div key={key} style={{ display: "flex", justifyContent: who === "you" ? "flex-end" : "flex-start" }}>
+      <div style={{ maxWidth: "82%", background: who === "you" ? C.navy : C.card, color: who === "you" ? C.bg : C.ink, border: who === "you" ? "none" : `1px solid ${C.border}`, borderRadius: 12, padding: "9px 13px", fontSize: 14, lineHeight: 1.5 }}>
+        {who === "you" && <div style={{ fontSize: 10.5, opacity: 0.75, marginBottom: 2, textTransform: "uppercase", letterSpacing: 0.8 }}>Eksempelsvar</div>}
+        {text}
+        <span style={{ marginLeft: 6, verticalAlign: -3 }}><SpeakButton text={text} voiceInfo={voiceInfo} /></span>
+      </div>
+    </div>
+  );
+
+  return (
+    <div>
+      <div style={{ background: C.goldBg, border: `1px solid ${C.gold}`, borderRadius: 10, padding: "14px 16px", marginBottom: 16, fontSize: 12.5, color: C.ink, lineHeight: 1.7 }}>
+        <strong style={{ display: "block", marginBottom: 4 }}>Øv på samtale</strong>
+        Partneren sier en replikk. Svar høyt før du ser eksempelsvaret. Appen hører ikke hva du sier, så ta gjerne opp deg selv under og lytt etterpå.
+      </div>
+
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
+        <span style={{ fontFamily: "ui-serif, Georgia, serif", fontSize: 16, fontWeight: 700, color: C.ink }}>{d.title}</span>
+        <span style={{ fontSize: 12, color: C.muted }}>{Math.min(step + 1, d.turns.length)} / {d.turns.length}</span>
+      </div>
+
+      <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 14 }}>
+        {d.turns.slice(0, step).flatMap(([p, a], i) => [bubble("partner", p, `p${i}`), bubble("you", a, `a${i}`)])}
+        {!finished && bubble("partner", d.turns[step][0], "current")}
+        {!finished && shown && bubble("you", d.turns[step][1], "current-a")}
+      </div>
+
+      {!finished ? (
+        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+          {!shown ? (
+            <button onClick={() => setShown(true)} style={{ background: C.navy, color: C.bg, border: "none", borderRadius: 8, padding: "9px 16px", fontSize: 13, fontWeight: 600, cursor: "pointer" }}>
+              Jeg har svart – vis eksempelsvar
+            </button>
+          ) : (
+            <button onClick={next} style={{ background: C.navy, color: C.bg, border: "none", borderRadius: 8, padding: "9px 16px", fontSize: 13, fontWeight: 600, cursor: "pointer" }}>
+              Neste replikk →
+            </button>
+          )}
+          {step > 0 && <button onClick={() => restart(false)} style={{ background: "none", border: "none", color: C.muted, fontSize: 12.5, cursor: "pointer" }}>Start på nytt</button>}
+        </div>
+      ) : (
+        <div style={{ background: C.greenBg, border: `1px solid ${C.green}`, borderRadius: 10, padding: "12px 14px", fontSize: 13.5, color: C.ink }}>
+          <strong>Samtalen er ferdig!</strong> Øv den en gang til med egne svar, eller prøv en ny samtale.
+          <div style={{ display: "flex", gap: 8, marginTop: 10, flexWrap: "wrap" }}>
+            <button onClick={() => restart(false)} style={{ background: "none", border: `1px solid ${C.border}`, borderRadius: 8, padding: "7px 12px", fontSize: 12.5, color: C.ink, cursor: "pointer" }}>Øv igjen</button>
+            {dialogues.length > 1 && <button onClick={() => restart(true)} style={{ background: C.navy, color: C.bg, border: "none", borderRadius: 8, padding: "7px 12px", fontSize: 12.5, fontWeight: 600, cursor: "pointer" }}>Neste samtale →</button>}
+          </div>
         </div>
       )}
+
+      <div style={{ marginTop: 16 }}>
+        <Recorder label="Ta opp svarene dine" />
+      </div>
     </div>
   );
 }
@@ -3201,72 +3591,6 @@ function Recorder({ text = null, voiceInfo = null, label = "Ta opp deg selv" }) 
   );
 }
 
-const SPEAKING_FEEDBACK_SYSTEM = `You are coaching Norwegian learners preparing for the Norskprøven oral exam (HK-dir's official spoken test, CEFR A1–B2, live with a human examiner). For each submission you'll receive the speaking prompt and a typed-up version of roughly what the learner said out loud.
-
-Give feedback in English on this as SPOKEN Norwegian, not formal writing:
-- Note where it sounds natural and conversational versus stiff or overly written (a common issue for learners who studied mostly from books).
-- Flag 2-3 grammar or word-choice issues with quick, actionable fixes.
-- Give one tip for sounding more confident and fluent when saying this aloud — pacing, connector words, or a specific phrase to lean on.
-
-Keep the whole response under 180 words. Be encouraging but specific — vague praise doesn't help someone walking into a live exam.`;
-
-function SpeakingFeedback({ prompt }) {
-  const [text, setText] = useState("");
-  const [feedback, setFeedback] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-
-  async function getFeedback() {
-    setLoading(true); setError(null); setFeedback(null);
-    try {
-      const res = await fetch("https://api.anthropic.com/v1/messages", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          model: "claude-sonnet-4-6",
-          max_tokens: 800,
-          system: [
-            { type: "text", text: SPEAKING_FEEDBACK_SYSTEM, cache_control: { type: "ephemeral" } },
-          ],
-          messages: [{
-            role: "user",
-            content: `Speaking prompt: "${prompt}"\n\nWhat they said (typed up):\n\n"${text}"`,
-          }],
-        }),
-      });
-      const data = await res.json();
-      const txt = (data.content || []).filter((c) => c.type === "text").map((c) => c.text).join("\n");
-      if (!txt) throw new Error("empty");
-      setFeedback(txt);
-    } catch (e) {
-      setError("Couldn't get feedback right now — try again in a moment.");
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  return (
-    <div style={{ marginTop: 14 }}>
-      <textarea
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        placeholder="Skriv omtrent det du sa høyt (valgfritt) ..."
-        rows={3}
-        style={{ width: "100%", boxSizing: "border-box", border: `1px solid ${C.border}`, borderRadius: 8, padding: "10px 12px", fontSize: 13.5, fontFamily: "inherit", resize: "vertical" }}
-      />
-      <button onClick={getFeedback} disabled={loading || text.trim().length === 0} style={{ marginTop: 8, display: "flex", alignItems: "center", gap: 6, background: text.trim().length === 0 ? "#EFEDE4" : C.navy, color: text.trim().length === 0 ? C.muted : "#fff", border: "none", borderRadius: 8, padding: "8px 16px", fontSize: 13, fontWeight: 600, cursor: text.trim().length === 0 ? "default" : "pointer" }}>
-        {loading ? <><Loader2 size={14} className="spin" /> Vurderer ...</> : "Få tilbakemelding på det muntlige"}
-      </button>
-      {error && <div style={{ marginTop: 8, fontSize: 12.5, color: C.red }}>{error}</div>}
-      {feedback && (
-        <div style={{ marginTop: 10, background: C.greenBg, border: `1px solid ${C.green}`, borderRadius: 10, padding: "12px 14px", fontSize: 13, lineHeight: 1.6, whiteSpace: "pre-line", color: "#2E4A38" }}>
-          {feedback}
-        </div>
-      )}
-    </div>
-  );
-}
-
 function PhraseRow({ p, voiceInfo }) {
   return (
     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 10, background: C.card, border: `1px solid ${C.border}`, borderRadius: 10, padding: "11px 14px" }}>
@@ -3433,150 +3757,6 @@ function PersonalPhrasebook({ level, voiceInfo }) {
   );
 }
 
-function conversationSystemPrompt(level) {
-  return `You are a friendly Norwegian conversation partner helping a learner at CEFR level ${level.id} practice for the Norskprøven oral exam's paired-conversation task. Speak ONLY in Norwegian Bokmål, at vocabulary and grammar complexity appropriate for ${level.id}. Keep every reply short — 1 to 3 sentences, like natural spoken dialogue, never a written essay. Ask a natural follow-up question after most replies, the way a real conversation partner would, about everyday topics (family, work, weekend, hobbies, hometown, plans, food). Don't correct the learner's grammar mid-conversation unless they explicitly ask if something was correct — a real exam conversation flows without interruption. Never break character, never switch to English.`;
-}
-
-const CONVERSATION_EVAL_SYSTEM = `You are assessing a transcript of a Norwegian learner's conversation practice for the Norskprøven oral exam, based on HK-dir's public grading criteria for the speaking test: fluency, pronunciation, vocabulary, and grammar. You only have the text transcript, not audio, so explicitly note that pronunciation can't be judged from text and should be checked separately (e.g. against native audio in this app). Give feedback in English as plain text, one short paragraph each for fluency, vocabulary, and grammar, based only on the learner's turns, plus one closing tip. Keep the whole response under 200 words. Be honest but encouraging.`;
-
-function ConversationPartner({ level, voiceInfo }) {
-  const [messages, setMessages] = useState([]);
-  const [input, setInput] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [evaluation, setEvaluation] = useState(null);
-  const [evaluating, setEvaluating] = useState(false);
-
-  async function send() {
-    const text = input.trim();
-    if (!text || loading) return;
-    const history = [...messages, { role: "user", content: text }];
-    setMessages(history);
-    setInput("");
-    setLoading(true);
-    setError(null);
-    try {
-      const res = await fetch("https://api.anthropic.com/v1/messages", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          model: "claude-sonnet-4-6",
-          max_tokens: 300,
-          system: [
-            { type: "text", text: conversationSystemPrompt(level), cache_control: { type: "ephemeral" } },
-          ],
-          messages: history,
-        }),
-      });
-      const data = await res.json();
-      const txt = (data.content || []).filter((c) => c.type === "text").map((c) => c.text).join("\n");
-      if (!txt) throw new Error("empty");
-      setMessages((m) => [...m, { role: "assistant", content: txt }]);
-    } catch (e) {
-      setError("Samtalepartneren svarte ikke — prøv igjen om et øyeblikk.");
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  async function getEvaluation() {
-    if (messages.filter((m) => m.role === "user").length === 0) return;
-    setEvaluating(true);
-    setError(null);
-    try {
-      const transcript = messages.map((m) => `${m.role === "user" ? "Learner" : "Partner"}: ${m.content}`).join("\n");
-      const res = await fetch("https://api.anthropic.com/v1/messages", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          model: "claude-sonnet-4-6",
-          max_tokens: 600,
-          system: [
-            { type: "text", text: CONVERSATION_EVAL_SYSTEM, cache_control: { type: "ephemeral" } },
-          ],
-          messages: [{ role: "user", content: `Level: ${level.id}\n\nTranscript:\n${transcript}` }],
-        }),
-      });
-      const data = await res.json();
-      const txt = (data.content || []).filter((c) => c.type === "text").map((c) => c.text).join("\n");
-      if (!txt) throw new Error("empty");
-      setEvaluation(txt);
-    } catch (e) {
-      setError("Couldn't get an evaluation right now — try again in a moment.");
-    } finally {
-      setEvaluating(false);
-    }
-  }
-
-  function restart() {
-    setMessages([]);
-    setEvaluation(null);
-    setError(null);
-    setInput("");
-  }
-
-  return (
-    <div>
-      <div style={{ background: C.goldBg, border: `1px solid ${C.gold}`, borderRadius: 10, padding: "14px 16px", marginBottom: 16, fontSize: 12.5, color: "#5C4718", lineHeight: 1.7 }}>
-        <strong style={{ display: "block", marginBottom: 4 }}>An open-ended conversation partner</strong>
-        Unlike the fixed prompts above, this replies dynamically in Norwegian and asks natural follow-ups — closer to the live back-and-forth of the actual paired-conversation exam task. Type your replies; end whenever you like for a short evaluation.
-      </div>
-
-      <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 14, maxHeight: 360, overflowY: "auto" }}>
-        {messages.length === 0 && (
-          <div style={{ fontSize: 12.5, color: C.muted, fontStyle: "italic" }}>Skriv noe for å starte samtalen — for eksempel "Hei! Hvordan går det?"</div>
-        )}
-        {messages.map((m, i) => (
-          <div key={i} style={{ display: "flex", justifyContent: m.role === "user" ? "flex-end" : "flex-start" }}>
-            <div style={{
-              maxWidth: "80%", background: m.role === "user" ? C.navy : C.card, color: m.role === "user" ? "#fff" : C.ink,
-              border: m.role === "user" ? "none" : `1px solid ${C.border}`, borderRadius: 12, padding: "9px 13px", fontSize: 14, lineHeight: 1.5,
-            }}>
-              {m.content}
-              {m.role === "assistant" && <span style={{ marginLeft: 6, verticalAlign: -3 }}><SpeakButton text={m.content} voiceInfo={voiceInfo} /></span>}
-            </div>
-          </div>
-        ))}
-        {loading && <div style={{ fontSize: 12.5, color: C.muted, display: "flex", alignItems: "center", gap: 6 }}><Loader2 size={13} className="spin" /> Skriver ...</div>}
-      </div>
-
-      <div style={{ display: "flex", gap: 8, marginBottom: 12 }}>
-        <input
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={(e) => { if (e.key === "Enter") send(); }}
-          placeholder="Skriv svaret ditt på norsk ..."
-          style={{ flex: 1, boxSizing: "border-box", border: `1px solid ${C.border}`, borderRadius: 8, padding: "10px 12px", fontSize: 13.5, fontFamily: "inherit" }}
-        />
-        <button onClick={send} disabled={loading || !input.trim()} style={{ background: input.trim() && !loading ? C.navy : "#EFEDE4", color: input.trim() && !loading ? "#fff" : C.muted, border: "none", borderRadius: 8, padding: "0 16px", fontSize: 13, fontWeight: 600, cursor: input.trim() && !loading ? "pointer" : "default" }}>
-          Send
-        </button>
-      </div>
-
-      {error && <div style={{ fontSize: 12.5, color: C.red, marginBottom: 10 }}>{error}</div>}
-
-      <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-        <button
-          onClick={getEvaluation}
-          disabled={evaluating || messages.filter((m) => m.role === "user").length === 0}
-          style={{ display: "flex", alignItems: "center", gap: 6, background: "none", border: `1px solid ${C.border}`, borderRadius: 8, padding: "8px 14px", fontSize: 13, color: C.ink, cursor: "pointer" }}
-        >
-          {evaluating ? <><Loader2 size={13} className="spin" /> Vurderer ...</> : "Avslutt og få vurdering"}
-        </button>
-        {messages.length > 0 && (
-          <button onClick={restart} style={{ background: "none", border: "none", color: C.muted, fontSize: 12.5, cursor: "pointer" }}>Start på nytt</button>
-        )}
-      </div>
-
-      {evaluation && (
-        <div style={{ marginTop: 14, background: C.greenBg, border: `1px solid ${C.green}`, borderRadius: 10, padding: "14px 16px", fontSize: 13.5, lineHeight: 1.6, whiteSpace: "pre-line", color: "#2E4A38" }}>
-          {evaluation}
-        </div>
-      )}
-    </div>
-  );
-}
-
 const SNAKK_SUBTABS = [
   { id: "oppgave", label: "Øv på oppgave" },
   { id: "samtale", label: "Samtale" },
@@ -3638,7 +3818,7 @@ function SpeakingPractice({ level, voiceInfo }) {
             </div>
 
             <Recorder text={prompt} voiceInfo={voiceInfo} />
-            <SpeakingFeedback prompt={prompt} />
+            <SpeakingSelfCheck key={prompt} />
 
             <button
               onClick={() => { setIdx((i) => (i + 1) % prompts.length); sw.reset(); }}
@@ -3650,7 +3830,7 @@ function SpeakingPractice({ level, voiceInfo }) {
         </div>
       )}
 
-      {subTab === "samtale" && <ConversationPartner level={level} voiceInfo={voiceInfo} />}
+      {subTab === "samtale" && <ScriptedDialogue level={level} voiceInfo={voiceInfo} />}
       {subTab === "bilde" && <PictureDescription voiceInfo={voiceInfo} />}
       {subTab === "frys" && <RepairBank voiceInfo={voiceInfo} />}
       {subTab === "egne" && <PersonalPhrasebook level={level} voiceInfo={voiceInfo} />}
@@ -3989,6 +4169,23 @@ export default function App() {
                 <div style={{ fontSize: 13.5, fontWeight: 700, color: C.navy }}>NTNU LearnNoW →</div>
                 <div style={{ fontSize: 12, color: C.muted, lineHeight: 1.5, marginTop: 2 }}>Free official beginner course (A1–A2) with dialogues and extra listening audio.</div>
               </a>
+            </div>
+
+            {/* 8b. Honest limitations */}
+            {sectionLabel("Om NorskDive")}
+            <div style={{ ...card, padding: "14px 16px", fontSize: 13, lineHeight: 1.65, color: C.body }}>
+              <div style={{ fontWeight: 700, color: C.ink, marginBottom: 6 }}>Hva NorskDive er, og ikke er</div>
+              <div style={{ marginBottom: 8 }}>NorskDive er gratis og laget av én person som selv øver til Norskprøven.</div>
+              <ul style={{ margin: "0 0 10px", paddingLeft: 18 }}>
+                <li>Fremgangen din lagres bare på denne enheten. Sletter du nettleserdata, forsvinner den.</li>
+                <li>Uttalen bruker stemmen på enheten din, og kvaliteten varierer.</li>
+                <li>Appen retter ikke skriving eller tale automatisk. Du får sjekklister og modellsvar.</li>
+                <li>Innholdet er laget for øving og er ikke offisielle prøveoppgaver.</li>
+                <li>Ingen app erstatter en lærer eller en samtalepartner. Bruk NorskDive i tillegg.</li>
+              </ul>
+              <div lang="en" style={{ fontSize: 12, color: C.muted, lineHeight: 1.6 }}>
+                NorskDive is free and built by one person preparing for Norskprøven. Progress is saved on this device only. There is no automatic correction of writing or speaking — you get checklists and model answers instead. Content is for practice and isn't official test material.
+              </div>
             </div>
 
             {/* 9. Legal footer */}
