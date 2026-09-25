@@ -1669,6 +1669,11 @@ function detectPlatform() {
 function useNorwegianVoices() {
   const [voices, setVoices] = useState([]);
   const [refreshedAt, setRefreshedAt] = useState(0);
+  // Detected after mount so the server HTML and the first client render match.
+  const [env, setEnv] = useState({ supported: false, platform: "other" });
+  useEffect(() => {
+    setEnv({ supported: "speechSynthesis" in window, platform: detectPlatform() });
+  }, []);
   useEffect(() => {
     if (!("speechSynthesis" in window)) return;
     function load() { setVoices(window.speechSynthesis.getVoices()); }
@@ -1679,8 +1684,8 @@ function useNorwegianVoices() {
   return {
     voices,
     norwegian,
-    supported: typeof window !== "undefined" && "speechSynthesis" in window,
-    platform: detectPlatform(),
+    supported: env.supported,
+    platform: env.platform,
     refresh: () => { setVoices(window.speechSynthesis ? window.speechSynthesis.getVoices() : []); setRefreshedAt(Date.now()); },
   };
 }
@@ -3792,11 +3797,12 @@ export default function App() {
   const evalData = evalId ? EVALUATIONS[evalId] : null;
   const dueCount = level ? dueWords(level, progress.leitner[level.id] || {}).length : 0;
 
-  if (!ready) return null;
-
+  // Render the full page on the server too (so the Norwegian text is in the
+  // HTML). Personal data loads after mount; until then the status card is
+  // hidden and the onboarding modal is held back to avoid flashing it.
   applyTheme(theme);
 
-  const needsOnboarding = !progress.onboarded || showSetup;
+  const needsOnboarding = ready && (!progress.onboarded || showSetup);
 
   return (
     <div style={{ fontFamily: "ui-sans-serif, system-ui, -apple-system, sans-serif", background: C.bg, minHeight: 600, padding: "28px 20px 40px", color: C.ink }}>
@@ -3847,7 +3853,7 @@ export default function App() {
             </div>
 
             {/* 2. Status: exam goal, countdown, rank and streak in one card */}
-            <div style={{ ...card, padding: "14px 16px", marginBottom: 14 }}>
+            <div style={{ ...card, padding: "14px 16px", marginBottom: 14, visibility: ready ? "visible" : "hidden" }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 10 }}>
                 <div>
                   <div style={{ fontSize: 11, letterSpacing: 1, color: C.muted, textTransform: "uppercase" }}>Ditt mål</div>
@@ -3881,7 +3887,7 @@ export default function App() {
               <div style={{ fontFamily: "ui-serif, Georgia, serif", fontSize: 19, fontWeight: 700, color: C.ink, margin: "4px 0 2px" }}>
                 {nextLevel.id} · {nextLevel.name}
               </div>
-              <div style={{ fontSize: 12.5, color: C.muted, lineHeight: 1.5, marginBottom: 12 }}>{nextLevel.blurb}</div>
+              <div lang="en" style={{ fontSize: 12.5, color: C.muted, lineHeight: 1.5, marginBottom: 12 }}>{nextLevel.blurb}</div>
               <button onClick={() => openLevel(nextLevel.id)} style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "center", gap: 8, background: C.navy, color: C.bg, border: "none", borderRadius: 10, padding: "12px 16px", fontSize: 14.5, fontWeight: 700, cursor: "pointer" }}>
                 <Play size={15} /> {progress.quizBest[nextLevel.id] !== undefined ? "Fortsett å øve" : "Start å øve"}
               </button>
@@ -3911,7 +3917,7 @@ export default function App() {
                       )}
                     </div>
                     <div style={{ fontFamily: "ui-serif, Georgia, serif", fontSize: 16, fontWeight: 700, marginBottom: 3, color: C.ink }}>{lv.name}</div>
-                    <div style={{ fontSize: 12, color: C.muted, lineHeight: 1.45 }}>{lv.blurb}</div>
+                    <div lang="en" style={{ fontSize: 12, color: C.muted, lineHeight: 1.45 }}>{lv.blurb}</div>
                   </button>
                 );
               })}
@@ -3963,7 +3969,7 @@ export default function App() {
               {Object.entries(EVALUATIONS).map(([id, ev]) => (
                 <button key={id} onClick={() => openEval(id)} style={{ textAlign: "left", ...card, padding: "14px 16px", cursor: "pointer" }}>
                   <div style={{ fontFamily: "ui-serif, Georgia, serif", fontSize: 16, fontWeight: 700, marginBottom: 3, color: C.ink }}>{ev.label}</div>
-                  <div style={{ fontSize: 12, color: C.muted, lineHeight: 1.5 }}>{ev.blurb}</div>
+                  <div lang="en" style={{ fontSize: 12, color: C.muted, lineHeight: 1.5 }}>{ev.blurb}</div>
                 </button>
               ))}
             </div>
@@ -3994,6 +4000,9 @@ export default function App() {
           );
         })()}
 
+        {/* Exercise screens are protected from browser translators:
+            translating them would give away the answers. */}
+        <div translate="no" className="notranslate">
         {screen === "level" && level && (
           <>
             <button onClick={() => setScreen("home")} style={{ display: "flex", alignItems: "center", gap: 6, background: "none", border: "none", color: C.muted, fontSize: 13, cursor: "pointer", padding: 0, marginBottom: 18 }}>
@@ -4004,7 +4013,7 @@ export default function App() {
               <span style={{ fontSize: 12, letterSpacing: 1, color: C.muted, textTransform: "uppercase" }}>{level.cefr}</span>
             </div>
             <h2 style={{ fontFamily: "ui-serif, Georgia, serif", fontSize: 26, fontWeight: 700, margin: "0 0 4px" }}>{level.name}</h2>
-            <p style={{ fontSize: 13.5, color: C.muted, margin: "0 0 18px", lineHeight: 1.5 }}>{level.blurb}</p>
+            <p lang="en" style={{ fontSize: 13.5, color: C.muted, margin: "0 0 18px", lineHeight: 1.5 }}>{level.blurb}</p>
             <Contour color={level.color} />
             <div style={{ display: "flex", gap: 6, margin: "18px 0 20px", flexWrap: "wrap" }}>
               {TABS.map((t) => {
@@ -4070,6 +4079,7 @@ export default function App() {
             voiceInfo={voiceInfo}
           />
         )}
+        </div>
       </div>
     </div>
   );
