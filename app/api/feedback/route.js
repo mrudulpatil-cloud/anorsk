@@ -48,10 +48,16 @@ export async function POST(request) {
       redirect: "follow",
       cache: "no-store",
     });
-    const out = await res.json().catch(() => null);
-    if (!res.ok || !out || !out.ok) return reply({ ok: false, error: "upstream" }, 502);
+    const text = await res.text();
+    let out = null;
+    try { out = JSON.parse(text); } catch {}
+    if (!res.ok || !out || !out.ok) {
+      console.error("feedback upstream failed", res.status, new URL(res.url).host, text.slice(0, 300));
+      return reply({ ok: false, error: "upstream" }, 502);
+    }
     return reply({ ok: true });
-  } catch {
+  } catch (err) {
+    console.error("feedback upstream error", err && err.message);
     return reply({ ok: false, error: "upstream" }, 502);
   }
 }
