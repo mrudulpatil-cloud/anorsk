@@ -6,6 +6,7 @@ import {
   Volume2, Mic, Square, Info, TreePine, ShoppingCart, TramFront, Waves, Cake, Activity,
   Ship, Store, Snowflake, Plus, Repeat, Puzzle, Sun, Moon,
 } from "lucide-react";
+import FeedbackForm from "./feedback";
 
 // Standalone replacement for Claude's artifact-only window.storage API.
 // Same async get/set shape (throws on missing key, like the original),
@@ -4187,6 +4188,10 @@ export default function App() {
                 NorskDive is free and built by one person preparing for Norskprøven. Progress is saved on this device only. There is no automatic correction of writing or speaking — you get checklists and model answers instead. Content is for practice and isn't official test material.
               </div>
             </div>
+
+            {/* 8c. Feedback */}
+            {sectionLabel("Tilbakemelding")}
+            <FeedbackForm C={C} pair={progress.targetPair || ""} />
 
             {/* 9. Legal footer */}
             <div style={{ fontSize: 11, color: C.muted, lineHeight: 1.6, marginTop: 28, paddingTop: 16, borderTop: `1px solid ${C.border}` }}>
