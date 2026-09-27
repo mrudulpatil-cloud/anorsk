@@ -170,6 +170,7 @@ export default function FeedbackForm({ C, pair = "" }) {
         bare til å svare deg, deles ikke med noen og slettes senest 12 måneder etter siste kontakt. Du kan når som helst be
         om innsyn eller sletting på{" "}
         <a href="mailto:sprakanorsk@gmail.com" style={{ color: C.navy }}>sprakanorsk@gmail.com</a>.
+        {" "}<a href="/personvern" style={{ color: C.navy }}>Les personvernerklæringen</a>.
         <span lang="en"> Email is optional and only used to reply; ask for deletion at any time.</span>
       </div>
 
