@@ -4197,6 +4197,11 @@ export default function App() {
             <div style={{ fontSize: 11, color: C.muted, lineHeight: 1.6, marginTop: 28, paddingTop: 16, borderTop: `1px solid ${C.border}` }}>
               NorskDive is built to help learners prepare for Norskprøven, Norway's official language proficiency test. NorskDive is an independent product and is not affiliated with, endorsed by, sponsored by, or otherwise connected to HK-dir (Direktoratet for høyere utdanning og kompetanse), the government body that administers Norskprøven. "Norskprøven" refers to the official exam; all content in this app is original and created for practice purposes only. For official information, registration, and sample materials, visit{" "}
               <a href="https://prove.hkdir.no" target="_blank" rel="noopener noreferrer" style={{ color: C.navy }}>prove.hkdir.no</a>.
+              <div style={{ marginTop: 10 }}>
+                <a href="/personvern" style={{ color: C.navy }}>Personvern</a>
+                {" · "}
+                <a href="/vilkar" style={{ color: C.navy }}>Vilkår for bruk</a>
+              </div>
             </div>
           </>
           );
